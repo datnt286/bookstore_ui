@@ -1,0 +1,128 @@
+#header-search,
+#newsletter {
+    position: relative;
+}
+
+#search-input,
+#newsletter-input {
+    width: 100%;
+    border-radius: 40px;
+}
+
+#search-btn,
+#newsletter-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.newsletter form .input {
+    margin-right: 0;
+}
+
+.product-image {
+    max-width: 220px;
+    max-height: 320px;
+}
+
+/* Cart */
+.product-cart-image {
+    max-width: 80px;
+    max-height: 180px;
+}
+
+.quantity-input {
+    width: 30px;
+}
+
+.btn-quantity {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #333;
+}
+
+.cart-detail {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn-cart {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D10024;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.coupon-input {
+    width: 300px;
+    height: 38px;
+}
+
+.btn-coupon {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #333;
+    padding: 6px 16px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.cart-total {
+    border: 1px solid #E4E7ED;
+    padding: 20px;
+}
+
+.cart-price-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.cart-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #D10024;
+}
+
+.btn-proceed-checkout {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D10024;
+    padding: 8px 16px;
+    margin: 6px 0;
+    border: none;
+    cursor: pointer;
+}
+
+/* Login */
+#login {
+    height: 420px;
+}
+
+.btn-facebook,
+.btn-google {
+    font-weight: bold;
+    color: #fff;
+    height: 45px;
+    border-radius: 40px;
+    border: none;
+}
+
+.btn-facebook {
+    background-color: #0866FF;
+}
+
+.btn-google {
+    background-color: #ee4d2d;
+}
+
+#register {
+    height: 500px;
+}
