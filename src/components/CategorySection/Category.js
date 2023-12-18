@@ -1,4 +1,4 @@
-function Category() {
+function Category({ data }) {
     return (
         <>
             <div className="col-md-4 col-xs-6">
@@ -7,9 +7,7 @@ function Category() {
                         <img src="./img/shop01.png" alt="" />
                     </div>
                     <div className="shop-body">
-                        <h3>
-                            Truyện tranh
-                        </h3>
+                        <h3>{data.name}</h3>
                         <a href="#" className="cta-btn">
                             Xem ngay <i className="fa fa-arrow-circle-right"></i>
                         </a>

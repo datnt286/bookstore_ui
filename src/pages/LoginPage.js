@@ -1,11 +1,14 @@
-import DefaultLayout from '../layouts/DefaultLayout';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Login from '../components/Login';
 
 function LoginPage() {
     return (
-        <DefaultLayout>
+        <>
+            <Header />
             <Login />
-        </DefaultLayout>
+            <Footer />
+        </>
     );
 }
 

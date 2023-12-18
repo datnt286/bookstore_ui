@@ -1,17 +1,14 @@
 import Category from './Category';
 
-function CategorySection() {
+function CategorySection({ data }) {
+    const categories = data.map((category) => {
+        return <Category data={category} />;
+    });
+
     return (
         <div className="section">
             <div className="container">
-                <div className="row">
-                    <Category />
-                    <Category />
-                    <Category />
-                    <Category />
-                    <Category />
-                    <Category />
-                </div>
+                <div className="row">{categories}</div>
             </div>
         </div>
     );

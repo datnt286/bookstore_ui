@@ -1,11 +1,14 @@
-import DefaultLayout from '../layouts/DefaultLayout';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Register from '../components/Register';
 
 function RegisterPage() {
     return (
-        <DefaultLayout>
+        <>
+            <Header />
             <Register />
-        </DefaultLayout>
+            <Footer />
+        </>
     );
 }
 

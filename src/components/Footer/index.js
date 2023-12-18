@@ -6,7 +6,7 @@ function Footer() {
                     <div className="row">
                         <div className="col-md-3 col-xs-6">
                             <div className="footer">
-                                <h3 className="footer-title">About Us</h3>
+                                <h3 className="footer-title">Về chúng tôi</h3>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                     incididunt ut.
@@ -14,12 +14,12 @@ function Footer() {
                                 <ul className="footer-links">
                                     <li>
                                         <a href="#">
-                                            <i className="fa fa-map-marker"></i>1734 Stonecoal Road
+                                            <i className="fa fa-map-marker"></i>1234 TP. HCM
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i className="fa fa-phone"></i>+021-95-51-84
+                                            <i className="fa fa-phone"></i>+0123456789
                                         </a>
                                     </li>
                                     <li>
@@ -33,7 +33,7 @@ function Footer() {
 
                         <div className="col-md-3 col-xs-6">
                             <div className="footer">
-                                <h3 className="footer-title">Categories</h3>
+                                <h3 className="footer-title">Thể loại</h3>
                                 <ul className="footer-links">
                                     <li>
                                         <a href="#">Hot deals</a>
@@ -58,22 +58,22 @@ function Footer() {
 
                         <div className="col-md-3 col-xs-6">
                             <div className="footer">
-                                <h3 className="footer-title">Information</h3>
+                                <h3 className="footer-title">Thông tin</h3>
                                 <ul className="footer-links">
                                     <li>
-                                        <a href="#">About Us</a>
+                                        <a href="#">Về chúng tôi</a>
                                     </li>
                                     <li>
-                                        <a href="#">Contact Us</a>
+                                        <a href="#">Liên hệ</a>
                                     </li>
                                     <li>
-                                        <a href="#">Privacy Policy</a>
+                                        <a href="#">Chính sách bảo mật</a>
                                     </li>
                                     <li>
-                                        <a href="#">Orders and Returns</a>
+                                        <a href="#">Hoá đơn và trả hàng</a>
                                     </li>
                                     <li>
-                                        <a href="#">Terms & Conditions</a>
+                                        <a href="#">Điều khoản và điều kiện</a>
                                     </li>
                                 </ul>
                             </div>
@@ -81,19 +81,19 @@ function Footer() {
 
                         <div className="col-md-3 col-xs-6">
                             <div className="footer">
-                                <h3 className="footer-title">Service</h3>
+                                <h3 className="footer-title">Dịch vụ</h3>
                                 <ul className="footer-links">
                                     <li>
-                                        <a href="#">My Account</a>
+                                        <a href="#">Tài khoản</a>
                                     </li>
                                     <li>
-                                        <a href="#">View Cart</a>
+                                        <a href="#">Giỏ hàng</a>
                                     </li>
                                     <li>
                                         <a href="#">Wishlist</a>
                                     </li>
                                     <li>
-                                        <a href="#">Track My Order</a>
+                                        <a href="#">Theo dõi đơn hàng</a>
                                     </li>
                                     <li>
                                         <a href="#">Help</a>

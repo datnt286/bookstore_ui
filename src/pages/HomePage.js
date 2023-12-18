@@ -1,15 +1,34 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductSection from '../components/ProductSection';
-import NewSletter from '../components/NewSletter';
 import HotDealBanner from '../components/HotDealBanner';
 
 function HomePage() {
+    const [products, setProducts] = useState({
+        newBooks: [],
+        combos: [],
+    });
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await axios.get('http://127.0.0.1:8000/api/get-new-books-and-combos');
+                setProducts(res.data.data);
+            } catch (error) {
+                console.error('Lỗi: ', error);
+            }
+        }
+
+        fetchData();
+    }, []);
+
     return (
         <DefaultLayout>
-            <ProductSection title={'Sách mới'} />
+            <ProductSection title={'Sách mới'} data={products.newBooks} />
             <HotDealBanner />
-            <ProductSection title={'Sách bán chạy'} />
-            <NewSletter />
+            <ProductSection title={'Combo'} data={products.combos} />
         </DefaultLayout>
     );
 }

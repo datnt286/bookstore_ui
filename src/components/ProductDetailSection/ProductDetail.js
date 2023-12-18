@@ -1,4 +1,4 @@
-function ProductDetail() {
+function ProductDetail({data}) {
     return (
         <>
             <div className="col-md-5 col-md-push-2">
@@ -19,7 +19,7 @@ function ProductDetail() {
 
             <div className="col-md-5">
                 <div className="product-details">
-                    <h2 className="product-name">Đắc nhân tâm</h2>
+                    <h2 className="product-name">{data.name}</h2>
 
                     <div>
                         <div className="product-rating mt-3">
@@ -50,13 +50,13 @@ function ProductDetail() {
 
                     <div>
                         <h3 className="product-price">
-                            $980.00 <del className="product-old-price">$990.00</del>
+                            {data.price} <del className="product-old-price">$990.00</del>
                         </h3>
                     </div>
 
                     <div className="add-to-cart">
                         <div className="qty-label d-block mt-4">
-                            Số lượng
+                            <span className="mx-4">Số lượng</span>
                             <div className="input-number">
                                 <input type="number" />
                                 <span className="qty-down">-</span>

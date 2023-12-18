@@ -168,11 +168,11 @@ function Reviews() {
                 <div className="col-md-3">
                     <div id="review-form">
                         <form className="review-form">
-                            <input className="input" type="text" placeholder="Your Name" />
-                            <input className="input" type="email" placeholder="Your Email" />
-                            <textarea className="input" placeholder="Your Review"></textarea>
+                            <input className="input" type="text" placeholder="Tên" />
+                            <input className="input" type="email" placeholder="Email" />
+                            <textarea className="input" placeholder="Bình luận"></textarea>
                             <div className="input-rating">
-                                <span>Your Rating: </span>
+                                <span>Đánh giá: </span>
                                 <div className="stars">
                                     <input id="star5" name="rating" value="5" type="radio" />
                                     <label htmlFor="star5"></label>
@@ -186,7 +186,7 @@ function Reviews() {
                                     <label htmlFor="star1"></label>
                                 </div>
                             </div>
-                            <button className="primary-btn">Submit</button>
+                            <button className="primary-btn">Đăng</button>
                         </form>
                     </div>
                 </div>

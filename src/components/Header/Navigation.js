@@ -15,6 +15,9 @@ function Navigation() {
                         <li>
                             <NavLink to="/store">Cửa hàng</NavLink>
                         </li>
+                        <li>
+                            <NavLink to="/contact">Liên hệ</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>

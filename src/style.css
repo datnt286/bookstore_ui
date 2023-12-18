@@ -20,6 +20,14 @@
     margin-right: 0;
 }
 
+#newsletter {
+    border-bottom: none !important;
+}
+
+#footer {
+    border-top: 3px solid #D10024;
+}
+
 /* Card */
 .product-image {
     max-width: 220px;
@@ -63,6 +71,7 @@
     color: #fff;
     background-color: #D10024;
     padding: 10px 16px;
+    border: none;
     cursor: pointer;
 }
 
@@ -75,7 +84,7 @@
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    background-color: #333;
+    background-color: gray;
     padding: 6px 16px;
     margin-left: 20px;
     cursor: pointer;

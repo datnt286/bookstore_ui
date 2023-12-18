@@ -1,14 +1,12 @@
-import DefaultLayout from "../layouts/DefaultLayout";
-import Checkout from "../components/Checkout";
-import NewSletter from "../components/NewSletter";
+import DefaultLayout from '../layouts/DefaultLayout';
+import Checkout from '../components/Checkout';
 
 function CheckoutPage() {
-    return ( 
+    return (
         <DefaultLayout>
-            <Checkout/>
-            <NewSletter/>
+            <Checkout />
         </DefaultLayout>
-     );
+    );
 }
 
 export default CheckoutPage;
