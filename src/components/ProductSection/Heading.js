@@ -1,31 +1,12 @@
+import { NavLink } from 'react-router-dom';
+
 function Heading({ title }) {
     return (
-        <div className="section-title text-left">
+        <div className="section-title d-flex justify-content-between">
             <h3 className="title">{title}</h3>
-            <div className="section-nav">
-                <ul className="section-tab-nav tab-nav">
-                    <li className="active">
-                        <a data-toggle="tab" href="#tab1">
-                            Laptops
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#tab1">
-                            Smartphones
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#tab1">
-                            Cameras
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#tab1">
-                            Accessories
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <NavLink to="">
+                <span className="text-danger">Xem thêm &gt; &gt;</span>
+            </NavLink>
         </div>
     );
 }

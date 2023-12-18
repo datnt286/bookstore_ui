@@ -8,7 +8,7 @@ function CartDetail() {
             <td className="cart-detail align-middle">$55.00</td>
             <td className="align-middle">
                 <button className="btn-quantity">-</button>
-                <input type="text" value="1" className="cart-detail quantity-input align-middle text-center" />
+                <input type="text" className="cart-detail quantity-input align-middle text-center" />
                 <button className="btn-quantity">+</button>
             </td>
             <td className="cart-detail align-middle">

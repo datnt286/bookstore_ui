@@ -21,7 +21,7 @@ function Register() {
                         </div>
                         <div className="input-checkbox my-4">
                             <input type="checkbox" id="terms" />
-                            <label for="terms">
+                            <label htmlFor="terms">
                                 <span></span>
                                 Tôi đã đọc và chấp nhận các điều khoản và điều kiện
                             </label>

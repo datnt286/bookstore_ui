@@ -1,5 +1,5 @@
 import DefaultLayout from '../layouts/DefaultLayout';
-import ProductDetail from '../components/ProductDetail';
+import ProductDetail from '../components/ProductDetailSection';
 import NewSletter from '../components/NewSletter';
 
 function ProductDetailPage() {

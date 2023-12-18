@@ -20,9 +20,19 @@
     margin-right: 0;
 }
 
+/* Card */
 .product-image {
     max-width: 220px;
     max-height: 320px;
+}
+
+.product-name:hover {
+    color: #D10024;
+}
+
+/* Detail */
+#product-preview {
+    max-width: 350px;
 }
 
 /* Cart */
