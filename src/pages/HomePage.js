@@ -7,7 +7,7 @@ import HotDealBanner from '../components/HotDealBanner';
 
 function HomePage() {
     const [products, setProducts] = useState({
-        newBooks: [],
+        newBooks: [{ images: [{ absolute_path: '' }] }],
         combos: [],
     });
 
@@ -23,6 +23,8 @@ function HomePage() {
 
         fetchData();
     }, []);
+
+    console.log(products);
 
     return (
         <DefaultLayout>

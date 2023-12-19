@@ -4,7 +4,7 @@ function ProductDetail({data}) {
             <div className="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div id="product-preview" className="product-preview">
-                        <img src="./dac-nhan-tam.jpg" alt="" />
+                        <img src={data.absolute_path} alt="" />
                     </div>
                 </div>
             </div>
