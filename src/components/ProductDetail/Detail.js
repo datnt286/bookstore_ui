@@ -1,20 +1,34 @@
-function ProductDetail({data}) {
+function Detail({ data }) {
+    let absolute_path;
+
+    if (!data || !data.absolute_path) {
+        if (!data || !data.images || data.images.length === 0) {
+            return null;
+        }
+
+        ({ absolute_path } = data.images[0] || {});
+    }
+
     return (
         <>
             <div className="col-md-5 col-md-push-2">
                 <div id="product-main-img">
-                    <div id="product-preview" className="product-preview">
-                        <img src={data.absolute_path} alt="" />
+                    <div id="product-main-image" className="product-preview">
+                        <img src={data.absolute_path || absolute_path} alt="" />
                     </div>
                 </div>
             </div>
 
             <div className="col-md-2  col-md-pull-5">
-                <div id="product-imgs">
-                    <div className="product-preview">
-                        <img src="./dac-nhan-tam.jpg" alt="" />
+                {data.images && data.images.length > 0 && (
+                    <div id="product-imgs">
+                        <div className="product-preview">
+                            {data.images.map((image, index) => {
+                                return <img key={index} src={image.absolute_path} alt="" className="mb-4" />;
+                            })}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
 
             <div className="col-md-5">
@@ -80,4 +94,4 @@ function ProductDetail({data}) {
     );
 }
 
-export default ProductDetail;
+export default Detail;

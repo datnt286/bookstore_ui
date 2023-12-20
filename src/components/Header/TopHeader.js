@@ -1,6 +1,21 @@
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 function TopHeader() {
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+    const userData = localStorage.getItem('userData');
+    const user = JSON.parse(userData);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+    };
+    
     return (
         <div id="top-header">
             <div className="container">
@@ -21,30 +36,33 @@ function TopHeader() {
                         </a>
                     </li>
                 </ul>
-                {/* <ul className="header-links pull-right">
-                    <li>
-                        <NavLink to="/">
-                            <i className="fa fa-dollar"></i> USD
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/">
-                            <i className="fa fa-user-o"></i> Tài khoản
-                        </NavLink>
-                    </li>
-                </ul> */}
-                <ul className="header-links pull-right">
-                    <li>
-                        <NavLink to="/register">
-                            <i className="fa fa-pencil-square-o"></i> Đăng ký
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/login">
-                            <i className="fa fa-sign-in"></i> Đăng nhập
-                        </NavLink>
-                    </li>
-                </ul>
+                {isLoggedIn ? (
+                    <ul className="header-links pull-right">
+                        <li>
+                            <NavLink to="/">
+                                <i className="fa fa-user-o"></i> {user.name}
+                            </NavLink>
+                        </li>
+                        <li onClick={handleLogout}>
+                            <NavLink to="/">
+                                <i className="fa fa-dollar"></i> Đăng xuất
+                            </NavLink>
+                        </li>
+                    </ul>
+                ) : (
+                    <ul className="header-links pull-right">
+                        <li>
+                            <NavLink to="/register">
+                                <i className="fa fa-pencil-square-o"></i> Đăng ký
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/login">
+                                <i className="fa fa-sign-in"></i> Đăng nhập
+                            </NavLink>
+                        </li>
+                    </ul>
+                )}
             </div>
         </div>
     );

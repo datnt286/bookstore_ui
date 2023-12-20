@@ -1,7 +1,7 @@
 import Description from './Description';
 import Reviews from './Reviews';
 
-function ProductTab() {
+function ProductTab({ data }) {
     return (
         <div className="col-md-12">
             <div id="product-tab">
@@ -19,7 +19,7 @@ function ProductTab() {
                 </ul>
 
                 <div className="tab-content">
-                    <Description />
+                    <Description data={data}/>
                     <Reviews />
                 </div>
             </div>

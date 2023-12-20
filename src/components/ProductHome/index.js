@@ -1,7 +1,7 @@
 import ProductGrid from './ProductGird';
 import Heading from './Heading';
 
-function ProductSection({ title, data }) {
+function ProductHome({ title, data }) {
     return (
         <div className="section">
             <div className="container">
@@ -12,4 +12,4 @@ function ProductSection({ title, data }) {
     );
 }
 
-export default ProductSection;
+export default ProductHome;

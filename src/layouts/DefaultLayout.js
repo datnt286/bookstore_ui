@@ -1,6 +1,6 @@
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import NewSletter from '../components/NewSletter';
+import Footer from '../components/Footer';
 
 function DefaultLayout({ children }) {
     return (

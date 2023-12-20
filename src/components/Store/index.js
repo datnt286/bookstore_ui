@@ -1,5 +1,5 @@
 import Aside from './Aside';
-import Store from './Store';
+import ProductGrid from './ProductGrid';
 
 function StoreSection({ data }) {
     return (
@@ -7,7 +7,7 @@ function StoreSection({ data }) {
             <div className="container">
                 <div className="row">
                     <Aside />
-                    <Store data={data} />
+                    <ProductGrid data={data} />
                 </div>
             </div>
         </div>

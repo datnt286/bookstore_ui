@@ -2,9 +2,9 @@ import ProductCard from '../ProductCard';
 import Filter from './Filter';
 import Pagination from './Pagination';
 
-function Store({ data }) {
-    const products = data.map((product) => {
-        return <ProductCard key={product.slug} data={product} />;
+function ProductGrid({ data }) {
+    const products = data.map((product, index) => {
+        return <ProductCard key={index} data={product} />;
     });
 
     return (
@@ -16,4 +16,4 @@ function Store({ data }) {
     );
 }
 
-export default Store;
+export default ProductGrid;

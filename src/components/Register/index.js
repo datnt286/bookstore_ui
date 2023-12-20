@@ -1,36 +1,97 @@
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function Register() {
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+        re_enter_password: '',
+        phone: '',
+    });
+
+    const navigate = useNavigate();
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        try {
+            const res = await axios.post('http://127.0.0.1:8000/api/register', formData);
+
+            navigate('/login');
+            console.log('Status: ', res.data);
+        } catch (error) {
+            console.error('Lỗi: ', error);
+        }
+    }
+
     return (
         <div id="register" className="section">
             <div className="container">
-                <div className="row d-flex justify-content-center">
-                    <div className="col-md-4">
-                        <div className="section-title text-center">
-                            <h3 className="title">Đăng ký</h3>
-                        </div>
-                        <div className="form-group">
-                            <input className="input" type="text" name="username" placeholder="Tên đăng nhập" />
-                        </div>
-                        <div className="form-group">
-                            <input className="input" type="password" name="password" placeholder="Mật khẩu" />
-                        </div>
-                        <div className="form-group">
-                            <input className="input" type="password" name="password" placeholder="Nhập lại mật khẩu" />
-                        </div>
-                        <div className="form-group">
-                            <input className="input" type="text" name="phone" placeholder="Điện thoại" />
-                        </div>
-                        <div className="input-checkbox my-4">
-                            <input type="checkbox" id="terms" />
-                            <label htmlFor="terms">
-                                <span></span>
-                                Tôi đã đọc và chấp nhận các điều khoản và điều kiện
-                            </label>
-                        </div>
-                        <div className="text-center my-4">
-                            <button className="primary-btn w-100">Đăng ký</button>
+                <form onSubmit={handleSubmit}>
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-md-4">
+                            <div className="section-title text-center">
+                                <h3 className="title">Đăng ký</h3>
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    name="username"
+                                    onChange={handleInputChange}
+                                    placeholder="Tên đăng nhập"
+                                    className="input"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="password"
+                                    name="password"
+                                    onChange={handleInputChange}
+                                    placeholder="Mật khẩu"
+                                    className="input"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="password"
+                                    name="re_enter_password"
+                                    onChange={handleInputChange}
+                                    placeholder="Nhập lại mật khẩu"
+                                    className="input"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    name="phone"
+                                    placeholder="Điện thoại"
+                                    onChange={handleInputChange}
+                                    className="input"
+                                />
+                            </div>
+                            <div className="input-checkbox my-4">
+                                <input type="checkbox" id="terms" />
+                                <label htmlFor="terms">
+                                    <span></span>
+                                    Tôi đã đọc và chấp nhận các điều khoản và điều kiện
+                                </label>
+                            </div>
+                            <div className="text-center my-4">
+                                <button className="primary-btn w-100">Đăng ký</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );

@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 import DefaultLayout from '../layouts/DefaultLayout';
-import Store from '../components/StoreSection';
+import Store from '../components/Store';
 
 function StorePage() {
     const [products, setProducts] = useState([]);

@@ -3,31 +3,31 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import DefaultLayout from '../layouts/DefaultLayout';
-import ProductDetail from '../components/ProductDetail';
+import Book from '../components/Book';
 
-function ProductDetailPage() {
-    const [product, setProduct] = useState({});
+function BookPage() {
+    const [books, setBooks] = useState([{ images: [] }]);
 
-    const { slug } = useParams();
+    const { id } = useParams();
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`http://127.0.0.1:8000/api/${slug}`);
-                setProduct(res.data.data);
+                const res = await axios.get(`http://127.0.0.1:8000/api/get-books-by-category/${id}`);
+                setBooks(res.data.data);
             } catch (error) {
                 console.error('Lỗi: ', error);
             }
         }
 
         fetchData();
-    }, [slug]);
+    }, [id]);
 
     return (
         <DefaultLayout>
-            <ProductDetail data={product} />
+            <Book data={books} />
         </DefaultLayout>
     );
 }
 
-export default ProductDetailPage;
+export default BookPage;

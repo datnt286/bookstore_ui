@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 import DefaultLayout from '../layouts/DefaultLayout';
 import Category from '../components/CategorySection';

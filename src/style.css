@@ -39,8 +39,12 @@
 }
 
 /* Detail */
-#product-preview {
+#product-main-image {
     max-width: 350px;
+}
+
+.product-preview {
+    border: 1px solid #E4E7ED;
 }
 
 /* Shop */

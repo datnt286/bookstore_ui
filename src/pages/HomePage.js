@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 import DefaultLayout from '../layouts/DefaultLayout';
-import ProductSection from '../components/ProductSection';
+import ProductHome from '../components/ProductHome';
 import HotDealBanner from '../components/HotDealBanner';
 
 function HomePage() {
@@ -24,13 +24,11 @@ function HomePage() {
         fetchData();
     }, []);
 
-    console.log(products);
-
     return (
         <DefaultLayout>
-            <ProductSection title={'Sách mới'} data={products.newBooks} />
+            <ProductHome title={'Sách mới'} data={products.newBooks} />
             <HotDealBanner />
-            <ProductSection title={'Combo'} data={products.combos} />
+            <ProductHome title={'Combo'} data={products.combos} />
         </DefaultLayout>
     );
 }
