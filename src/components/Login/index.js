@@ -34,7 +34,6 @@ function Login() {
             if (localStorage.getItem('token')) {
                 localStorage.setItem('userData', JSON.stringify(userData.data));
                 navigate('/');
-                window.location.reload(false);
             }
         } catch (error) {
             console.error('Lỗi: ', error);

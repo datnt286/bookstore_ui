@@ -39,13 +39,13 @@ function TopHeader() {
                 {isLoggedIn ? (
                     <ul className="header-links pull-right">
                         <li>
-                            <NavLink to="/">
+                            <NavLink to="/me">
                                 <i className="fa fa-user-o"></i> {user.name}
                             </NavLink>
                         </li>
                         <li onClick={handleLogout}>
                             <NavLink to="/">
-                                <i className="fa fa-dollar"></i> Đăng xuất
+                                <i className="fa fa-sign-out"></i> Đăng xuất
                             </NavLink>
                         </li>
                     </ul>
