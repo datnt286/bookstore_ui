@@ -2,17 +2,15 @@ import axios from 'axios';
 import { useState } from 'react';
 
 function Account({ user }) {
-    const [formData, setFormData] = useState({
-        ...user,
-    });
+    const [formData, setFormData] = useState({ ...user });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
 
-        setFormData({
-            ...formData,
+        setFormData((prevFormData) => ({
+            ...prevFormData,
             [name]: value,
-        });
+        }));
     };
 
     async function handleSubmit(event) {
@@ -54,7 +52,7 @@ function Account({ user }) {
                             <input
                                 type="text"
                                 name="name"
-                                value={user.name}
+                                value={formData.name}
                                 onChange={handleInputChange}
                                 placeholder="Tên"
                                 className="input"
@@ -62,9 +60,9 @@ function Account({ user }) {
                         </div>
                         <div className="form-group">
                             <input
-                                type="tel"
-                                name="tel"
-                                value={user.phone}
+                                type="text"
+                                name="phone"
+                                value={formData.phone}
                                 onChange={handleInputChange}
                                 placeholder="Điện thoại"
                                 className="input"
@@ -74,7 +72,7 @@ function Account({ user }) {
                             <input
                                 type="email"
                                 name="email"
-                                value={user.email}
+                                value={formData.email}
                                 onChange={handleInputChange}
                                 placeholder="Email"
                                 className="input"
@@ -84,7 +82,7 @@ function Account({ user }) {
                             <textarea
                                 type="text"
                                 name="address"
-                                value={user.address}
+                                value={formData.address}
                                 onChange={handleInputChange}
                                 placeholder="Địa chỉ"
                                 className="input"

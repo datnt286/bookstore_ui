@@ -1,5 +1,9 @@
+import { useState } from 'react';
+
 function Detail({ data }) {
-    let absolute_path;
+    const [quantity, setQuantity] = useState(1);
+
+    var absolute_path;
 
     if (!data || !data.absolute_path) {
         if (!data || !data.images || data.images.length === 0) {
@@ -8,6 +12,40 @@ function Detail({ data }) {
 
         ({ absolute_path } = data.images[0] || {});
     }
+
+    const handleQuantityChange = (value) => {
+        setQuantity((prevQuantity) => Math.max(1, prevQuantity + value));
+    };
+
+    const handleAddToCart = () => {
+        var cart = localStorage.getItem('cart');
+
+        var product = {
+            id: data.id,
+            name: data.name,
+            price: data.price,
+            quantity: quantity,
+            slug: data.slug,
+            image: data.absolute_path || (data.images && data.images.length > 0 ? data.images[0].absolute_path : null),
+            ...(data.is_combo ? { combo_id: data.id } : { book_id: data.id }),
+        };
+
+        if (cart === null) {
+            cart = [product];
+        } else {
+            cart = JSON.parse(cart);
+            var index = cart.findIndex((item) => item.slug === product.slug);
+
+            if (index !== -1) {
+                cart[index].quantity += product.quantity;
+            } else {
+                cart.push(product);
+            }
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Thêm sản phẩm vào giỏ hàng thành công');
+    };
 
     return (
         <>
@@ -72,13 +110,17 @@ function Detail({ data }) {
                         <div className="qty-label d-block mt-4">
                             <span className="mx-4">Số lượng</span>
                             <div className="input-number">
-                                <input type="number" />
-                                <span className="qty-down">-</span>
-                                <span className="qty-up">+</span>
+                                <input type="number" value={quantity} />
+                                <span onClick={() => handleQuantityChange(-1)} className="qty-down">
+                                    -
+                                </span>
+                                <span onClick={() => handleQuantityChange(1)} className="qty-up">
+                                    +
+                                </span>
                             </div>
                         </div>
                         <div>
-                            <button className="add-to-cart-btn mt-4">
+                            <button onClick={handleAddToCart} className="add-to-cart-btn mt-4">
                                 <i className="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
                             </button>
                         </div>

@@ -2,9 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 
 function ChangePassword({ user }) {
-    const [formData, setFormData] = useState({
-        ...user,
-    });
+    const [formData, setFormData] = useState({ ...user });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
