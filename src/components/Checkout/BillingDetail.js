@@ -1,4 +1,17 @@
-function BillingDetail() {
+import { useState } from 'react';
+
+function BillingDetail({ user }) {
+    const [formData, setFormData] = useState({ ...user });
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
+
     return (
         <div className="col-md-7">
             <div className="billing-details">
@@ -6,16 +19,44 @@ function BillingDetail() {
                     <h3 className="title">Chi tiết người nhận</h3>
                 </div>
                 <div className="form-group">
-                    <input className="input" type="text" name="name" placeholder="Tên" />
+                    <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Tên"
+                        className="input"
+                    />
                 </div>
                 <div className="form-group">
-                    <input className="input" type="tel" name="tel" placeholder="Điện thoại" />
+                    <input
+                        type="tel"
+                        name="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="Điện thoại"
+                        className="input"
+                    />
                 </div>
                 <div className="form-group">
-                    <input className="input" type="email" name="email" placeholder="Email" />
+                    <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="Email"
+                        className="input"
+                    />
                 </div>
                 <div className="form-group">
-                    <textarea className="input" type="text" name="address" placeholder="Địa chỉ"></textarea>
+                    <textarea
+                        type="text"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleInputChange}
+                        placeholder="Địa chỉ"
+                        className="input"
+                    ></textarea>
                 </div>
                 <div className="form-group">
                     <div className="input-checkbox">
@@ -29,7 +70,12 @@ function BillingDetail() {
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                 incididunt.
                             </p>
-                            <input className="input" type="password" name="password" placeholder="Enter Your Password" />
+                            <input
+                                className="input"
+                                type="password"
+                                name="password"
+                                placeholder="Enter Your Password"
+                            />
                         </div>
                     </div>
                 </div>

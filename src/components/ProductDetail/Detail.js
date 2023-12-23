@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/cartSlice';
 
 function Detail({ data }) {
     const [quantity, setQuantity] = useState(1);
+    const dispatch = useDispatch();
 
     var absolute_path;
 
@@ -18,8 +21,6 @@ function Detail({ data }) {
     };
 
     const handleAddToCart = () => {
-        var cart = localStorage.getItem('cart');
-
         var product = {
             id: data.id,
             name: data.name,
@@ -30,20 +31,7 @@ function Detail({ data }) {
             ...(data.is_combo ? { combo_id: data.id } : { book_id: data.id }),
         };
 
-        if (cart === null) {
-            cart = [product];
-        } else {
-            cart = JSON.parse(cart);
-            var index = cart.findIndex((item) => item.slug === product.slug);
-
-            if (index !== -1) {
-                cart[index].quantity += product.quantity;
-            } else {
-                cart.push(product);
-            }
-        }
-
-        localStorage.setItem('cart', JSON.stringify(cart));
+        dispatch(addToCart(product));
         alert('Thêm sản phẩm vào giỏ hàng thành công');
     };
 

@@ -34,6 +34,7 @@ function Login() {
             if (localStorage.getItem('token')) {
                 localStorage.setItem('userData', JSON.stringify(userData.data));
                 navigate('/');
+                alert('Đăng nhập thành công!');
             }
         } catch (error) {
             console.error('Lỗi: ', error);

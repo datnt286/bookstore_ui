@@ -1,19 +1,25 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { removeFromCart, updateAmount, updateTotal } from '../../redux/cartSlice';
 
 function CartDetail({ product }) {
     const [quantity, setQuantity] = useState(product.quantity);
     const [amount, setAmount] = useState(parseInt(product.price) * parseInt(product.quantity));
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setAmount(parseInt(product.price) * parseInt(quantity));
-    }, [product.price, quantity]);
+        dispatch(updateAmount({ slug: product.slug, quantity }));
+        dispatch(updateTotal());
+    }, [product.price, quantity, dispatch, product.slug]);
 
     const handleQuantityChange = (value) => {
         setQuantity((prevQuantity) => Math.max(1, prevQuantity + value));
     };
 
     const handleDelete = (slug) => {
-        // Xử lý xoá sản phẩm
+        dispatch(removeFromCart(slug));
+        dispatch(updateTotal());
     };
 
     return (

@@ -28,6 +28,7 @@ function Register() {
             const res = await axios.post('http://127.0.0.1:8000/api/register', formData);
 
             navigate('/login');
+            alert('Đăng ký thành công!');
             console.log('Status: ', res.data);
         } catch (error) {
             console.error('Lỗi: ', error);

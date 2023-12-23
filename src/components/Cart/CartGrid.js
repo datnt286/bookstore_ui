@@ -1,8 +1,9 @@
+import { useSelector } from 'react-redux';
 import CartDetail from './CartDetail';
 
-function CartGrid({ cart }) {
-    var total = 0;
-    
+function CartGrid() {
+    const cart = useSelector((state) => state.cart.items);
+
     const cartUI = () => {
         if (cart.length > 0) {
             return (
@@ -26,9 +27,6 @@ function CartGrid({ cart }) {
                     </thead>
                     <tbody>
                         {cart.map((product) => {
-                            var amount = parseInt(product.price) * parseInt(product.quantity);
-                            total += amount;
-
                             return <CartDetail product={product} />;
                         })}
                     </tbody>

@@ -1,4 +1,8 @@
+import { useSelector } from 'react-redux';
+
 function Order() {
+    const cart = useSelector((state) => state.cart);
+
     return (
         <div className="col-md-5 order-details">
             <div className="section-title text-center">
@@ -10,18 +14,22 @@ function Order() {
                         <strong>Sản phẩm</strong>
                     </div>
                     <div>
+                        <strong>Số lượng</strong>
+                    </div>
+                    <div>
                         <strong>Thành tiền</strong>
                     </div>
                 </div>
                 <div className="order-products">
-                    <div className="order-col">
-                        <div>1x Đắc nhân tâm</div>
-                        <div>$980.00</div>
-                    </div>
-                    <div className="order-col">
-                        <div>2x Đắc nhân tâm</div>
-                        <div>$980.00</div>
-                    </div>
+                    {cart.items.map((product) => {
+                        return (
+                            <div className="order-col">
+                                <div>{product.name}</div>
+                                <div>x {product.quantity}</div>
+                                <div>{parseInt(product.quantity) * parseInt(product.price)}</div>
+                            </div>
+                        );
+                    })}
                 </div>
                 <div className="order-col">
                     <div>Phí vận chuyển</div>
@@ -34,7 +42,7 @@ function Order() {
                         <strong>Tổng tiền</strong>
                     </div>
                     <div>
-                        <strong className="order-total">$2940.00</strong>
+                        <strong className="order-total">{cart.total}</strong>
                     </div>
                 </div>
             </div>
