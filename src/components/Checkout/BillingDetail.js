@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '../../redux/authSlice';
 
-function BillingDetail({ user }) {
+function BillingDetail() {
+    const user = useSelector((state) => state.auth.user);
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({ ...user });
 
     const handleInputChange = (event) => {
@@ -10,6 +14,8 @@ function BillingDetail({ user }) {
             ...prevFormData,
             [name]: value,
         }));
+
+        dispatch(updateUser({ [name]: value }));
     };
 
     return (
@@ -31,7 +37,7 @@ function BillingDetail({ user }) {
                 <div className="form-group">
                     <input
                         type="tel"
-                        name="tel"
+                        name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="Điện thoại"

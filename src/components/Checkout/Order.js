@@ -1,7 +1,42 @@
-import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart } from '../../redux/cartSlice';
+import Swal from 'sweetalert2';
 
 function Order() {
+    const user = useSelector((state) => state.auth.user);
     const cart = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
+
+    const handleOrder = async () => {
+        try {
+            const data = {
+                user: {
+                    ...user,
+                    customer_id: user.id || null,
+                },
+                products: cart.items,
+            };
+
+            const res = await axios.post('http://127.0.0.1:8000/api/order/create', data);
+
+            dispatch(clearCart());
+
+            Swal.fire({
+                icon: 'success',
+                title: res.data.message,
+                timer: 2000,
+            });
+        } catch (error) {
+            console.error('Lỗi thanh toán:', error);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Có lỗi xảy ra khi thanh toán. Vui lòng thử lại sau!',
+                timer: 2000,
+            });
+        }
+    };
 
     return (
         <div className="col-md-5 order-details">
@@ -21,9 +56,9 @@ function Order() {
                     </div>
                 </div>
                 <div className="order-products">
-                    {cart.items.map((product) => {
+                    {cart.items.map((product, index) => {
                         return (
-                            <div className="order-col">
+                            <div key={index} className="order-col">
                                 <div>{product.name}</div>
                                 <div>x {product.quantity}</div>
                                 <div>{parseInt(product.quantity) * parseInt(product.price)}</div>
@@ -94,9 +129,9 @@ function Order() {
                     Tôi đã đọc và chấp nhận các điều khoản và điều kiện
                 </label>
             </div>
-            <a href="#" className="primary-btn order-submit">
+            <button onClick={handleOrder} className="primary-btn order-submit w-100">
                 Đặt hàng
-            </a>
+            </button>
         </div>
     );
 }

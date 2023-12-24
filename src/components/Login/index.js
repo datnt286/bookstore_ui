@@ -1,14 +1,18 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { loginFailure, loginSuccess } from '../../redux/authSlice';
+import Swal from 'sweetalert2';
 
-function Login() {
+const Login = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         username: '',
         password: '',
     });
-
-    const navigate = useNavigate();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -19,7 +23,7 @@ function Login() {
         });
     };
 
-    async function handleSubmit(event) {
+    const handleLogin = async (event) => {
         event.preventDefault();
 
         try {
@@ -31,20 +35,25 @@ function Login() {
                 headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
             });
 
-            if (localStorage.getItem('token')) {
-                localStorage.setItem('userData', JSON.stringify(userData.data));
-                navigate('/');
-                alert('Đăng nhập thành công!');
-            }
-        } catch (error) {
-            console.error('Lỗi: ', error);
-        }
-    }
+            localStorage.setItem('userData', JSON.stringify(userData.data));
 
+            dispatch(loginSuccess({ user: userData.data, token: res.data.access_token }));
+
+            navigate('/');
+            
+            Swal.fire({
+                icon: 'success',
+                title: 'Đăng nhập thành công!',
+                timer: 2000,
+            });
+        } catch (error) {
+            dispatch(loginFailure('Sai tên đăng nhập hoặc mật khẩu!'));
+        }
+    };
     return (
         <div id="login" className="section">
             <div className="container">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleLogin}>
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-4">
                             <div className="section-title text-center">
@@ -87,6 +96,6 @@ function Login() {
             </div>
         </div>
     );
-}
+};
 
 export default Login;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
+import Swal from 'sweetalert2';
 
 function Detail({ data }) {
     const [quantity, setQuantity] = useState(1);
@@ -28,11 +29,16 @@ function Detail({ data }) {
             quantity: quantity,
             slug: data.slug,
             image: data.absolute_path || (data.images && data.images.length > 0 ? data.images[0].absolute_path : null),
-            ...(data.is_combo ? { combo_id: data.id } : { book_id: data.id }),
+            ...(data.is_combo ? { combo_id: data.id, book_id: null } : { book_id: data.id, combo_id: null }),
         };
 
         dispatch(addToCart(product));
-        alert('Thêm sản phẩm vào giỏ hàng thành công');
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Thêm sản phẩm vào giỏ hàng thành công!',
+            timer: 2000,
+        });
     };
 
     return (

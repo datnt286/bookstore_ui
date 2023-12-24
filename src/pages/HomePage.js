@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 import DefaultLayout from '../layouts/DefaultLayout';
-import ProductHome from '../components/ProductHome';
+import ProductSection from '../components/ProductSection';
 import HotDealBanner from '../components/HotDealBanner';
 
 function HomePage() {
@@ -26,9 +26,9 @@ function HomePage() {
 
     return (
         <DefaultLayout>
-            <ProductHome title={'Sách mới'} data={products.newBooks} />
+            <ProductSection title={'Sách mới'} data={products.newBooks} />
             <HotDealBanner />
-            <ProductHome title={'Combo'} data={products.combos} />
+            <ProductSection title={'Combo'} data={products.combos} />
         </DefaultLayout>
     );
 }

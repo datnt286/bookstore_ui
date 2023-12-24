@@ -2,9 +2,6 @@ import Account from './Account';
 import ChangePassword from './ChangePassword';
 
 function Me() {
-    const userData = localStorage.getItem('userData');
-    const user = JSON.parse(userData);
-
     return (
         <div id="me" className="section">
             <div className="container">
@@ -26,9 +23,8 @@ function Me() {
 
                     <div class="card-body align-middle">
                         <div class="tab-content">
-                            <Account user={user} />
-
-                            <ChangePassword user={user} />
+                            <Account />
+                            <ChangePassword />
                         </div>
                     </div>
                 </div>

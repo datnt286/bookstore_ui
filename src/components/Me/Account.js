@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-function Account({ user }) {
-    const [formData, setFormData] = useState({ ...user });
+function Account() {
+    const user = useSelector((state) => state.auth);
+    const [formData, setFormData] = useState({ ...user.user });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -18,7 +20,7 @@ function Account({ user }) {
 
         try {
             const res = await axios.post('http://127.0.0.1:8000/api/update', formData, {
-                headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+                headers: { Authorization: 'Bearer ' + user.token },
             });
 
             localStorage.setItem('userData', JSON.stringify(formData));
@@ -42,7 +44,7 @@ function Account({ user }) {
                             <input
                                 type="text"
                                 name="username"
-                                value={user.username}
+                                value={user.user.username}
                                 placeholder="Tên đăng nhập"
                                 className="input"
                                 readOnly

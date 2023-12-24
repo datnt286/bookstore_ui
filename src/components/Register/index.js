@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -28,8 +29,12 @@ function Register() {
             const res = await axios.post('http://127.0.0.1:8000/api/register', formData);
 
             navigate('/login');
-            alert('Đăng ký thành công!');
-            console.log('Status: ', res.data);
+
+            Swal.fire({
+                icon: 'success',
+                title: res.data.message,
+                timer: 2000,
+            });
         } catch (error) {
             console.error('Lỗi: ', error);
         }

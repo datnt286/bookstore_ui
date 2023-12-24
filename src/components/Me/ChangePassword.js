@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-function ChangePassword({ user }) {
-    const [formData, setFormData] = useState({ ...user });
+function ChangePassword() {
+    const user = useSelector((state) => state.auth);
+    const [formData, setFormData] = useState({});
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -18,10 +20,9 @@ function ChangePassword({ user }) {
 
         try {
             const res = await axios.post('http://127.0.0.1:8000/api/change-password', formData, {
-                headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+                headers: { Authorization: 'Bearer ' + user.token },
             });
 
-            localStorage.setItem('userData', JSON.stringify(formData));
             // window.location.reload(false);
 
             console.log('Status: ', res.data);

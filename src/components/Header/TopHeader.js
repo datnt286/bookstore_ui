@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logout } from '../../redux/authSlice';
+import Swal from 'sweetalert2';
 
 function TopHeader() {
     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
     const userData = localStorage.getItem('userData');
     const user = JSON.parse(userData);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -12,10 +16,16 @@ function TopHeader() {
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem('token');
+        dispatch(logout());
         setIsLoggedIn(false);
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng xuất thành công!',
+            timer: 2000,
+        });
     };
-    
+
     return (
         <div id="top-header">
             <div className="container">
