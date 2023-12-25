@@ -28,7 +28,7 @@ function Order() {
                 timer: 2000,
             });
         } catch (error) {
-            console.error('Lỗi thanh toán:', error);
+            console.error('Lỗi: ', error);
 
             Swal.fire({
                 icon: 'error',
@@ -61,7 +61,7 @@ function Order() {
                             <div key={index} className="order-col">
                                 <div>{product.name}</div>
                                 <div>x {product.quantity}</div>
-                                <div>{parseInt(product.quantity) * parseInt(product.price)}</div>
+                                <div>{parseInt(product.quantity) * parseInt(product.price)} ₫</div>
                             </div>
                         );
                     })}
@@ -77,7 +77,7 @@ function Order() {
                         <strong>Tổng tiền</strong>
                     </div>
                     <div>
-                        <strong className="order-total">{cart.total}</strong>
+                        <strong className="order-total">{cart.total} ₫</strong>
                     </div>
                 </div>
             </div>

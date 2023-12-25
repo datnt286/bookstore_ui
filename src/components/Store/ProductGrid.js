@@ -4,6 +4,7 @@ import Pagination from './Pagination';
 
 function ProductGrid({ data }) {
     const products = data.map((product, index) => {
+        console.log(index)
         return <ProductCard key={index} data={product} />;
     });
 

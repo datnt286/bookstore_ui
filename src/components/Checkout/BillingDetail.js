@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUser } from '../../redux/authSlice';
+import { updateUserBill } from '../../redux/authSlice';
 
 function BillingDetail() {
     const user = useSelector((state) => state.auth.user);
@@ -15,7 +15,7 @@ function BillingDetail() {
             [name]: value,
         }));
 
-        dispatch(updateUser({ [name]: value }));
+        dispatch(updateUserBill({ [name]: value }));
     };
 
     return (

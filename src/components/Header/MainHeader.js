@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import TopHeader from './TopHeader';
+import Logo from '../../img/logo.png'
 
 function MainHeader() {
     return (
@@ -12,7 +13,7 @@ function MainHeader() {
                         <div className="col-md-3">
                             <div className="header-logo">
                                 <NavLink to="/" className="logo">
-                                    <img src="./img/logo.png" alt="Logo" />
+                                    <img src={Logo} alt="Logo" />
                                 </NavLink>
                             </div>
                         </div>

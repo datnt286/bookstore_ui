@@ -23,10 +23,10 @@ function ProductCard({ data }) {
                         </div>
                     </div>
                     <div className="product-body">
-                        <p className="product-category">Sách tự lực</p>
+                        <p className="product-category">{data.category_id}</p>
                         <h3 className="product-name">{data.name}</h3>
                         <h4 className="product-price">
-                            {data.price} <del className="product-old-price">$990.00</del>
+                            {data.price} ₫ <del className="product-old-price">990.00 ₫</del>
                         </h4>
                     </div>
                 </div>

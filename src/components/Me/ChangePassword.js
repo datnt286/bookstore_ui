@@ -1,10 +1,16 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 function ChangePassword() {
     const user = useSelector((state) => state.auth);
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({
+        id: user.user.id,
+        old_password: '',
+        new_password: '',
+        re_enter_password: '',
+    });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -12,6 +18,15 @@ function ChangePassword() {
         setFormData({
             ...formData,
             [name]: value,
+        });
+    };
+
+    const resetFormData = () => {
+        setFormData({
+            id: user.user.id,
+            old_password: '',
+            new_password: '',
+            re_enter_password: '',
         });
     };
 
@@ -23,15 +38,25 @@ function ChangePassword() {
                 headers: { Authorization: 'Bearer ' + user.token },
             });
 
-            // window.location.reload(false);
+            resetFormData();
 
-            console.log('Status: ', res.data);
+            Swal.fire({
+                icon: 'success',
+                title: res.data.message,
+                timer: 2000,
+            });
         } catch (error) {
             console.error('Lỗi: ', error);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Đổi mật khẩu thất bại!',
+                timer: 2000,
+            });
         }
     }
     return (
-        <div id="change-password" class="tab-pane">
+        <div id="change-password" className="tab-pane">
             <form onSubmit={handleSubmit}>
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-5">
@@ -43,6 +68,7 @@ function ChangePassword() {
                                 type="password"
                                 name="old_password"
                                 placeholder="Nhập mật khẩu cũ"
+                                value={formData.old_password}
                                 onChange={handleInputChange}
                                 className="input"
                             />
@@ -52,6 +78,7 @@ function ChangePassword() {
                                 type="password"
                                 name="new_password"
                                 placeholder="Nhập mật khẩu mới"
+                                value={formData.new_password}
                                 onChange={handleInputChange}
                                 className="input"
                             />
@@ -61,6 +88,7 @@ function ChangePassword() {
                                 type="password"
                                 name="re_enter_password"
                                 placeholder="Nhập lại mật khẩu"
+                                value={formData.re_enter_password}
                                 onChange={handleInputChange}
                                 className="input"
                             />

@@ -37,6 +37,12 @@ function Register() {
             });
         } catch (error) {
             console.error('Lỗi: ', error);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Đăng ký thất bại!',
+                timer: 2000,
+            });
         }
     }
 

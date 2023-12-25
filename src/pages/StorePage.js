@@ -20,8 +20,6 @@ function StorePage() {
         fetchData();
     }, []);
 
-    console.log(products);
-
     return (
         <DefaultLayout>
             <Store data={products} />

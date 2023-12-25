@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductDetail from '../components/ProductDetail';
 import ProductSection from '../components/ProductSection';
+import RelatedBook from '../components/RelatedBook';
 
 function ProductDetailPage() {
     const [product, setProduct] = useState({});
@@ -38,7 +39,7 @@ function ProductDetailPage() {
         <DefaultLayout>
             <ProductDetail data={product} />
             {product.combos && <ProductSection title={'Combo'} data={combos} />}
-            {!product.is_combo && <ProductSection title={'Sách liên quan'} data={relatedBooks} />}
+            {!product.is_combo && <RelatedBook data={relatedBooks} slug={slug}/>}
         </DefaultLayout>
     );
 }

@@ -29,18 +29,14 @@ const Login = () => {
         try {
             const res = await axios.post('http://127.0.0.1:8000/api/login', formData);
 
-            localStorage.setItem('token', res.data.access_token);
-
             const userData = await axios.get('http://127.0.0.1:8000/api/me', {
-                headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+                headers: { Authorization: 'Bearer ' + res.data.access_token },
             });
 
-            localStorage.setItem('userData', JSON.stringify(userData.data));
-
-            dispatch(loginSuccess({ user: userData.data, token: res.data.access_token }));
+            dispatch(loginSuccess({ token: res.data.access_token, user: userData.data }));
 
             navigate('/');
-            
+
             Swal.fire({
                 icon: 'success',
                 title: 'Đăng nhập thành công!',

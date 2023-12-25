@@ -1,10 +1,13 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '../../redux/authSlice';
+import Swal from 'sweetalert2';
 
 function Account() {
     const user = useSelector((state) => state.auth);
     const [formData, setFormData] = useState({ ...user.user });
+    const dispatch = useDispatch();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -23,12 +26,25 @@ function Account() {
                 headers: { Authorization: 'Bearer ' + user.token },
             });
 
-            localStorage.setItem('userData', JSON.stringify(formData));
-            // window.location.reload(false);
+            const userData = await axios.get('http://127.0.0.1:8000/api/me', {
+                headers: { Authorization: 'Bearer ' + user.token },
+            });
 
-            console.log('Status: ', res.data);
+            dispatch(updateUser({ userData: userData.data }));
+
+            Swal.fire({
+                icon: 'success',
+                title: res.data.message,
+                timer: 2000,
+            });
         } catch (error) {
             console.error('Lỗi: ', error);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Cập nhật thông tin thất bại!',
+                timer: 2000,
+            });
         }
     }
 

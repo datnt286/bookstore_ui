@@ -1,11 +1,11 @@
 import BookGrid from './BookGrid';
 
-function Book({ data }) {
+function Book({ title, data }) {
     return (
         <div className="section">
             <div className="container">
                 <div className="section-title d-flex justify-content-between">
-                    <h3 className="title">Thể loại</h3>
+                    <h3 className="title">{title}</h3>
                 </div>
                 <BookGrid data={data} />
             </div>

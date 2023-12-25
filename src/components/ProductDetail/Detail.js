@@ -83,7 +83,7 @@ function Detail({ data }) {
                     <ul className="product-links">
                         <li>Thể loại:</li>
                         <li>
-                            <a href="#">Sách tự sự</a>
+                            <a href="#">{data.category_id}</a>
                         </li>
                     </ul>
 
@@ -96,7 +96,7 @@ function Detail({ data }) {
 
                     <div>
                         <h3 className="product-price">
-                            {data.price} <del className="product-old-price">$990.00</del>
+                            {data.price} ₫ <del className="product-old-price">990.00 ₫</del>
                         </h3>
                     </div>
 

@@ -7,25 +7,24 @@ import Book from '../components/Book';
 
 function BookPage() {
     const [books, setBooks] = useState([{ images: [] }]);
-
-    const { id } = useParams();
+    const { categorySlug } = useParams();
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`http://127.0.0.1:8000/api/get-books-by-category/${id}`);
-                setBooks(res.data.data);
+                const res = await axios.get(`http://127.0.0.1:8000/api/category/${categorySlug}`);
+                setBooks(res.data.data.books);
             } catch (error) {
                 console.error('Lỗi: ', error);
             }
         }
 
         fetchData();
-    }, [id]);
+    }, [categorySlug]);
 
     return (
         <DefaultLayout>
-            <Book data={books} />
+            <Book title={'Danh mục'} data={books} />
         </DefaultLayout>
     );
 }

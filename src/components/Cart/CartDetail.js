@@ -28,7 +28,7 @@ function CartDetail({ product }) {
                 <img src={product.image} alt="" className="product-cart-image" />
                 <span className="cart-detail mx-2">{product.name}</span>
             </td>
-            <td className="cart-detail align-middle">{product.price}</td>
+            <td className="cart-detail align-middle">{product.price} ₫</td>
             <td className="align-middle">
                 <button onClick={() => handleQuantityChange(-1)} className="btn-quantity">
                     -
@@ -39,7 +39,7 @@ function CartDetail({ product }) {
                 </button>
             </td>
             <td className="cart-detail align-middle">
-                <span>{amount}</span>
+                <span>{amount} ₫</span>
             </td>
             <td className="cart-detail align-middle">
                 <button onClick={() => handleDelete(product.slug)} className="btn-delete">
