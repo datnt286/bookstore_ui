@@ -25,7 +25,7 @@ function CartTotal() {
                         <span className="cart-price-label">Tổng tiền</span>
                         <span className="cart-price">{total} ₫</span>
                     </div>
-                    <NavLink to="/checkout">
+                    <NavLink to="/thanh-toan">
                         <button className="btn-proceed-checkout">Tiến hành thanh toán</button>
                     </NavLink>
                 </div>

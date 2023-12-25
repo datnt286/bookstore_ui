@@ -7,6 +7,8 @@ import ProductDetail from '../components/ProductDetail';
 import ProductSection from '../components/ProductSection';
 import RelatedBook from '../components/RelatedBook';
 
+const apiDomain = process.env.REACT_APP_API_DOMAIN;
+
 function ProductDetailPage() {
     const [product, setProduct] = useState({});
     const [relatedBooks, setRelatedBooks] = useState([]);
@@ -17,15 +19,13 @@ function ProductDetailPage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const productRes = await axios.get(`http://127.0.0.1:8000/api/${slug}`);
+                const productRes = await axios.get(`${apiDomain}/${slug}`);
                 setProduct(productRes.data.data);
                 setCombos(productRes.data.data.combos);
 
                 const categoryId = productRes.data.data.category_id;
 
-                const relatedBooksRes = await axios.get(
-                    `http://127.0.0.1:8000/api/get-books-by-category/${categoryId}`,
-                );
+                const relatedBooksRes = await axios.get(`${apiDomain}/get-books-by-category/${categoryId}`);
                 setRelatedBooks(relatedBooksRes.data.data);
             } catch (error) {
                 console.error('Lỗi: ', error);
@@ -39,7 +39,7 @@ function ProductDetailPage() {
         <DefaultLayout>
             <ProductDetail data={product} />
             {product.combos && <ProductSection title={'Combo'} data={combos} />}
-            {!product.is_combo && <RelatedBook data={relatedBooks} slug={slug}/>}
+            {!product.is_combo && <RelatedBook data={relatedBooks} slug={slug} />}
         </DefaultLayout>
     );
 }

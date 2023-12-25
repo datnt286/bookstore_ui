@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '../../redux/cartSlice';
 import Swal from 'sweetalert2';
 
+const apiDomain = process.env.REACT_APP_API_DOMAIN;
+
 function Order() {
     const user = useSelector((state) => state.auth.user);
     const cart = useSelector((state) => state.cart);
@@ -18,7 +20,7 @@ function Order() {
                 products: cart.items,
             };
 
-            const res = await axios.post('http://127.0.0.1:8000/api/order/create', data);
+            const res = await axios.post(`${apiDomain}/order/create`, data);
 
             dispatch(clearCart());
 

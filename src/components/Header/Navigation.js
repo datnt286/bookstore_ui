@@ -10,13 +10,13 @@ function Navigation() {
                             <NavLink to="/">Trang chủ</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/category">Danh mục</NavLink>
+                            <NavLink to="/danh-muc">Danh mục</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/store">Cửa hàng</NavLink>
+                            <NavLink to="/cua-hang">Cửa hàng</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/contact">Liên hệ</NavLink>
+                            <NavLink to="/lien-he">Liên hệ</NavLink>
                         </li>
                     </ul>
                 </div>

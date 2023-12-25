@@ -5,6 +5,8 @@ import DefaultLayout from '../layouts/DefaultLayout';
 import ProductSection from '../components/ProductSection';
 import HotDealBanner from '../components/HotDealBanner';
 
+const apiDomain = process.env.REACT_APP_API_DOMAIN;
+
 function HomePage() {
     const [products, setProducts] = useState({
         newBooks: [{ images: [{ absolute_path: '' }] }],
@@ -14,7 +16,7 @@ function HomePage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get('http://127.0.0.1:8000/api/get-new-books-and-combos');
+                const res = await axios.get(`${apiDomain}/get-new-books-and-combos`);
                 setProducts(res.data.data);
             } catch (error) {
                 console.error('Lỗi: ', error);

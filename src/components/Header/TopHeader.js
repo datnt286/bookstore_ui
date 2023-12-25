@@ -49,7 +49,7 @@ function TopHeader() {
                 {isLoggedIn ? (
                     <ul className="header-links pull-right">
                         <li>
-                            <NavLink to="/me">
+                            <NavLink to="/tai-khoan">
                                 <i className="fa fa-user-o"></i> {user.name}
                             </NavLink>
                         </li>
@@ -62,12 +62,12 @@ function TopHeader() {
                 ) : (
                     <ul className="header-links pull-right">
                         <li>
-                            <NavLink to="/register">
+                            <NavLink to="/dang-ky">
                                 <i className="fa fa-pencil-square-o"></i> Đăng ký
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/login">
+                            <NavLink to="/dang-nhap">
                                 <i className="fa fa-sign-in"></i> Đăng nhập
                             </NavLink>
                         </li>

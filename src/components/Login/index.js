@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { loginFailure, loginSuccess } from '../../redux/authSlice';
 import Swal from 'sweetalert2';
 
+const apiDomain = process.env.REACT_APP_API_DOMAIN;
+
 const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -27,9 +29,9 @@ const Login = () => {
         event.preventDefault();
 
         try {
-            const res = await axios.post('http://127.0.0.1:8000/api/login', formData);
+            const res = await axios.post(`${apiDomain}/login`, formData);
 
-            const userData = await axios.get('http://127.0.0.1:8000/api/me', {
+            const userData = await axios.get(`${apiDomain}/me`, {
                 headers: { Authorization: 'Bearer ' + res.data.access_token },
             });
 

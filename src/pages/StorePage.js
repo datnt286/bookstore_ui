@@ -4,13 +4,15 @@ import { useEffect, useState } from 'react';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Store from '../components/Store';
 
+const apiDomain = process.env.REACT_APP_API_DOMAIN;
+
 function StorePage() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get('http://127.0.0.1:8000/api/index');
+                const res = await axios.get(`${apiDomain}/index`);
                 setProducts(res.data.data);
             } catch (error) {
                 console.error('Lỗi: ', error);

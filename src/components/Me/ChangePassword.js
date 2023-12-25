@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 
+const apiDomain = process.env.REACT_APP_API_DOMAIN;
+
 function ChangePassword() {
     const user = useSelector((state) => state.auth);
     const [formData, setFormData] = useState({
@@ -34,7 +36,7 @@ function ChangePassword() {
         event.preventDefault();
 
         try {
-            const res = await axios.post('http://127.0.0.1:8000/api/change-password', formData, {
+            const res = await axios.post(`${apiDomain}/change-password`, formData, {
                 headers: { Authorization: 'Bearer ' + user.token },
             });
 

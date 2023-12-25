@@ -16,15 +16,15 @@ function App() {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/category" element={<CategoryPage />} />
-            <Route path="/category/:categorySlug" element={<BookPage />} />
-            <Route path="/store" element={<StorePage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/me" element={<MePage />} />
-            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/danh-muc" element={<CategoryPage />} />
+            <Route path="/danh-muc/:categorySlug" element={<BookPage />} />
+            <Route path="/cua-hang" element={<StorePage />} />
+            <Route path="/gio-hang" element={<CartPage />} />
+            <Route path="/thanh-toan" element={<CheckoutPage />} />
+            <Route path="/dang-ky" element={<RegisterPage />} />
+            <Route path="/dang-nhap" element={<LoginPage />} />
+            <Route path="/tai-khoan" element={<MePage />} />
+            <Route path="/lien-he" element={<ContactPage />} />
             <Route path="/:slug" element={<ProductDetailPage />} />
         </Routes>
     );

@@ -86,8 +86,8 @@ function MainHeader() {
                                             <h5>SUBTOTAL: $2940.00</h5>
                                         </div>
                                         <div className="cart-btns">
-                                            <NavLink to="/cart">Xem giỏ hàng</NavLink>
-                                            <NavLink to="/checkout">
+                                            <NavLink to="/gio-hang">Xem giỏ hàng</NavLink>
+                                            <NavLink to="/thanh-toan">
                                                 Thanh toán <i className="fa fa-arrow-circle-right"></i>
                                             </NavLink>
                                         </div>

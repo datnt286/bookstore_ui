@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
+const apiDomain = process.env.REACT_APP_API_DOMAIN;
+
 function Register() {
     const [formData, setFormData] = useState({
         username: '',
@@ -26,7 +28,7 @@ function Register() {
         event.preventDefault();
 
         try {
-            const res = await axios.post('http://127.0.0.1:8000/api/register', formData);
+            const res = await axios.post(`${apiDomain}/register`, formData);
 
             navigate('/login');
 
