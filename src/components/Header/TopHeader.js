@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logout } from '../../redux/authSlice';
 import Swal from 'sweetalert2';
 
@@ -31,45 +31,45 @@ function TopHeader() {
             <div className="container">
                 <ul className="header-links pull-left">
                     <li>
-                        <a href="#">
+                        <Link to="/lien-he">
                             <i className="fa fa-phone"></i> +0123456789
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#">
+                        <Link to="/lien-he">
                             <i className="fa fa-envelope-o"></i> email@email.com
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#">
+                        <Link to="/lien-he">
                             <i className="fa fa-map-marker"></i> TP. HCM
-                        </a>
+                        </Link>
                     </li>
                 </ul>
                 {isLoggedIn ? (
                     <ul className="header-links pull-right">
                         <li>
-                            <NavLink to="/tai-khoan">
+                            <Link to="/tai-khoan">
                                 <i className="fa fa-user-o"></i> {user.name}
-                            </NavLink>
+                            </Link>
                         </li>
                         <li onClick={handleLogout}>
-                            <NavLink to="/">
+                            <Link to="/">
                                 <i className="fa fa-sign-out"></i> Đăng xuất
-                            </NavLink>
+                            </Link>
                         </li>
                     </ul>
                 ) : (
                     <ul className="header-links pull-right">
                         <li>
-                            <NavLink to="/dang-ky">
+                            <Link to="/dang-ky">
                                 <i className="fa fa-pencil-square-o"></i> Đăng ký
-                            </NavLink>
+                            </Link>
                         </li>
                         <li>
-                            <NavLink to="/dang-nhap">
+                            <Link to="/dang-nhap">
                                 <i className="fa fa-sign-in"></i> Đăng nhập
-                            </NavLink>
+                            </Link>
                         </li>
                     </ul>
                 )}

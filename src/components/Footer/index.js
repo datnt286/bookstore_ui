@@ -96,7 +96,7 @@ function Footer() {
                                         <a href="#">Theo dõi đơn hàng</a>
                                     </li>
                                     <li>
-                                        <a href="#">Help</a>
+                                        <a href="#">Trợ giúp</a>
                                     </li>
                                 </ul>
                             </div>
@@ -109,38 +109,6 @@ function Footer() {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 text-center">
-                            <ul className="footer-payments">
-                                <li>
-                                    <a href="#">
-                                        <i className="fa fa-cc-visa"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i className="fa fa-credit-card"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i className="fa fa-cc-paypal"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i className="fa fa-cc-mastercard"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i className="fa fa-cc-discover"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i className="fa fa-cc-amex"></i>
-                                    </a>
-                                </li>
-                            </ul>
                             <span className="copyright">
                                 Copyright &copy;
                                 <script>document.write(new Date().getFullYear());</script>

@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import DefaultLayout from '../layouts/DefaultLayout';
-import Book from '../components/Book';
+import Product from '../components/Product';
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
-function BookPage() {
+function ProductsByCategoryPage() {
     const [books, setBooks] = useState([{ images: [] }]);
     const [title, setTitle] = useState('');
+
     const { categorySlug } = useParams();
 
     useEffect(() => {
@@ -28,9 +29,9 @@ function BookPage() {
 
     return (
         <DefaultLayout>
-            <Book title={title} data={books} />
+            <Product title={title} data={books} />
         </DefaultLayout>
     );
 }
 
-export default BookPage;
+export default ProductsByCategoryPage;

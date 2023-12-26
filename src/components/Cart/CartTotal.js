@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function CartTotal() {
     const total = useSelector((state) => state.cart.total);
@@ -25,9 +25,9 @@ function CartTotal() {
                         <span className="cart-price-label">Tổng tiền</span>
                         <span className="cart-price">{total} ₫</span>
                     </div>
-                    <NavLink to="/thanh-toan">
+                    <Link to="/thanh-toan">
                         <button className="btn-proceed-checkout">Tiến hành thanh toán</button>
-                    </NavLink>
+                    </Link>
                 </div>
             </div>
         </div>

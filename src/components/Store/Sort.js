@@ -9,14 +9,6 @@ function Filter() {
                         <option value="1">Mới nhất</option>
                     </select>
                 </label>
-
-                <label>
-                    Hiển thị:
-                    <select className="input-select">
-                        <option value="0">20</option>
-                        <option value="1">50</option>
-                    </select>
-                </label>
             </div>
             <ul className="store-grid">
                 <li className="active">

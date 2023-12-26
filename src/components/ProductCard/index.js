@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function ProductCard({ data }) {
     let absolute_path;
@@ -13,7 +13,7 @@ function ProductCard({ data }) {
 
     return (
         <div className="col-md-3 col-xs-6">
-            <NavLink to={`/${data.slug}`}>
+            <Link to={`/${data.slug}`}>
                 <div className="product">
                     <div className="product-img d-flex justify-content-center align-items-center">
                         <img src={data.absolute_path || absolute_path} alt="" className="product-image" />
@@ -30,7 +30,7 @@ function ProductCard({ data }) {
                         </h4>
                     </div>
                 </div>
-            </NavLink>
+            </Link>
         </div>
     );
 }

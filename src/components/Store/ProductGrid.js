@@ -1,5 +1,5 @@
 import ProductCard from '../ProductCard';
-import Filter from './Filter';
+import Sort from './Sort';
 import Pagination from './Pagination';
 
 function ProductGrid({ data }) {
@@ -9,7 +9,7 @@ function ProductGrid({ data }) {
 
     return (
         <div id="store" className="col-md-9">
-            <Filter />
+            <Sort />
             <div className="row">{products}</div>
             <Pagination />
         </div>

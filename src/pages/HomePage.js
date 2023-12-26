@@ -16,7 +16,7 @@ function HomePage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`${apiDomain}/get-new-books-and-combos`);
+                const res = await axios.get(`${apiDomain}/get-newbooks-and-combos`);
                 setProducts(res.data.data);
             } catch (error) {
                 console.error('Lỗi: ', error);
@@ -28,9 +28,9 @@ function HomePage() {
 
     return (
         <DefaultLayout>
-            <ProductSection title={'Sách mới'} data={products.newBooks} />
+            <ProductSection title="Sách mới" url="/sach-moi" data={products.newBooks} />
             <HotDealBanner />
-            <ProductSection title={'Combo'} data={products.combos} />
+            <ProductSection title="Combo" url="/combo" data={products.combos} />
         </DefaultLayout>
     );
 }

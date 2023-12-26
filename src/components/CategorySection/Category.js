@@ -1,10 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Category({ data }) {
     return (
         <>
             <div className="col-md-4 col-xs-6">
-                <NavLink to={`/danh-muc/${data.slug}`}>
+                <Link to={`/danh-muc/${data.slug}`}>
                     <div className="shop">
                         <div className="shop-img d-flex justify-content-center align-items-center">
                             <img src={data.absolute_path} alt="" />
@@ -16,7 +16,7 @@ function Category({ data }) {
                             </a>
                         </div>
                     </div>
-                </NavLink>
+                </Link>
             </div>
         </>
     );

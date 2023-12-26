@@ -20,6 +20,7 @@ function Detail({ data }) {
     const handleQuantityChange = (value) => {
         setQuantity((prevQuantity) => Math.max(1, prevQuantity + value));
     };
+    console.log(data);
 
     const handleAddToCart = () => {
         var product = {
@@ -36,7 +37,30 @@ function Detail({ data }) {
 
         Swal.fire({
             icon: 'success',
-            title: 'Thêm sản phẩm vào giỏ hàng thành công!',
+            title: 'Thêm vào giỏ hàng thành công!',
+            timer: 2000,
+        });
+    };
+
+    const handleAddToWishlist = () => {
+        var wishlist = localStorage.getItem('wishlist');
+
+        if (wishlist == null) {
+            wishlist = [data];
+        } else {
+            wishlist = JSON.parse(wishlist);
+            var index = wishlist.findIndex((item) => item.slug === data.slug);
+
+            if (index === -1) {
+                wishlist.push(data);
+            }
+        }
+
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Thêm vào Wishlist thành công!',
             timer: 2000,
         });
     };
@@ -119,7 +143,7 @@ function Detail({ data }) {
                             </button>
                         </div>
                         <div>
-                            <button className="add-to-cart-btn mt-4">
+                            <button onClick={handleAddToWishlist} className="add-to-cart-btn mt-4">
                                 <i className="fa fa-heart-o"></i> Thêm vào wishlist
                             </button>
                         </div>

@@ -1,7 +1,6 @@
 function Pagination() {
     return (
-        <div className="store-filter clearfix">
-            <span className="store-qty">Hiển thị 20-100 sản phẩm</span>
+        <div className="store-filter clearfix d-flex justify-content-center">
             <ul className="store-pagination">
                 <li className="active">1</li>
                 <li>

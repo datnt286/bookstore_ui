@@ -8,6 +8,7 @@ import ProductSection from '../components/ProductSection';
 import RelatedBook from '../components/RelatedBook';
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
+const EXPIRATION_DAYS = 30;
 
 function ProductDetailPage() {
     const [product, setProduct] = useState({});
@@ -27,6 +28,29 @@ function ProductDetailPage() {
 
                 const relatedBooksRes = await axios.get(`${apiDomain}/get-books-by-category/${categoryId}`);
                 setRelatedBooks(relatedBooksRes.data.data);
+
+                const viewedProducts = JSON.parse(localStorage.getItem('viewedProducts')) || [];
+
+                const existingProductIndex = viewedProducts.findIndex((viewedProduct) => viewedProduct.slug === slug);
+
+                if (existingProductIndex !== -1) {
+                    viewedProducts[existingProductIndex].timestamp =
+                        new Date().getTime() + EXPIRATION_DAYS * 24 * 60 * 60 * 1000;
+                } else {
+                    const newViewedProduct = {
+                        ...productRes.data.data,
+                        timestamp: new Date().getTime() + EXPIRATION_DAYS * 24 * 60 * 60 * 1000,
+                    };
+                    viewedProducts.push(newViewedProduct);
+                }
+
+                viewedProducts.sort((a, b) => b.timestamp - a.timestamp);
+
+                const validViewedProducts = viewedProducts.filter(
+                    (viewedProduct) => viewedProduct.timestamp > new Date().getTime(),
+                );
+
+                localStorage.setItem('viewedProducts', JSON.stringify(validViewedProducts));
             } catch (error) {
                 console.error('Lỗi: ', error);
             }
