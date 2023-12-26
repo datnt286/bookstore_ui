@@ -82,10 +82,14 @@ const Login = () => {
                             </div>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <button className="btn-facebook w-100">Đăng nhập Facebook</button>
+                                    <button className="btn-google w-100">
+                                        <i class="fa fa-google"></i> Google
+                                    </button>
                                 </div>
                                 <div className="col-md-6">
-                                    <button className="btn-google w-100">Đăng nhập Google</button>
+                                    <button className="btn-facebook w-100">
+                                        <i class="fa fa-facebook-square"></i> Facebook
+                                    </button>
                                 </div>
                             </div>
                         </div>
