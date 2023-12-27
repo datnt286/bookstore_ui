@@ -6,7 +6,11 @@ function ViewedProductsPage() {
 
     return (
         <DefaultLayout>
-            <Product title="Sản phẩm đã xem" data={viewedProducts} />
+            {viewedProducts.length > 0 ? (
+                <Product title="Sản phẩm đã xem" data={viewedProducts} />
+            ) : (
+                <h3 className="title p-5 mx-5">Bạn chưa xem sản phẩm nào!</h3>
+            )}
         </DefaultLayout>
     );
 }

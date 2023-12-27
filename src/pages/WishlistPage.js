@@ -1,5 +1,4 @@
 import DefaultLayout from '../layouts/DefaultLayout';
-import Product from '../components/Product';
 import Wishlist from '../components/Wishlist';
 
 function WishlistPage() {
@@ -7,7 +6,11 @@ function WishlistPage() {
 
     return (
         <DefaultLayout>
-            <Wishlist title="Wishlist" data={wishlist} />
+            {wishlist.length > 0 ? (
+                <Wishlist title="Wishlist" data={wishlist} />
+            ) : (
+                <h3 className="title p-5 mx-5">Bạn chưa thêm sản phẩm vào Wishlist!</h3>
+            )}
         </DefaultLayout>
     );
 }

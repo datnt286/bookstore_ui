@@ -30,7 +30,7 @@ export const cartSlice = createSlice({
             }
         },
         updateTotal: (state) => {
-            state.total = calculateTotal(state.items);
+            state.total = calculateTotal(state.items || []);
         },
         clearCart: (state) => {
             state.items = [];
