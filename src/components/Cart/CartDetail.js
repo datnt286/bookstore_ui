@@ -33,7 +33,7 @@ function CartDetail({ product }) {
                 <button onClick={() => handleQuantityChange(-1)} className="btn-quantity">
                     -
                 </button>
-                <input type="text" value={quantity} className="cart-detail quantity-input align-middle text-center" />
+                <input type="text" value={quantity} className="form-control quantity-input align-middle" />
                 <button onClick={() => handleQuantityChange(1)} className="btn-quantity">
                     +
                 </button>

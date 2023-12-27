@@ -8,10 +8,8 @@ function CartTotal() {
         <div className="row mt-5">
             <div className="col-md-6">
                 <h2>Mã giảm giá</h2>
-                <div>
-                    <input className="coupon-input" placeholder="Nhập mã giảm giá" />
-                    <button className="btn-coupon">Áp dụng mã</button>
-                </div>
+                <input className="form-control coupon-input" placeholder="Nhập mã giảm giá" />
+                <button className="btn-coupon">Áp dụng mã</button>
             </div>
 
             <div className="col-md-6">

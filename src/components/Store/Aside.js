@@ -65,13 +65,13 @@ function Aside() {
                 <div className="price-filter">
                     <div id="price-slider"></div>
                     <div className="input-number price-min">
-                        <input id="price-min" type="number" />
+                        <input id="price-min" type="number" className="form-control" />
                         <span className="qty-up">+</span>
                         <span className="qty-down">-</span>
                     </div>
                     <span>-</span>
                     <div className="input-number price-max">
-                        <input id="price-max" type="number" />
+                        <input id="price-max" type="number" className="form-control" />
                         <span className="qty-up">+</span>
                         <span className="qty-down">-</span>
                     </div>

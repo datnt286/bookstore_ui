@@ -63,7 +63,7 @@ function Register() {
                                     name="username"
                                     onChange={handleInputChange}
                                     placeholder="Tên đăng nhập"
-                                    className="input"
+                                    className="form-control input"
                                 />
                             </div>
                             <div className="form-group">
@@ -72,7 +72,7 @@ function Register() {
                                     name="password"
                                     onChange={handleInputChange}
                                     placeholder="Mật khẩu"
-                                    className="input"
+                                    className="form-control input"
                                 />
                             </div>
                             <div className="form-group">
@@ -81,7 +81,7 @@ function Register() {
                                     name="re_enter_password"
                                     onChange={handleInputChange}
                                     placeholder="Nhập lại mật khẩu"
-                                    className="input"
+                                    className="form-control input"
                                 />
                             </div>
                             <div className="form-group">
@@ -90,7 +90,7 @@ function Register() {
                                     name="phone"
                                     placeholder="Điện thoại"
                                     onChange={handleInputChange}
-                                    className="input"
+                                    className="form-control input"
                                 />
                             </div>
                             <div className="input-checkbox my-4">

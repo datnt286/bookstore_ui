@@ -11,7 +11,7 @@ function NewSletter() {
                             <form>
                                 <input
                                     id="newsletter-input"
-                                    className="input"
+                                    className="form-control input"
                                     type="email"
                                     placeholder="Nhập email của bạn"
                                 />

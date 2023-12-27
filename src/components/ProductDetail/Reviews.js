@@ -168,9 +168,9 @@ function Reviews() {
                 <div className="col-md-3">
                     <div id="review-form">
                         <form className="review-form">
-                            <input className="input" type="text" placeholder="Tên" />
-                            <input className="input" type="email" placeholder="Email" />
-                            <textarea className="input" placeholder="Bình luận"></textarea>
+                            <input type="text" placeholder="Tên" className="form-control input" />
+                            <input type="email" placeholder="Email" className="form-control input" />
+                            <textarea placeholder="Bình luận" className="form-control input"></textarea>
                             <div className="input-rating">
                                 <span>Đánh giá: </span>
                                 <div className="stars">

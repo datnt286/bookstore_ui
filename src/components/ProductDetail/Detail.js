@@ -128,7 +128,7 @@ function Detail({ data }) {
                         <div className="qty-label d-block mt-4">
                             <span className="mx-4">Số lượng</span>
                             <div className="input-number">
-                                <input type="number" value={quantity} />
+                                <input type="number" className="form-control" value={quantity} />
                                 <span onClick={() => handleQuantityChange(-1)} className="qty-down">
                                     -
                                 </span>

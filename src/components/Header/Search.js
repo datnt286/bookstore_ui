@@ -27,7 +27,7 @@ function Search() {
                     <input
                         id="search-input"
                         onChange={handleInputChange}
-                        className="input"
+                        className="form-control input"
                         placeholder="Nhập từ khoá..."
                     />
                     <Link to={`/tim-kiem/${keyword}`}>

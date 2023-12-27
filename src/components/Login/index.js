@@ -63,7 +63,7 @@ const Login = () => {
                                     name="username"
                                     onChange={handleInputChange}
                                     placeholder="Tên đăng nhập"
-                                    className="input"
+                                    className="form-control input"
                                 />
                             </div>
                             <div className="form-group">
@@ -72,7 +72,7 @@ const Login = () => {
                                     name="password"
                                     onChange={handleInputChange}
                                     placeholder="Mật khẩu"
-                                    className="input"
+                                    className="form-control input"
                                 />
                             </div>
                             <div className="text-center my-4">

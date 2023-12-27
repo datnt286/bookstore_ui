@@ -21,11 +21,13 @@ function ShoppingButtons() {
                 </div>
 
                 <div className="dropdown">
-                    <a className="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                        <i className="fa fa-shopping-cart"></i>
-                        <span>Giỏ hàng</span>
-                        <div className="qty">{cartLength}</div>
-                    </a>
+                    <div className="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <div className="header-ctn-link">
+                            <i className="header-ctn-icon fa fa-shopping-cart"></i>
+                            <span className="header-ctn-title">Giỏ hàng</span>
+                            <div className="header-ctn-qty">{cartLength}</div>
+                        </div>
+                    </div>
 
                     <div className="cart-dropdown">
                         {cartLength > 0 ? (

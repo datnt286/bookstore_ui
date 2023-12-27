@@ -31,7 +31,7 @@ function BillingDetail() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Tên"
-                        className="input"
+                        className="form-control input"
                     />
                 </div>
                 <div className="form-group">
@@ -41,7 +41,7 @@ function BillingDetail() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="Điện thoại"
-                        className="input"
+                        className="form-control input"
                     />
                 </div>
                 <div className="form-group">
@@ -51,7 +51,7 @@ function BillingDetail() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="Email"
-                        className="input"
+                        className="form-control input"
                     />
                 </div>
                 <div className="form-group">
@@ -61,7 +61,7 @@ function BillingDetail() {
                         value={formData.address}
                         onChange={handleInputChange}
                         placeholder="Địa chỉ"
-                        className="input"
+                        className="form-control input"
                     ></textarea>
                 </div>
                 <div className="form-group">
@@ -77,10 +77,10 @@ function BillingDetail() {
                                 incididunt.
                             </p>
                             <input
-                                className="input"
                                 type="password"
                                 name="password"
-                                placeholder="Enter Your Password"
+                                placeholder="Mật khẩu"
+                                className="form-control input"
                             />
                         </div>
                     </div>
@@ -99,23 +99,28 @@ function BillingDetail() {
                     </label>
                     <div className="caption">
                         <div className="form-group">
-                            <input className="input" type="text" name="name" placeholder="Tên" />
+                            <input type="text" name="name" placeholder="Tên" className="form-control input" />
                         </div>
                         <div className="form-group">
-                            <input className="input" type="tel" name="tel" placeholder="Điện thoại" />
+                            <input type="tel" name="tel" placeholder="Điện thoại" className="form-control input" />
                         </div>
                         <div className="form-group">
-                            <input className="input" type="email" name="email" placeholder="Email" />
+                            <input type="email" name="email" placeholder="Email" className="form-control input" />
                         </div>
                         <div className="form-group">
-                            <textarea className="input" type="text" name="address" placeholder="Địa chỉ"></textarea>
+                            <textarea
+                                type="text"
+                                name="address"
+                                placeholder="Địa chỉ"
+                                className="form-control input"
+                            ></textarea>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div className="order-notes">
-                <textarea className="input" placeholder="Ghi chú"></textarea>
+                <textarea className="form-control input" placeholder="Ghi chú"></textarea>
             </div>
         </div>
     );

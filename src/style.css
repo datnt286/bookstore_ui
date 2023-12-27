@@ -45,6 +45,7 @@
     width: 90px;
     text-align: center;
     color: #FFF;
+    cursor: pointer;
 }
 
 .header-ctn-icon {
@@ -121,7 +122,14 @@
 }
 
 .quantity-input {
+    display: inline;
     width: 30px;
+    height: 31px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0;
+    border: 1px solid #333;
+    text-align: center;
 }
 
 .btn-quantity {
@@ -160,6 +168,7 @@
 }
 
 .coupon-input {
+    display: inline;
     width: 300px;
     height: 38px;
 }
