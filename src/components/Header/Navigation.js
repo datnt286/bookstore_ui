@@ -6,7 +6,7 @@ function Navigation() {
             <div className="container">
                 <div id="responsive-nav">
                     <ul className="main-nav nav navbar-nav">
-                        <li >
+                        <li>
                             <NavLink to="/" className="nav-item" activeClassName="active">
                                 <span className="nav-content">Trang chủ</span>
                             </NavLink>
