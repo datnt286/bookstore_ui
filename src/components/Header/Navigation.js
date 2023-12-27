@@ -6,28 +6,28 @@ function Navigation() {
             <div className="container">
                 <div id="responsive-nav">
                     <ul className="main-nav nav navbar-nav">
-                        <li className="nav-item">
-                            <NavLink to="/" activeClassName="active">
+                        <li >
+                            <NavLink to="/" className="nav-item" activeClassName="active">
                                 <span className="nav-content">Trang chủ</span>
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/danh-muc" activeClassName="active">
+                        <li>
+                            <NavLink to="/danh-muc" className="nav-item" activeClassName="active">
                                 <span className="nav-content">Danh mục</span>
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/cua-hang" activeClassName="active">
+                        <li>
+                            <NavLink to="/cua-hang" className="nav-item" activeClassName="active">
                                 <span className="nav-content">Cửa hàng</span>
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/san-pham-da-xem" activeClassName="active">
+                        <li>
+                            <NavLink to="/san-pham-da-xem" className="nav-item" activeClassName="active">
                                 <span className="nav-content">Sản phẩm đã xem</span>
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/lien-he" activeClassName="active">
+                        <li>
+                            <NavLink to="/lien-he" className="nav-item" activeClassName="active">
                                 <span className="nav-content">Liên hệ</span>
                             </NavLink>
                         </li>

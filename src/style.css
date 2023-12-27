@@ -29,14 +29,28 @@
 }
 
 /* Navigattion */
-.active {
-    width: 100%;
-}
-
-.active {
+.nav-item:hover,
+.nav-item:focus,
+.nav-item.active {
     color: #D10024;
     background-color: transparent;
-} 
+}
+
+.nav-item:after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: #D10024;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+.nav-item:hover:after,
+.nav-item:focus:after,
+.nav-item.active:after {
+    width: 100%;
+}
 
 /* Wishlist */
 .header-ctn-link {
