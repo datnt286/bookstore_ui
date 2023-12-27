@@ -20,14 +20,18 @@ function Detail({ data }) {
     const handleQuantityChange = (value) => {
         setQuantity((prevQuantity) => Math.max(1, prevQuantity + value));
     };
-    console.log(data);
+
+    const handleQuantityInputChange = (event) => {
+        const value = parseInt(event.target.value);
+        setQuantity(Math.max(1, value));
+    };
 
     const handleAddToCart = () => {
         var product = {
             id: data.id,
             name: data.name,
             price: data.price,
-            quantity: quantity,
+            quantity: isNaN(quantity) ? 1 : quantity,
             slug: data.slug,
             image: data.absolute_path || (data.images && data.images.length > 0 ? data.images[0].absolute_path : null),
             ...(data.is_combo ? { combo_id: data.id, book_id: null } : { book_id: data.id, combo_id: null }),
@@ -70,7 +74,7 @@ function Detail({ data }) {
             <div className="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div id="product-main-image" className="product-preview">
-                        <img src={data.absolute_path || absolute_path} alt="" />
+                        <img src={data.absolute_path || absolute_path} alt={`${data.name}`} />
                     </div>
                 </div>
             </div>
@@ -80,7 +84,9 @@ function Detail({ data }) {
                     <div id="product-imgs">
                         <div className="product-preview">
                             {data.images.map((image, index) => {
-                                return <img key={index} src={image.absolute_path} alt="" className="mb-4" />;
+                                return (
+                                    <img key={index} src={image.absolute_path} alt={`${image.name}`} className="mb-4" />
+                                );
                             })}
                         </div>
                     </div>
@@ -128,7 +134,12 @@ function Detail({ data }) {
                         <div className="qty-label d-block mt-4">
                             <span className="mx-4">Số lượng</span>
                             <div className="input-number">
-                                <input type="number" className="form-control" value={quantity} />
+                                <input
+                                    type="number"
+                                    value={quantity}
+                                    onChange={handleQuantityInputChange}
+                                    className="form-control"
+                                />
                                 <span onClick={() => handleQuantityChange(-1)} className="qty-down">
                                     -
                                 </span>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromCart, updateAmount, updateTotal } from '../../redux/cartSlice';
+import { removeFromCart, updateQuantity, updateTotal } from '../../redux/cartSlice';
+import { Link } from 'react-router-dom';
 
 function CartDetail({ product }) {
     const [quantity, setQuantity] = useState(product.quantity);
@@ -9,12 +10,17 @@ function CartDetail({ product }) {
 
     useEffect(() => {
         setAmount(parseInt(product.price) * parseInt(quantity));
-        dispatch(updateAmount({ slug: product.slug, quantity }));
+        dispatch(updateQuantity({ slug: product.slug, quantity }));
         dispatch(updateTotal());
     }, [product.price, quantity, dispatch, product.slug]);
 
     const handleQuantityChange = (value) => {
         setQuantity((prevQuantity) => Math.max(1, prevQuantity + value));
+    };
+
+    const handleQuantityInputChange = (event) => {
+        const value = parseInt(event.target.value);
+        setQuantity(isNaN(value) ? 0 : Math.max(1, value));
     };
 
     const handleDelete = (slug) => {
@@ -25,15 +31,24 @@ function CartDetail({ product }) {
     return (
         <tr>
             <td>
-                <img src={product.image} alt="" className="product-cart-image" />
-                <span className="cart-detail mx-2">{product.name}</span>
+                <Link to={`/${product.slug}`}>
+                    <img src={product.image} alt={`/${product.name}`} className="product-cart-image" />
+                </Link>
+                <Link to={`/${product.slug}`}>
+                    <span className="cart-detail mx-2">{product.name}</span>
+                </Link>
             </td>
             <td className="cart-detail align-middle">{product.price} ₫</td>
             <td className="align-middle">
                 <button onClick={() => handleQuantityChange(-1)} className="btn-quantity">
                     -
                 </button>
-                <input type="text" value={quantity} className="form-control quantity-input align-middle" />
+                <input
+                    type="text"
+                    value={quantity}
+                    onChange={handleQuantityInputChange}
+                    className="form-control quantity-input align-middle"
+                />
                 <button onClick={() => handleQuantityChange(1)} className="btn-quantity">
                     +
                 </button>

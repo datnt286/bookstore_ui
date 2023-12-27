@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { removeFromCart, updateTotal } from '../../redux/cartSlice';
 import { Link } from 'react-router-dom';
 
-function ProductWidget({ product }) {
+function ProductWidget({ data }) {
     const dispatch = useDispatch();
 
     const handleDelete = (slug) => {
@@ -12,23 +12,23 @@ function ProductWidget({ product }) {
 
     return (
         <div className="product-widget">
-            <Link to={`/${product.slug}`}>
+            <Link to={`/${data.slug}`}>
                 <div className="product-img">
-                    <img src={product.image} alt="Hình ảnh" />
+                    <img src={data.image} alt="Hình ảnh" />
                 </div>
             </Link>
 
             <div className="product-body">
                 <h3 className="product-name">
-                    <Link to={`/${product.slug}`}>{product.name}</Link>
+                    <Link to={`/${data.slug}`}>{data.name}</Link>
                 </h3>
                 <h4 className="product-price">
-                    <span className="qty">{product.quantity}x</span>
-                    {product.price} ₫
+                    <span className="qty">{data.quantity}x</span>
+                    {data.price} ₫
                 </h4>
             </div>
 
-            <button onClick={() => handleDelete(product.slug)} className="delete">
+            <button onClick={() => handleDelete(data.slug)} className="delete">
                 <i className="fa fa-close"></i>
             </button>
         </div>

@@ -1,4 +1,4 @@
-function NewSletter() {
+function Newsletter() {
     return (
         <div id="newsletter" className="section">
             <div className="container">
@@ -27,4 +27,4 @@ function NewSletter() {
     );
 }
 
-export default NewSletter;
+export default Newsletter;

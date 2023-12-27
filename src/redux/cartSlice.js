@@ -21,12 +21,12 @@ export const cartSlice = createSlice({
         removeFromCart: (state, action) => {
             state.items = state.items.filter((product) => product.slug !== action.payload);
         },
-        updateAmount: (state, action) => {
+        updateQuantity: (state, action) => {
             const { slug, quantity } = action.payload;
             const product = state.items.find((product) => product.slug === slug);
 
             if (product) {
-                product.quantity = quantity;
+                product.quantity = isNaN(quantity) ? 0 : quantity;
             }
         },
         updateTotal: (state) => {
@@ -43,6 +43,6 @@ function calculateTotal(items) {
     return items.reduce((total, product) => total + product.quantity * product.price, 0);
 }
 
-export const { addToCart, removeFromCart, updateAmount, updateTotal, updateCart, clearCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateQuantity, updateTotal, updateCart, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
