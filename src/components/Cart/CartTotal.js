@@ -17,14 +17,17 @@ function CartTotal() {
             <div className="col-md-6">
                 <div className="cart-total">
                     <h3>Tổng hoá đơn</h3>
+
                     <div className="d-flex justify-content-between my-5">
                         <span className="cart-price-label">Tổng phụ</span>
                         <span className="cart-price">{total} ₫</span>
                     </div>
+
                     <div className="d-flex justify-content-between my-5">
                         <span className="cart-price-label">Tổng tiền</span>
                         <span className="cart-price">{total} ₫</span>
                     </div>
+
                     <Link to="/thanh-toan">
                         <button className="btn-proceed-checkout">Tiến hành thanh toán</button>
                     </Link>

@@ -10,6 +10,7 @@ function Filter() {
                     </select>
                 </label>
             </div>
+
             <ul className="store-grid">
                 <li className="active">
                     <i className="fa fa-th"></i>

@@ -22,6 +22,7 @@ function ProductCard({ data }) {
                             <span className="new">NEW</span>
                         </div>
                     </div>
+
                     <div className="product-body">
                         <p className="product-category">{data.category_id}</p>
                         <h3 className="product-name">{data.name}</h3>

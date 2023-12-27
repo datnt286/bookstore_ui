@@ -7,7 +7,7 @@ function WishlistPage() {
 
     return (
         <DefaultLayout>
-            <Product title="Wishlist" data={wishlist} />
+            <Wishlist title="Wishlist" data={wishlist} />
         </DefaultLayout>
     );
 }

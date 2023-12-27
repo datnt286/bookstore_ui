@@ -1,8 +1,8 @@
-import ProductCard from '../ProductCard';
+import ProductCardWrapper from './ProductCardWrapper';
 
 function ProductGrid({ data }) {
     const products = data.map((product, index) => {
-        return <ProductCard key={index} data={product} />;
+        return <ProductCardWrapper key={index} data={product} />;
     });
 
     return <div className="row">{products}</div>;

@@ -32,7 +32,7 @@ function ShoppingButtons() {
                             <div>
                                 <div className="cart-list">
                                     {cart.items.map((product) => {
-                                        return <ProductWidget data={product} />;
+                                        return <ProductWidget product={product} />;
                                     })}
                                 </div>
 

@@ -32,7 +32,6 @@ export const cartSlice = createSlice({
         updateTotal: (state) => {
             state.total = calculateTotal(state.items);
         },
-        updateCart: () => {},
         clearCart: (state) => {
             state.items = [];
             state.total = 0;

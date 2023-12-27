@@ -7,7 +7,7 @@ function ProductDetail({ data }) {
             <div className="container">
                 <div className="row">
                     <Detail data={data} />
-                    <Tab data={data}/>
+                    <Tab data={data} />
                 </div>
             </div>
         </div>

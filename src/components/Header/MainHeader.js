@@ -9,7 +9,6 @@ function MainHeader() {
     return (
         <header>
             <TopHeader />
-
             <div id="header">
                 <div className="container">
                     <div className="row">
@@ -20,9 +19,7 @@ function MainHeader() {
                                 </Link>
                             </div>
                         </div>
-
                         <Search />
-
                         <ShoppingButtons />
                     </div>
                 </div>

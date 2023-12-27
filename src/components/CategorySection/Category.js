@@ -9,6 +9,7 @@ function Category({ data }) {
                         <div className="shop-img d-flex justify-content-center align-items-center">
                             <img src={data.absolute_path} alt="" />
                         </div>
+
                         <div className="shop-body">
                             <h3>{data.name}</h3>
                             <a href="#" className="cta-btn">
