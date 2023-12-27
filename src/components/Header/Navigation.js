@@ -6,20 +6,30 @@ function Navigation() {
             <div className="container">
                 <div id="responsive-nav">
                     <ul className="main-nav nav navbar-nav">
-                        <li className="active">
-                            <NavLink to="/">Trang chủ</NavLink>
+                        <li className="nav-item">
+                            <NavLink to="/" activeClassName="active">
+                                <span className="nav-content">Trang chủ</span>
+                            </NavLink>
                         </li>
-                        <li>
-                            <NavLink to="/danh-muc">Danh mục</NavLink>
+                        <li className="nav-item">
+                            <NavLink to="/danh-muc" activeClassName="active">
+                                <span className="nav-content">Danh mục</span>
+                            </NavLink>
                         </li>
-                        <li>
-                            <NavLink to="/cua-hang">Cửa hàng</NavLink>
+                        <li className="nav-item">
+                            <NavLink to="/cua-hang" activeClassName="active">
+                                <span className="nav-content">Cửa hàng</span>
+                            </NavLink>
                         </li>
-                        <li>
-                            <NavLink to="/san-pham-da-xem">Sản phẩm đã xem</NavLink>
+                        <li className="nav-item">
+                            <NavLink to="/san-pham-da-xem" activeClassName="active">
+                                <span className="nav-content">Sản phẩm đã xem</span>
+                            </NavLink>
                         </li>
-                        <li>
-                            <NavLink to="/lien-he">Liên hệ</NavLink>
+                        <li className="nav-item">
+                            <NavLink to="/lien-he" activeClassName="active">
+                                <span className="nav-content">Liên hệ</span>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>

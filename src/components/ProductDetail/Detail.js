@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 function Detail({ data }) {
@@ -110,25 +111,31 @@ function Detail({ data }) {
                         </a>
                     </div>
 
-                    <ul className="product-links">
-                        <li>Thể loại:</li>
-                        <li>
-                            <a href="#">{data.category_id}</a>
-                        </li>
-                    </ul>
+                    {!data.is_combo && (
+                        <>
+                            <ul className="product-links">
+                                <li>Thể loại:</li>
+                                <li>
+                                    <Link to={`/danh-muc/${data.category.slug}`}>{data.category_name}</Link>
+                                </li>
+                            </ul>
 
-                    <ul className="product-links">
-                        <li>Tác giả:</li>
-                        <li>
-                            <a href="#">Dale Carnegie</a>
-                        </li>
-                    </ul>
+                            <ul className="product-links">
+                                <li>Tác giả:</li>
+                                {data.authors.map((author) => {
+                                    return (
+                                        <li>
+                                            <a href="#">{author.name}</a>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </>
+                    )}
 
-                    <div>
-                        <h3 className="product-price">
-                            {data.price} ₫ <del className="product-old-price">990.00 ₫</del>
-                        </h3>
-                    </div>
+                    <h3 className="product-price mt-4">
+                        {data.price} ₫ <del className="product-old-price">990.00 ₫</del>
+                    </h3>
 
                     <div className="add-to-cart">
                         <div className="qty-label d-block mt-4">
