@@ -249,3 +249,12 @@
 #register {
     height: 500px;
 }
+
+#forgot-password {
+    height: 280px;
+}
+
+.btn-forgot-password {
+    width: 200px;
+    height: 40px;
+}

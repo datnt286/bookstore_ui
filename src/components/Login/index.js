@@ -85,7 +85,7 @@ const Login = () => {
                             </div>
 
                             <div className="d-flex justify-content-between">
-                                <NavLink to="/">
+                                <NavLink to="/quen-mat-khau">
                                     <span>Quên mật khẩu?</span>
                                 </NavLink>
 

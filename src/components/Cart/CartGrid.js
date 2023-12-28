@@ -26,8 +26,8 @@ function CartGrid() {
                         </tr>
                     </thead>
                     <tbody>
-                        {cart.map((product) => {
-                            return <CartDetail product={product} />;
+                        {cart.map((product, index) => {
+                            return <CartDetail key={index} product={product} />;
                         })}
                     </tbody>
                 </table>

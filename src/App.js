@@ -15,6 +15,7 @@ import WishlistPage from './pages/WishlistPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import MePage from './pages/MePage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ContactPage from './pages/ContactPage';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/dang-ky" element={<RegisterPage />} />
             <Route path="/dang-nhap" element={<LoginPage />} />
             <Route path="/tai-khoan" element={<MePage />} />
+            <Route path="/quen-mat-khau" element={<ForgotPasswordPage />} />
             <Route path="/lien-he" element={<ContactPage />} />
             <Route path="/:slug" element={<ProductDetailPage />} />
         </Routes>
