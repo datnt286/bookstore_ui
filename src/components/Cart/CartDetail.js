@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromCart, updateQuantity, updateTotal } from '../../redux/cartSlice';
+import { removeFromCart, updateQuantity } from '../../redux/cartSlice';
 import { Link } from 'react-router-dom';
 
 function CartDetail({ product }) {
@@ -11,7 +11,6 @@ function CartDetail({ product }) {
     useEffect(() => {
         setAmount(parseInt(product.price) * parseInt(quantity));
         dispatch(updateQuantity({ slug: product.slug, quantity }));
-        dispatch(updateTotal());
     }, [product.price, quantity, dispatch, product.slug]);
 
     const handleQuantityChange = (value) => {
@@ -25,7 +24,6 @@ function CartDetail({ product }) {
 
     const handleDelete = (slug) => {
         dispatch(removeFromCart(slug));
-        dispatch(updateTotal());
     };
 
     return (

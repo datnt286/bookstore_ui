@@ -11,6 +11,7 @@ function Register() {
         password: '',
         re_enter_password: '',
         phone: '',
+        email: '',
     });
 
     const navigate = useNavigate();
@@ -30,7 +31,7 @@ function Register() {
         try {
             const res = await axios.post(`${apiDomain}/register`, formData);
 
-            navigate('/login');
+            navigate('/dang-nhap');
 
             Swal.fire({
                 icon: 'success',
@@ -89,6 +90,15 @@ function Register() {
                                     type="text"
                                     name="phone"
                                     placeholder="Điện thoại"
+                                    onChange={handleInputChange}
+                                    className="form-control input"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    name="email"
+                                    placeholder="Email"
                                     onChange={handleInputChange}
                                     className="form-control input"
                                 />

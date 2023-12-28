@@ -2,6 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+function calculateTotal(items) {
+    return items.reduce((total, product) => total + product.quantity * product.price, 0);
+}
+
+function updateTotal(state) {
+    state.total = calculateTotal(state.items || []);
+}
+
 export const cartSlice = createSlice({
     name: 'cart',
     initialState: {
@@ -17,9 +25,12 @@ export const cartSlice = createSlice({
             } else {
                 state.items = [...state.items, action.payload];
             }
+
+            updateTotal(state);
         },
         removeFromCart: (state, action) => {
             state.items = state.items.filter((product) => product.slug !== action.payload);
+            updateTotal(state);
         },
         updateQuantity: (state, action) => {
             const { slug, quantity } = action.payload;
@@ -28,9 +39,8 @@ export const cartSlice = createSlice({
             if (product) {
                 product.quantity = isNaN(quantity) ? 0 : quantity;
             }
-        },
-        updateTotal: (state) => {
-            state.total = calculateTotal(state.items || []);
+
+            updateTotal(state);
         },
         clearCart: (state) => {
             state.items = [];
@@ -39,10 +49,6 @@ export const cartSlice = createSlice({
     },
 });
 
-function calculateTotal(items) {
-    return items.reduce((total, product) => total + product.quantity * product.price, 0);
-}
-
-export const { addToCart, removeFromCart, updateQuantity, updateTotal, updateCart, clearCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateQuantity, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

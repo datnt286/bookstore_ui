@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { removeFromCart, updateTotal } from '../../redux/cartSlice';
+import { removeFromCart } from '../../redux/cartSlice';
 import { Link } from 'react-router-dom';
 
 function ProductWidget({ data }) {
@@ -7,7 +7,6 @@ function ProductWidget({ data }) {
 
     const handleDelete = (slug) => {
         dispatch(removeFromCart(slug));
-        dispatch(updateTotal());
     };
 
     return (
