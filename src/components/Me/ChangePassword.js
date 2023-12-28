@@ -52,7 +52,7 @@ function ChangePassword() {
 
             Swal.fire({
                 icon: 'error',
-                title: 'Đổi mật khẩu thất bại!',
+                title: 'Đổi mật khẩu không thành công!',
                 timer: 2000,
             });
         }

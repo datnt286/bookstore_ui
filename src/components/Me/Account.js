@@ -44,7 +44,7 @@ function Account() {
 
             Swal.fire({
                 icon: 'error',
-                title: 'Cập nhật thông tin thất bại!',
+                title: 'Cập nhật thông tin không thành công!',
                 timer: 2000,
             });
         }

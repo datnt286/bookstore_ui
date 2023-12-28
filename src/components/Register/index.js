@@ -43,7 +43,7 @@ function Register() {
 
             Swal.fire({
                 icon: 'error',
-                title: 'Đăng ký thất bại!',
+                title: 'Đăng ký không thành công!',
                 timer: 2000,
             });
         }
