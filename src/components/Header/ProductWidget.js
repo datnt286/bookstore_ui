@@ -14,7 +14,7 @@ function ProductWidget({ data }) {
         <div className="product-widget">
             <Link to={`/${data.slug}`}>
                 <div className="product-img">
-                    <img src={data.image} alt="Hình ảnh" />
+                    <img src={data.image} alt={data.name || 'Hình ảnh'} />
                 </div>
             </Link>
 
