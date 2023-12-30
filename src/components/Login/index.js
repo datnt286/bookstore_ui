@@ -107,13 +107,13 @@ const Login = () => {
                             <div className="row">
                                 <div className="col-md-6">
                                     <button className="btn-google w-100">
-                                        <i class="fa fa-google"></i> Google
+                                        <i className="fa fa-google"></i> Google
                                     </button>
                                 </div>
 
                                 <div className="col-md-6">
                                     <button className="btn-facebook w-100">
-                                        <i class="fa fa-facebook-square"></i> Facebook
+                                        <i className="fa fa-facebook-square"></i> Facebook
                                     </button>
                                 </div>
                             </div>

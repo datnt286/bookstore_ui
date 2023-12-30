@@ -19,14 +19,18 @@ function ForgotPassword() {
 
             Swal.fire({
                 icon: 'success',
-                title: res,
+                title: res.data.message,
             });
         } catch (error) {
             console.error('Lỗi: ', error);
 
+            if (error.response.status === 404) {
+                var message = error.response.data.message;
+            }
+
             Swal.fire({
                 icon: 'error',
-                title: 'Đã xảy ra lỗi. Vui lòng thử lại sau!',
+                title: message || 'Đã xảy ra lỗi. Vui lòng thử lại sau!',
             });
         }
     };
