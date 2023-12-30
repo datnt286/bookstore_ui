@@ -127,9 +127,9 @@ function Detail({ data }) {
 
                             <ul className="product-links">
                                 <li>Tác giả:</li>
-                                {data.authors.map((author, index) => {
+                                {data.authors.map((author) => {
                                     return (
-                                        <li key={index}>
+                                        <li key={author.id}>
                                             <a href="#">{author.name}</a>
                                         </li>
                                     );

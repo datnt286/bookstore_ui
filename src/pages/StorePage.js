@@ -8,12 +8,18 @@ const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function StorePage() {
     const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [authors, setAuthors] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`${apiDomain}/index`);
-                setProducts(res.data.data);
+                const productsRes = await axios.get(`${apiDomain}/index`);
+                const categoriesRes = await axios.get(`${apiDomain}/category`);
+                const authorsRes = await axios.get(`${apiDomain}/author`);
+                setProducts(productsRes.data.data);
+                setCategories(categoriesRes.data.data);
+                setAuthors(authorsRes.data.data);
             } catch (error) {
                 console.error('Lỗi: ', error);
             }
@@ -24,7 +30,7 @@ function StorePage() {
 
     return (
         <DefaultLayout>
-            <Store data={products} />
+            <Store products={products} categories={categories} authors={authors}/>
         </DefaultLayout>
     );
 }

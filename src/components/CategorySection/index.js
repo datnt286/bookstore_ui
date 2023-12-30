@@ -1,8 +1,8 @@
 import Category from './Category';
 
 function CategorySection({ data }) {
-    const categories = data.map((category, index) => {
-        return <Category key={index} data={category} />;
+    const categories = data.map((category) => {
+        return <Category key={category.id} data={category} />;
     });
 
     return (
