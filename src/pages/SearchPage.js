@@ -25,11 +25,13 @@ function SearchPage() {
         fetchData();
     }, [keyword]);
 
-    console.log(products);
-
     return (
         <DefaultLayout>
-            <Store data={products} />
+            {products.length > 0 ? (
+                <Store data={products} />
+            ) : (
+                <h3 className="title p-5 mx-5">Không tìm thấy kết quả tìm kiếm phù hợp!</h3>
+            )}
         </DefaultLayout>
     );
 }

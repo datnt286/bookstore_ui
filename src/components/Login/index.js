@@ -2,13 +2,15 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { loginFailure, loginSuccess } from '../../redux/authSlice';
+import { login } from '../../redux/authSlice';
 import Swal from 'sweetalert2';
 
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const [validationErrors, setValidationErrors] = useState({});
+    const [authenticationError, setAuthenticationError] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -24,6 +26,11 @@ const Login = () => {
             ...formData,
             [name]: value,
         });
+
+        setValidationErrors({
+            ...validationErrors,
+            [name]: '',
+        });
     };
 
     const handleLogin = async (event) => {
@@ -31,22 +38,26 @@ const Login = () => {
 
         try {
             const res = await axios.post(`${apiDomain}/login`, formData);
-
             const userData = await axios.get(`${apiDomain}/me`, {
                 headers: { Authorization: 'Bearer ' + res.data.access_token },
             });
 
-            dispatch(loginSuccess({ token: res.data.access_token, user: userData.data }));
+            dispatch(login({ token: res.data.access_token, user: userData.data }));
 
             navigate('/');
 
             Swal.fire({
                 icon: 'success',
-                title: 'Đăng nhập thành công!',
+                title: res.data.message,
                 timer: 2000,
             });
         } catch (error) {
-            dispatch(loginFailure('Sai tên đăng nhập hoặc mật khẩu!'));
+            if (error.response.status === 422) {
+                setValidationErrors(error.response.data.errors);
+                setAuthenticationError('');
+            } else {
+                setAuthenticationError(error.response.data.message);
+            }
         }
     };
 
@@ -70,8 +81,9 @@ const Login = () => {
                                     name="username"
                                     onChange={handleInputChange}
                                     placeholder="Tên đăng nhập"
-                                    className="form-control input"
+                                    className={`form-control input ${validationErrors.username ? 'is-invalid' : ''}`}
                                 />
+                                <div className="invalid-feedback username-error">{validationErrors.username}</div>
                             </div>
 
                             <div className="form-group">
@@ -80,9 +92,16 @@ const Login = () => {
                                     name="password"
                                     onChange={handleInputChange}
                                     placeholder="Mật khẩu"
-                                    className="form-control input"
+                                    className={`form-control input ${validationErrors.password ? 'is-invalid' : ''}`}
                                 />
+                                <div className="invalid-feedback password-error">{validationErrors.password}</div>
                             </div>
+
+                            {authenticationError && (
+                                <div className="alert alert-danger" role="alert">
+                                    {authenticationError}
+                                </div>
+                            )}
 
                             <div className="d-flex justify-content-between">
                                 <NavLink to="/quen-mat-khau">

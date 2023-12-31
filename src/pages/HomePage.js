@@ -9,7 +9,7 @@ const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function HomePage() {
     const [products, setProducts] = useState({
-        newBooks: [{ images: [{ absolute_path: '' }] }],
+        newBooks: [],
         combos: [],
     });
 

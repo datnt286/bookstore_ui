@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Search() {
     const [keyword, setKeyword] = useState('');
+    const [validationError, setValidationError] = useState('');
+    const navigate = useNavigate();
 
     const handleInputChange = (event) => {
         const slug = convertToSlug(event.target.value);
         setKeyword(slug);
+        setValidationError('');
     };
 
     const convertToSlug = (text) => {
@@ -20,21 +23,30 @@ function Search() {
         return slug;
     };
 
+    const handleSearch = (event) => {
+        event.preventDefault();
+
+        if (!keyword) {
+            setValidationError('Vui lòng nhập từ khoá.'); // Set validation error if keyword is empty
+            return;
+        } else {
+            navigate(`/tim-kiem/${keyword}`);
+        }
+    };
+
     return (
         <div className="col-md-6">
             <div id="header-search" className="header-search">
-                <form>
+                <form onSubmit={handleSearch}>
                     <input
                         id="search-input"
                         onChange={handleInputChange}
-                        className="form-control input"
-                        placeholder="Nhập từ khoá..."
+                        className={`form-control input ${validationError ? 'is-invalid' : ''}`}
+                        placeholder={validationError ? validationError : 'Nhập từ khoá...'}
                     />
-                    <Link to={`/tim-kiem/${keyword}`}>
-                        <button id="search-btn" className="search-btn">
-                            Tìm kiếm
-                        </button>
-                    </Link>
+                    <button type="submit" id="search-btn" className="search-btn">
+                        Tìm kiếm
+                    </button>
                 </form>
             </div>
         </div>

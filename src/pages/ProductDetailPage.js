@@ -12,8 +12,8 @@ const EXPIRATION_DAYS = 30;
 
 function ProductDetailPage() {
     const [product, setProduct] = useState({});
-    const [relatedBooks, setRelatedBooks] = useState([]);
     const [combos, setCombos] = useState([]);
+    const [relatedBooks, setRelatedBooks] = useState([]);
 
     const { slug } = useParams();
 

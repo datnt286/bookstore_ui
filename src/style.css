@@ -226,7 +226,8 @@
 
 /* Login */
 #login {
-    height: 420px;
+    max-height: 500px;
+    padding-bottom: 40px;
 }
 
 .btn-facebook,
@@ -247,7 +248,7 @@
 }
 
 #register {
-    height: 500px;
+    max-height: 550px;
 }
 
 #forgot-password {

@@ -8,7 +8,7 @@ import Product from '../components/Product';
 const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function ProductsByCategoryPage() {
-    const [books, setBooks] = useState([{ images: [] }]);
+    const [books, setBooks] = useState([]);
     const [title, setTitle] = useState('');
 
     const { categorySlug } = useParams();

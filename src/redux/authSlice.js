@@ -5,23 +5,15 @@ const authSlice = createSlice({
     initialState: {
         token: localStorage.getItem('token') || null,
         user: JSON.parse(localStorage.getItem('userData')) || null,
-        error: null,
     },
     reducers: {
-        loginSuccess: (state, action) => {
+        login: (state, action) => {
             state.user = action.payload.user;
             state.token = action.payload.token;
-            state.error = null;
-        },
-        loginFailure: (state, action) => {
-            state.user = null;
-            state.token = null;
-            state.error = action.payload;
         },
         logout: (state) => {
             state.user = null;
             state.token = null;
-            state.error = null;
         },
         updateUser: () => {},
         updateUserBill: (state, action) => {
@@ -30,6 +22,6 @@ const authSlice = createSlice({
     },
 });
 
-export const { loginSuccess, loginFailure, logout, updateUser, updateUserBill } = authSlice.actions;
+export const { login, logout, updateUser, updateUserBill } = authSlice.actions;
 
 export default authSlice.reducer;
