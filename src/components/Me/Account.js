@@ -9,6 +9,7 @@ const apiDomain = process.env.REACT_APP_API_DOMAIN;
 function Account() {
     const user = useSelector((state) => state.auth);
     const [formData, setFormData] = useState({ ...user.user });
+    const [errors, setErrors] = useState({});
     const dispatch = useDispatch();
 
     const handleInputChange = (event) => {
@@ -18,6 +19,11 @@ function Account() {
             ...prevFormData,
             [name]: value,
         }));
+
+        setErrors({
+            ...errors,
+            [name]: '',
+        });
     };
 
     async function handleSubmit(event) {
@@ -40,19 +46,23 @@ function Account() {
                 timer: 2000,
             });
         } catch (error) {
-            console.error('Lỗi: ', error);
+            if (error.response.status === 422) {
+                setErrors(error.response.data.errors);
+            } else {
+                console.error('Lỗi: ', error);
 
-            Swal.fire({
-                icon: 'error',
-                title: 'Cập nhật thông tin không thành công!',
-                timer: 2000,
-            });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Cập nhật thông tin không thành công!',
+                    timer: 2000,
+                });
+            }
         }
     }
 
     return (
         <div id="account" className="active tab-pane">
-            <form onSubmit={handleSubmit}>
+            <form>
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-5">
                         <div className="section-title text-center">
@@ -64,7 +74,7 @@ function Account() {
                                 name="username"
                                 value={user.user.username}
                                 placeholder="Tên đăng nhập"
-                                className="input"
+                                className="form-control input"
                                 readOnly
                             />
                         </div>
@@ -75,8 +85,9 @@ function Account() {
                                 value={formData.name}
                                 onChange={handleInputChange}
                                 placeholder="Tên"
-                                className="input"
+                                className={`form-control input ${errors.name ? 'is-invalid' : ''}`}
                             />
+                            <div className="invalid-feedback name-error">{errors.name}</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -85,8 +96,9 @@ function Account() {
                                 value={formData.phone}
                                 onChange={handleInputChange}
                                 placeholder="Điện thoại"
-                                className="input"
+                                className={`form-control input ${errors.phone ? 'is-invalid' : ''}`}
                             />
+                            <div className="invalid-feedback phone-error">{errors.phone}</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -95,8 +107,9 @@ function Account() {
                                 value={formData.email}
                                 onChange={handleInputChange}
                                 placeholder="Email"
-                                className="input"
+                                className={`form-control input ${errors.email ? 'is-invalid' : ''}`}
                             />
+                            <div className="invalid-feedback email-error">{errors.email}</div>
                         </div>
                         <div className="form-group">
                             <textarea
@@ -105,11 +118,12 @@ function Account() {
                                 value={formData.address}
                                 onChange={handleInputChange}
                                 placeholder="Địa chỉ"
-                                className="input"
+                                className={`form-control input ${errors.address ? 'is-invalid' : ''}`}
                             ></textarea>
+                            <div className="invalid-feedback address-error">{errors.address}</div>
                         </div>
                         <div className="text-center my-4">
-                            <button type="submit" className="primary-btn w-50">
+                            <button type="submit" onClick={handleSubmit} className="primary-btn w-50">
                                 Lưu
                             </button>
                         </div>

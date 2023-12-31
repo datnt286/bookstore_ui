@@ -5,24 +5,24 @@ function Me() {
     return (
         <div id="me" className="section">
             <div className="container">
-                <div class="card card-primary card-outline">
-                    <div class="card-header p-2">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item">
-                                <a href="#account" class="nav-link" data-toggle="tab">
+                <div className="card card-primary card-outline">
+                    <div className="card-header p-2">
+                        <ul className="nav nav-pills">
+                            <li className="nav-item">
+                                <a href="#account" className="nav-link" data-toggle="tab">
                                     Tài khoản
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#change-password" class="nav-link" data-toggle="tab">
+                            <li className="nav-item">
+                                <a href="#change-password" className="nav-link" data-toggle="tab">
                                     Đổi mật khẩu
                                 </a>
                             </li>
                         </ul>
                     </div>
 
-                    <div class="card-body align-middle">
-                        <div class="tab-content">
+                    <div className="card-body align-middle">
+                        <div className="tab-content">
                             <Account />
                             <ChangePassword />
                         </div>

@@ -13,6 +13,8 @@ function ChangePassword() {
         new_password: '',
         re_enter_password: '',
     });
+    const [validationErrors, setValidationErrors] = useState({});
+    const [authenticationError, setAuthenticationError] = useState('');
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -20,6 +22,11 @@ function ChangePassword() {
         setFormData({
             ...formData,
             [name]: value,
+        });
+
+        setValidationErrors({
+            ...validationErrors,
+            [name]: '',
         });
     };
 
@@ -48,18 +55,26 @@ function ChangePassword() {
                 timer: 2000,
             });
         } catch (error) {
-            console.error('Lỗi: ', error);
+            if (error.response.status === 422) {
+                setValidationErrors(error.response.data.errors);
+                setAuthenticationError('');
+            } else if (error.response.status === 401) {
+                setAuthenticationError(error.response.data.message);
+            } else {
+                console.error('Lỗi: ', error);
 
-            Swal.fire({
-                icon: 'error',
-                title: 'Đổi mật khẩu không thành công!',
-                timer: 2000,
-            });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Đổi mật khẩu không thành công!',
+                    timer: 2000,
+                });
+            }
         }
     }
+
     return (
         <div id="change-password" className="tab-pane">
-            <form onSubmit={handleSubmit}>
+            <form>
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-5">
                         <div className="section-title text-center">
@@ -72,8 +87,9 @@ function ChangePassword() {
                                 placeholder="Nhập mật khẩu cũ"
                                 value={formData.old_password}
                                 onChange={handleInputChange}
-                                className="input"
+                                className={`form-control input ${validationErrors.old_password ? 'is-invalid' : ''}`}
                             />
+                            <div className="invalid-feedback old_password-error">{validationErrors.old_password}</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -82,8 +98,9 @@ function ChangePassword() {
                                 placeholder="Nhập mật khẩu mới"
                                 value={formData.new_password}
                                 onChange={handleInputChange}
-                                className="input"
+                                className={`form-control input ${validationErrors.new_password ? 'is-invalid' : ''}`}
                             />
+                            <div className="invalid-feedback new_password-error">{validationErrors.new_password}</div>
                         </div>
                         <div className="form-group">
                             <input
@@ -92,11 +109,23 @@ function ChangePassword() {
                                 placeholder="Nhập lại mật khẩu"
                                 value={formData.re_enter_password}
                                 onChange={handleInputChange}
-                                className="input"
+                                className={`form-control input ${
+                                    validationErrors.re_enter_password ? 'is-invalid' : ''
+                                }`}
                             />
+                            <div className="invalid-feedback re_enter_password-error">
+                                {validationErrors.re_enter_password}
+                            </div>
                         </div>
+
+                        {authenticationError && (
+                            <div className="alert alert-danger" role="alert">
+                                {authenticationError}
+                            </div>
+                        )}
+
                         <div className="text-center my-4">
-                            <button type="submit" className="primary-btn w-50">
+                            <button type="submit" onClick={handleSubmit} className="primary-btn w-50">
                                 Lưu
                             </button>
                         </div>

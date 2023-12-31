@@ -55,8 +55,16 @@ const Login = () => {
             if (error.response.status === 422) {
                 setValidationErrors(error.response.data.errors);
                 setAuthenticationError('');
-            } else {
+            } else if (error.response.status === 401) {
                 setAuthenticationError(error.response.data.message);
+            } else {
+                console.error('Lỗi: ', error);
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Đăng nhập không thành công!',
+                    timer: 2000,
+                });
             }
         }
     };
@@ -68,7 +76,7 @@ const Login = () => {
     return (
         <div id="login" className="section">
             <div className="container">
-                <form onSubmit={handleLogin}>
+                <form>
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-4">
                             <div className="section-title text-center">
@@ -118,20 +126,20 @@ const Login = () => {
                             </div>
 
                             <div className="text-center my-4">
-                                <button type="submit" className="primary-btn w-100">
+                                <button type="submit" onClick={handleLogin} className="primary-btn w-100">
                                     Đăng nhập
                                 </button>
                             </div>
 
                             <div className="row">
                                 <div className="col-md-6">
-                                    <button className="btn-google w-100">
+                                    <button type="button" className="btn-google w-100">
                                         <i className="fa fa-google"></i> Google
                                     </button>
                                 </div>
 
                                 <div className="col-md-6">
-                                    <button className="btn-facebook w-100">
+                                    <button type="button" className="btn-facebook w-100">
                                         <i className="fa fa-facebook-square"></i> Facebook
                                     </button>
                                 </div>

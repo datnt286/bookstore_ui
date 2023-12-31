@@ -2,7 +2,7 @@ export const localStorageMiddleware = (store) => (next) => (action) => {
     const result = next(action);
 
     switch (action.type) {
-        case 'auth/loginSuccess':
+        case 'auth/login':
             const { user, token } = action.payload;
             localStorage.setItem('token', token);
             localStorage.setItem('userData', JSON.stringify(user));
