@@ -68,7 +68,7 @@ function ProductCard({ data }) {
                 </Link>
 
                 <div class="add-to-cart">
-                    <button onClick={() => handleAddToCart()} class="add-to-cart-btn">
+                    <button onClick={handleAddToCart} class="add-to-cart-btn">
                         <i className="fa fa-heart-o"></i> Thêm vào giỏ hàng
                     </button>
                 </div>

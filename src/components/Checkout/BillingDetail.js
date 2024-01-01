@@ -64,27 +64,39 @@ function BillingDetail() {
                         className="form-control input"
                     ></textarea>
                 </div>
-                <div className="form-group">
-                    <div className="input-checkbox">
-                        <input type="checkbox" id="create-account" />
-                        <label htmlFor="create-account">
-                            <span></span>
-                            Tạo tài khoản?
-                        </label>
-                        <div className="caption">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt.
-                            </p>
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="Mật khẩu"
-                                className="form-control input"
-                            />
+                {!user && (
+                    <div className="form-group">
+                        <div className="input-checkbox">
+                            <input type="checkbox" id="create-account" />
+                            <label htmlFor="create-account">
+                                <span></span>
+                                Tạo tài khoản?
+                            </label>
+                            <div className="caption">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt.
+                                </p>
+                                <div className="form-group">
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        placeholder="Tên đăng nhập"
+                                        className="form-control input"
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        placeholder="Mật khẩu"
+                                        className="form-control input"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                )}
             </div>
 
             <div className="shiping-details">
