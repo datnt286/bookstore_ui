@@ -37,7 +37,7 @@ function TopHeader() {
                     </li>
                     <li>
                         <Link to="/lien-he">
-                            <i className="fa fa-envelope-o"></i> email@email.com
+                            <i className="fa fa-envelope-o"></i> ddlbookstore@gmail.com
                         </Link>
                     </li>
                     <li>
