@@ -33,6 +33,10 @@ const Login = () => {
         });
     };
 
+    const handleCheckboxChange = () => {
+        setShowPassword(!showPassword);
+    };
+
     const handleLogin = async (event) => {
         event.preventDefault();
 
@@ -67,10 +71,6 @@ const Login = () => {
                 });
             }
         }
-    };
-
-    const handleCheckboxChange = () => {
-        setShowPassword(!showPassword);
     };
 
     return (

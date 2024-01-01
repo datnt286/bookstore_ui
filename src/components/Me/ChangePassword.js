@@ -13,6 +13,7 @@ function ChangePassword() {
         new_password: '',
         re_enter_password: '',
     });
+    const [showPassword, setShowPassword] = useState(false);
     const [validationErrors, setValidationErrors] = useState({});
     const [authenticationError, setAuthenticationError] = useState('');
 
@@ -28,6 +29,10 @@ function ChangePassword() {
             ...validationErrors,
             [name]: '',
         });
+    };
+
+    const handleCheckboxChange = () => {
+        setShowPassword(!showPassword);
     };
 
     const resetFormData = () => {
@@ -80,9 +85,10 @@ function ChangePassword() {
                         <div className="section-title text-center">
                             <h3 className="title">Đổi mật khẩu</h3>
                         </div>
+
                         <div className="form-group">
                             <input
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 name="old_password"
                                 placeholder="Nhập mật khẩu cũ"
                                 value={formData.old_password}
@@ -93,7 +99,7 @@ function ChangePassword() {
                         </div>
                         <div className="form-group">
                             <input
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 name="new_password"
                                 placeholder="Nhập mật khẩu mới"
                                 value={formData.new_password}
@@ -104,7 +110,7 @@ function ChangePassword() {
                         </div>
                         <div className="form-group">
                             <input
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 name="re_enter_password"
                                 placeholder="Nhập lại mật khẩu"
                                 value={formData.re_enter_password}
@@ -123,6 +129,16 @@ function ChangePassword() {
                                 {authenticationError}
                             </div>
                         )}
+
+                        <div className="d-flex justify-content-center">
+                            <div className="input-checkbox">
+                                <input type="checkbox" onChange={handleCheckboxChange} id="terms" />
+                                <label htmlFor="terms">
+                                    <span></span>
+                                    Hiện mật khẩu
+                                </label>
+                            </div>
+                        </div>
 
                         <div className="text-center my-4">
                             <button type="submit" onClick={handleSubmit} className="primary-btn w-50">
