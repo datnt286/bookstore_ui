@@ -40,6 +40,7 @@ function Login() {
 
         try {
             const res = await axiosInstance.post('/login', formData);
+
             const userData = await axiosInstance.get('/me', {
                 headers: { Authorization: 'Bearer ' + res.data.access_token },
             });

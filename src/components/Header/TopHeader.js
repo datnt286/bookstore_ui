@@ -1,23 +1,15 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/authSlice';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 function TopHeader() {
-    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
-    const userData = localStorage.getItem('userData');
-    const user = JSON.parse(userData);
+    const isLoggedIn = useSelector((state) => state.auth.token !== null);
+    const user = useSelector((state) => state.auth.user);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        setIsLoggedIn(!!token);
-    }, []);
 
     const handleLogout = () => {
         dispatch(logout());
-        setIsLoggedIn(false);
 
         Swal.fire({
             icon: 'success',
@@ -48,6 +40,11 @@ function TopHeader() {
                 </ul>
                 {isLoggedIn ? (
                     <ul className="header-links pull-right">
+                        <li>
+                            <Link to="/hoa-don">
+                                <i class="fa fa-truck"></i> Hoá đơn
+                            </Link>
+                        </li>
                         <li>
                             <Link to="/tai-khoan">
                                 <i className="fa fa-user-o"></i> {user.name}

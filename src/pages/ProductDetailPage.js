@@ -13,6 +13,7 @@ function ProductDetailPage() {
     const [product, setProduct] = useState({});
     const [combos, setCombos] = useState([]);
     const [relatedBooks, setRelatedBooks] = useState([]);
+    const [categorySlug, setCategorySlug] = useState('');
 
     const { slug } = useParams();
 
@@ -24,6 +25,8 @@ function ProductDetailPage() {
                 setCombos(productRes.data.data.combos);
 
                 const categoryId = productRes.data.data.category_id;
+                const categorySlug = productRes.data.data.category_slug;
+                setCategorySlug(categorySlug);
 
                 const relatedBooksRes = await axiosInstance.get(`/get-books-by-category/${categoryId}`);
                 setRelatedBooks(relatedBooksRes.data.data);
@@ -61,8 +64,8 @@ function ProductDetailPage() {
     return (
         <DefaultLayout>
             <ProductDetail data={product} />
-            {product.combos && <ProductSection title={'Combo'} data={combos} />}
-            {!product.is_combo && <RelatedBook data={relatedBooks} slug={slug} />}
+            {product.combos && <ProductSection title="Combo" data={combos} url="/combo" />}
+            {!product.is_combo && <RelatedBook data={relatedBooks} slug={slug} url={`/danh-muc/${categorySlug}`} />}
         </DefaultLayout>
     );
 }
