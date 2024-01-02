@@ -1,10 +1,8 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../../redux/authSlice';
+import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function Account() {
     const user = useSelector((state) => state.auth);
@@ -30,11 +28,11 @@ function Account() {
         event.preventDefault();
 
         try {
-            const res = await axios.post(`${apiDomain}/update`, formData, {
+            const res = await axiosInstance.post('/update', formData, {
                 headers: { Authorization: 'Bearer ' + user.token },
             });
 
-            const userData = await axios.get(`${apiDomain}/me`, {
+            const userData = await axiosInstance.get('/me', {
                 headers: { Authorization: 'Bearer ' + user.token },
             });
 

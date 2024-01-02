@@ -1,9 +1,7 @@
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '../../redux/cartSlice';
+import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function Order() {
     const user = useSelector((state) => state.auth.user);
@@ -20,7 +18,7 @@ function Order() {
                 products: cart.items,
             };
 
-            const res = await axios.post(`${apiDomain}/order/create`, data);
+            const res = await axiosInstance.post('/order/create', data);
 
             dispatch(clearCart());
 

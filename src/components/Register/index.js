@@ -1,9 +1,7 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -16,7 +14,6 @@ function Register() {
     const [showPassword, setShowPassword] = useState(false);
     const [validationErrors, setValidationErrors] = useState({});
     const [reEnterPasswordError, setReEnterPasswordError] = useState('');
-
     const navigate = useNavigate();
 
     const handleInputChange = (event) => {
@@ -37,7 +34,7 @@ function Register() {
         event.preventDefault();
 
         try {
-            const res = await axios.post(`${apiDomain}/register`, formData);
+            const res = await axiosInstance.post('/register', formData);
 
             navigate('/dang-nhap');
 

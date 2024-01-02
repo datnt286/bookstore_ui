@@ -1,8 +1,6 @@
-import axios from 'axios';
 import { useState } from 'react';
+import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function ForgotPassword() {
     const [email, setEmail] = useState('');
@@ -15,7 +13,7 @@ function ForgotPassword() {
         event.preventDefault();
 
         try {
-            const res = await axios.post(`${apiDomain}/reset-password`, { email });
+            const res = await axiosInstance.post('/reset-password', { email });
 
             Swal.fire({
                 icon: 'success',

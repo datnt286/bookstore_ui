@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
+import axiosInstance from '../../services/axiosInstance';
+
 import Aside from './Aside';
 import ProductGrid from './ProductGrid';
-import axios from 'axios';
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function StoreSection({ data }) {
     const [categories, setCategories] = useState([]);
@@ -12,8 +11,8 @@ function StoreSection({ data }) {
     useEffect(() => {
         async function fetchData() {
             try {
-                const categoriesRes = await axios.get(`${apiDomain}/category`);
-                const authorsRes = await axios.get(`${apiDomain}/author`);
+                const categoriesRes = await axiosInstance.get('/category');
+                const authorsRes = await axiosInstance.get('/author');
                 setCategories(categoriesRes.data.data);
                 setAuthors(authorsRes.data.data);
             } catch (error) {

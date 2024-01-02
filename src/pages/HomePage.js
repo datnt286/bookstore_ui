@@ -1,11 +1,9 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import axiosInstance from '../services/axiosInstance';
 
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductSection from '../components/ProductSection';
 import HotDealBanner from '../components/HotDealBanner';
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function HomePage() {
     const [products, setProducts] = useState({
@@ -16,7 +14,7 @@ function HomePage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`${apiDomain}/get-newbooks-and-combos`);
+                const res = await axiosInstance.get('/get-newbooks-and-combos');
                 setProducts(res.data.data);
             } catch (error) {
                 console.error('Lỗi: ', error);

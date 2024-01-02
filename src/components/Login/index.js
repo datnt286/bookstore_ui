@@ -1,13 +1,11 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { login } from '../../redux/authSlice';
+import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
 
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
-
-const Login = () => {
+function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const [validationErrors, setValidationErrors] = useState({});
     const [authenticationError, setAuthenticationError] = useState('');
@@ -41,8 +39,8 @@ const Login = () => {
         event.preventDefault();
 
         try {
-            const res = await axios.post(`${apiDomain}/login`, formData);
-            const userData = await axios.get(`${apiDomain}/me`, {
+            const res = await axiosInstance.post('/login', formData);
+            const userData = await axiosInstance.get('/me', {
                 headers: { Authorization: 'Bearer ' + res.data.access_token },
             });
 
@@ -150,6 +148,6 @@ const Login = () => {
             </div>
         </div>
     );
-};
+}
 
 export default Login;

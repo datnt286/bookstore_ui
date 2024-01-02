@@ -1,10 +1,8 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import axiosInstance from '../services/axiosInstance';
 
 import DefaultLayout from '../layouts/DefaultLayout';
 import Store from '../components/Store';
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function StorePage() {
     const [products, setProducts] = useState([]);
@@ -12,8 +10,8 @@ function StorePage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const productsRes = await axios.get(`${apiDomain}/index`);
-                setProducts(productsRes.data.data);
+                const res = await axiosInstance.get('/index');
+                setProducts(res.data.data);
             } catch (error) {
                 console.error('Lỗi: ', error);
             }

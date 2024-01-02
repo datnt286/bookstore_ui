@@ -1,11 +1,9 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axiosInstance from '../services/axiosInstance';
 
 import DefaultLayout from '../layouts/DefaultLayout';
 import Store from '../components/Store';
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function SearchPage() {
     const [products, setProducts] = useState([]);
@@ -15,7 +13,7 @@ function SearchPage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`${apiDomain}/search/${keyword}`);
+                const res = await axiosInstance.get(`/search/${keyword}`);
                 setProducts(res.data.data);
             } catch (error) {
                 console.error('Lỗi: ', error);

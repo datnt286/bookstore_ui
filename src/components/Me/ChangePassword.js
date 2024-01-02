@@ -1,9 +1,7 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function ChangePassword() {
     const user = useSelector((state) => state.auth);
@@ -48,7 +46,7 @@ function ChangePassword() {
         event.preventDefault();
 
         try {
-            const res = await axios.post(`${apiDomain}/change-password`, formData, {
+            const res = await axiosInstance.post('/change-password', formData, {
                 headers: { Authorization: 'Bearer ' + user.token },
             });
 

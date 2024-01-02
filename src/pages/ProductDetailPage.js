@@ -1,13 +1,12 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axiosInstance from '../services/axiosInstance';
 
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductDetail from '../components/ProductDetail';
 import ProductSection from '../components/ProductSection';
 import RelatedBook from '../components/RelatedBook';
 
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 const EXPIRATION_DAYS = 30;
 
 function ProductDetailPage() {
@@ -20,13 +19,13 @@ function ProductDetailPage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const productRes = await axios.get(`${apiDomain}/${slug}`);
+                const productRes = await axiosInstance.get(`/${slug}`);
                 setProduct(productRes.data.data);
                 setCombos(productRes.data.data.combos);
 
                 const categoryId = productRes.data.data.category_id;
 
-                const relatedBooksRes = await axios.get(`${apiDomain}/get-books-by-category/${categoryId}`);
+                const relatedBooksRes = await axiosInstance.get(`/get-books-by-category/${categoryId}`);
                 setRelatedBooks(relatedBooksRes.data.data);
 
                 const viewedProducts = JSON.parse(localStorage.getItem('viewedProducts')) || [];

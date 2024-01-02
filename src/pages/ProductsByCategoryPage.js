@@ -1,11 +1,9 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axiosInstance from '../services/axiosInstance';
 
 import DefaultLayout from '../layouts/DefaultLayout';
 import Product from '../components/Product';
-
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
 
 function ProductsByCategoryPage() {
     const [books, setBooks] = useState([]);
@@ -16,7 +14,7 @@ function ProductsByCategoryPage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`${apiDomain}/category/${categorySlug}`);
+                const res = await axiosInstance.get(`/category/${categorySlug}`);
                 setBooks(res.data.data.books);
                 setTitle(res.data.data.name);
             } catch (error) {
