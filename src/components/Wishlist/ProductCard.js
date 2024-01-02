@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
+import { removeFromWishlist } from '../../redux/wishlistSlice';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 function ProductCard({ data }) {
-    const [wishlist, setWishlist] = useState(JSON.parse(localStorage.getItem('wishlist')) || []);
     const dispatch = useDispatch();
     let absolute_path;
-
-    useEffect(() => {
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    }, [wishlist]);
 
     if (!data || !data.absolute_path) {
         if (!data || !data.images || data.images.length === 0) {
@@ -21,17 +16,14 @@ function ProductCard({ data }) {
         ({ absolute_path } = data.images[0] || {});
     }
 
-    const handleAddToCart = () => {
-        var product = {
-            id: data.id,
-            name: data.name,
-            price: data.price,
-            quantity: 1,
-            slug: data.slug,
-            image: data.absolute_path || (data.images && data.images.length > 0 ? data.images[0].absolute_path : null),
-            ...(data.is_combo ? { combo_id: data.id, book_id: null } : { book_id: data.id, combo_id: null }),
-        };
+    const product = {
+        ...data,
+        quantity: 1,
+        image: data.absolute_path || (data.images && data.images.length > 0 ? data.images[0].absolute_path : null),
+        ...(data.is_combo ? { combo_id: data.id, book_id: null } : { book_id: data.id, combo_id: null }),
+    };
 
+    const handleAddToCart = () => {
         dispatch(addToCart(product));
 
         Swal.fire({
@@ -42,8 +34,13 @@ function ProductCard({ data }) {
     };
 
     const handleDelete = (slug) => {
-        const updatedWishlist = wishlist.filter((item) => item.slug !== slug);
-        setWishlist(updatedWishlist);
+        dispatch(removeFromWishlist(slug));
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Xoá khỏi Wishlist thành công!',
+            timer: 2000,
+        });
     };
 
     return (

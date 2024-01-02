@@ -22,6 +22,10 @@ export const localStorageMiddleware = (store) => (next) => (action) => {
         case 'cart/clearCart':
             localStorage.removeItem('cart');
             break;
+        case 'wishlist/addToWishlist':
+        case 'wishlist/removeFromWishlist':
+            localStorage.setItem('wishlist', JSON.stringify(store.getState().wishlist));
+            break;
         default:
             break;
     }

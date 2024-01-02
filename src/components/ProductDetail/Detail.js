@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
+import { addToWishlist } from '../../redux/wishlistSlice';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -18,6 +19,13 @@ function Detail({ data }) {
         ({ absolute_path } = data.images[0] || {});
     }
 
+    const product = {
+        ...data,
+        quantity: isNaN(quantity) ? 1 : quantity,
+        image: data.absolute_path || (data.images && data.images.length > 0 ? data.images[0].absolute_path : null),
+        ...(data.is_combo ? { combo_id: data.id, book_id: null } : { book_id: data.id, combo_id: null }),
+    };
+
     const handleQuantityChange = (value) => {
         setQuantity((prevQuantity) => Math.max(1, prevQuantity + value));
     };
@@ -28,16 +36,6 @@ function Detail({ data }) {
     };
 
     const handleAddToCart = () => {
-        var product = {
-            id: data.id,
-            name: data.name,
-            price: data.price,
-            quantity: isNaN(quantity) ? 1 : quantity,
-            slug: data.slug,
-            image: data.absolute_path || (data.images && data.images.length > 0 ? data.images[0].absolute_path : null),
-            ...(data.is_combo ? { combo_id: data.id, book_id: null } : { book_id: data.id, combo_id: null }),
-        };
-
         dispatch(addToCart(product));
 
         Swal.fire({
@@ -48,20 +46,7 @@ function Detail({ data }) {
     };
 
     const handleAddToWishlist = () => {
-        var wishlist = localStorage.getItem('wishlist');
-
-        if (wishlist == null) {
-            wishlist = [data];
-        } else {
-            wishlist = JSON.parse(wishlist);
-            var index = wishlist.findIndex((item) => item.slug === data.slug);
-
-            if (index === -1) {
-                wishlist.push(data);
-            }
-        }
-
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        dispatch(addToWishlist(product));
 
         Swal.fire({
             icon: 'success',

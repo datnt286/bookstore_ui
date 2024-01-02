@@ -1,7 +1,10 @@
+import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard';
 
-function ProductGrid({ data }) {
-    const products = data.map((product, index) => {
+function ProductGrid() {
+    const wishlist = useSelector((state) => state.wishlist);
+
+    const products = wishlist.map((product, index) => {
         return <ProductCard key={index} data={product} />;
     });
 

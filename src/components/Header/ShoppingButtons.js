@@ -6,7 +6,7 @@ function ShoppingButtons() {
     const cart = useSelector((state) => state.cart);
     const cartLength = cart.items.length;
 
-    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const wishlist = useSelector((state) => state.wishlist);
     const wishlistLength = wishlist.length;
 
     return (

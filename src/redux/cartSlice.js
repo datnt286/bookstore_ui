@@ -10,7 +10,7 @@ function updateTotal(state) {
     state.total = calculateTotal(state.items || []);
 }
 
-export const cartSlice = createSlice({
+const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         items: cart,
