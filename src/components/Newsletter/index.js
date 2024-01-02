@@ -6,7 +6,7 @@ function Newsletter() {
                     <div className="col-md-12">
                         <div className="newsletter">
                             <p>
-                                <strong>Đăng ký</strong> để nhận những thông báo mới 
+                                <strong>Đăng ký</strong> để nhận những thông báo mới
                             </p>
                             <form>
                                 <input
