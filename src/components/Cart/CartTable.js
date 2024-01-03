@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import CartDetail from './CartDetail';
 
-function CartGrid() {
+function CartTable() {
     const cart = useSelector((state) => state.cart.items);
 
-    const cartUI = () => {
-        if (cart.length > 0) {
-            return (
+    return (
+        <>
+            {cart.length > 0 ? (
                 <table className="table">
                     <thead>
                         <tr>
@@ -31,13 +31,11 @@ function CartGrid() {
                         })}
                     </tbody>
                 </table>
-            );
-        } else {
-            return <h3>Không có sản phẩm trong giỏ hàng</h3>;
-        }
-    };
-
-    return <>{cartUI()}</>;
+            ) : (
+                <h3>Không có sản phẩm trong giỏ hàng</h3>
+            )}
+        </>
+    );
 }
 
-export default CartGrid;
+export default CartTable;

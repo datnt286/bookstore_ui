@@ -28,6 +28,43 @@
     border-top: 3px solid #D10024;
 }
 
+/* Override Button */
+.btn-primary {
+    background-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.btn-primary:focus {
+    background-color: #0a58ca;
+}
+
+.btn-success {
+    background-color: #198754;
+}
+
+.btn-success:hover {
+    background-color: #157347;
+}
+
+.btn-success:focus {
+    background-color: #146c43;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+}
+
+.btn-danger:focus {
+    background-color: #b02a37;
+}
+
 /* Navigattion */
 .nav-item.active {
     color: #D10024;
@@ -258,4 +295,23 @@
 .btn-forgot-password {
     width: 200px;
     height: 40px;
+}
+
+/* Nav pills */
+.nav-pills .nav-link {
+    color: #d10024;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #d10024;
+}
+
+/* Modal */
+.modal-title {
+    margin-right: auto;
 }

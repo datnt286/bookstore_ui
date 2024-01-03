@@ -1,11 +1,11 @@
-import CartGrid from './CartGrid';
+import CartTable from './CartTable';
 import CartTotal from './CartTotal';
 
 function Cart() {
     return (
         <div className="section">
             <div className="container">
-                <CartGrid />
+                <CartTable />
                 <CartTotal />
             </div>
         </div>
