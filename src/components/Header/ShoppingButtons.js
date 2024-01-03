@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import ProductWidget from './ProductWidget';
 
 function ShoppingButtons() {
+    const isLoggedIn = useSelector((state) => state.auth.token !== null);
     const cart = useSelector((state) => state.cart);
-    const cartLength = cart.items.length;
-
     const wishlist = useSelector((state) => state.wishlist);
+
+    const cartLength = cart.items.length;
     const wishlistLength = wishlist.length;
+
+    const checkoutLink = isLoggedIn ? '/thanh-toan' : '/dang-nhap';
 
     return (
         <div className="col-md-3 clearfix">
@@ -45,7 +48,7 @@ function ShoppingButtons() {
                                 <div className="cart-btns">
                                     <Link to="/gio-hang">Xem giỏ hàng</Link>
 
-                                    <Link to="/thanh-toan">
+                                    <Link to={checkoutLink}>
                                         Thanh toán <i className="fa fa-arrow-circle-right"></i>
                                     </Link>
                                 </div>

@@ -42,7 +42,7 @@ function TopHeader() {
                     <ul className="header-links pull-right">
                         <li>
                             <Link to="/hoa-don">
-                                <i class="fa fa-truck"></i> Hoá đơn
+                                <i className="fa fa-truck"></i> Hoá đơn
                             </Link>
                         </li>
                         <li>

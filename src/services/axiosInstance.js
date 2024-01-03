@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const apiDomain = process.env.REACT_APP_API_DOMAIN;
-
 const axiosInstance = axios.create({
-    baseURL: apiDomain,
+    baseURL: process.env.REACT_APP_API_URL,
+    headers: {
+        'content-type': 'application/json',
+    },
 });
 
 export default axiosInstance;

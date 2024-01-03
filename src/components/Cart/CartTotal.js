@@ -2,7 +2,10 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function CartTotal() {
+    const isLoggedIn = useSelector((state) => state.auth.token !== null);
     const total = useSelector((state) => state.cart.total);
+
+    const checkoutLink = isLoggedIn ? '/thanh-toan' : '/dang-nhap';
 
     return (
         <div className="row mt-5">
@@ -26,7 +29,7 @@ function CartTotal() {
                         <span className="cart-price">{total} ₫</span>
                     </div>
 
-                    <Link to="/thanh-toan">
+                    <Link to={checkoutLink}>
                         <button className="btn-proceed-checkout">Tiến hành thanh toán</button>
                     </Link>
                 </div>

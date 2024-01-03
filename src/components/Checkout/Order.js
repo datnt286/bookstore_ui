@@ -7,6 +7,7 @@ function Order() {
     const user = useSelector((state) => state.auth.user);
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch();
+    console.log(user)
 
     const handleOrder = async () => {
         try {
