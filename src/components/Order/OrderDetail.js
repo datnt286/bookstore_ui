@@ -1,6 +1,23 @@
-function OrderDetail() {
+import { useEffect, useState } from 'react';
+import axiosInstance from '../../services/axiosInstance';
+
+function OrderDetail({ orderId }) {
+    const [orderDetails, setOrderDetails] = useState([]);
+
+    useEffect(() => {
+        const fetchOrderDetails = async () => {
+            try {
+                const res = await axiosInstance.get(`/order/details/${orderId}`);
+                setOrderDetails(res.data.data);
+            } catch (error) {
+                console.error('Lỗi: ', error);
+            }
+        };
+        fetchOrderDetails();
+    }, [orderId]);
+
     return (
-        <div className="modal fade" id="orderDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div className="modal fade" id="orderDetail" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div className="modal-dialog modal-lg" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -12,7 +29,34 @@ function OrderDetail() {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <p>Modal content goes here...</p>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th className="fs-2" scope="col">
+                                        Tên sản phẩm
+                                    </th>
+                                    <th className="fs-2" scope="col">
+                                        Số lượng
+                                    </th>
+                                    <th className="fs-2" scope="col">
+                                        Giá bán
+                                    </th>
+                                    <th className="fs-2" scope="col">
+                                        Thành tiền
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {orderDetails.map((detail) => (
+                                    <tr key={detail.id}>
+                                        <td>{detail.product_name}</td>
+                                        <td>{detail.quantity}</td>
+                                        <td>{detail.price} đ</td>
+                                        <td>{parseInt(detail.quantity) * parseInt(detail.price)} đ</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-default" data-dismiss="modal">

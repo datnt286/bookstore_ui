@@ -30,6 +30,8 @@ function Order() {
         fetchData();
     }, []);
 
+    console.log(orders)
+
     return (
         <div id="me" className="section">
             <div className="container">

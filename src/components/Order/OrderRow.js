@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
+import OrderDetail from './OrderDetail';
 
 function OrderRow({ data }) {
+    const [showOrderDetail, setShowOrderDetail] = useState(false);
+
     const getStatusText = (status) => {
         switch (status) {
             case 1:
@@ -17,6 +21,10 @@ function OrderRow({ data }) {
             default:
                 return 'Trạng thái không xác định';
         }
+    };
+
+    const handleDetails = () => {
+        setShowOrderDetail(true);
     };
 
     const handleConfirm = (id) => {
@@ -38,21 +46,29 @@ function OrderRow({ data }) {
     };
 
     const handleCancel = (id) => {
-        async function fetchData() {
-            try {
-                const res = await axiosInstance(`order/cancel/${id}`);
+        Swal.fire({
+            title: 'Bạn có chắc muốn huỷ?',
+            text: 'Bạn sẽ không thể khôi phục hoá đơn đã huỷ!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Vâng, tôi muốn huỷ!',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const res = await axiosInstance(`order/cancel/${id}`);
 
-                Swal.fire({
-                    icon: 'success',
-                    title: res.data.message,
-                    timer: 2000,
-                });
-            } catch (error) {
-                console.error('Lỗi: ', error);
+                    Swal.fire({
+                        icon: 'success',
+                        title: res.data.message,
+                        timer: 2000,
+                    });
+                } catch (error) {
+                    console.error('Error: ', error);
+                }
             }
-        }
-
-        fetchData();
+        });
     };
 
     return (
@@ -61,7 +77,12 @@ function OrderRow({ data }) {
             <td className="align-middle">{data.total} đ</td>
             <td className="align-middle">{getStatusText(data.status)}</td>
             <td className="align-middle">
-                <button className="btn btn-primary mx-1" data-toggle="modal" data-target="#orderDetail">
+                <button
+                    className="btn btn-primary mx-1"
+                    onClick={handleDetails}
+                    data-toggle="modal"
+                    data-target="#orderDetail"
+                >
                     Chi tiết
                 </button>
                 {data.status === 3 && (
@@ -74,6 +95,8 @@ function OrderRow({ data }) {
                         Huỷ
                     </button>
                 )}
+
+                {showOrderDetail && <OrderDetail orderId={data.id} />}
             </td>
         </tr>
     );
