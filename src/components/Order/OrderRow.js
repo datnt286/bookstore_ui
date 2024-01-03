@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setOrderDetails } from '../../redux/orderDetailSlice';
+import { cancelOrder, confirmOrder } from '../../redux/orderSlice';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
-import OrderDetail from './OrderDetail';
 
 function OrderRow({ data }) {
-    const [showOrderDetail, setShowOrderDetail] = useState(false);
+    const dispatch = useDispatch();
 
     const getStatusText = (status) => {
         switch (status) {
@@ -23,14 +24,20 @@ function OrderRow({ data }) {
         }
     };
 
-    const handleDetails = () => {
-        setShowOrderDetail(true);
+    const handleDetailClick = async (id) => {
+        try {
+            const res = await axiosInstance.get(`/order/details/${id}`);
+            dispatch(setOrderDetails(res.data.data));
+        } catch (error) {
+            console.error('Lỗi: ', error);
+        }
     };
 
     const handleConfirm = (id) => {
         async function fetchData() {
             try {
                 const res = await axiosInstance(`order/confirm/${id}`);
+                dispatch(confirmOrder(id));
 
                 Swal.fire({
                     icon: 'success',
@@ -58,6 +65,7 @@ function OrderRow({ data }) {
             if (result.isConfirmed) {
                 try {
                     const res = await axiosInstance(`order/cancel/${id}`);
+                    dispatch(cancelOrder);
 
                     Swal.fire({
                         icon: 'success',
@@ -79,7 +87,7 @@ function OrderRow({ data }) {
             <td className="align-middle">
                 <button
                     className="btn btn-primary mx-1"
-                    onClick={handleDetails}
+                    onClick={() => handleDetailClick(data.id)}
                     data-toggle="modal"
                     data-target="#orderDetail"
                 >
@@ -95,8 +103,6 @@ function OrderRow({ data }) {
                         Huỷ
                     </button>
                 )}
-
-                {showOrderDetail && <OrderDetail orderId={data.id} />}
             </td>
         </tr>
     );

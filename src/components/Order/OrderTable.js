@@ -2,7 +2,7 @@ import OrderRow from './OrderRow';
 
 function OrderTable({ tab, data }) {
     return (
-        <div id={tab} className={`tab-pane ${tab === 'all' ? 'active' : ''}`}>
+        <div id={tab} className={`tab-pane ${tab === 'orders' ? 'active' : ''}`}>
             {data.length > 0 ? (
                 <table className="table">
                     <thead>
@@ -22,7 +22,7 @@ function OrderTable({ tab, data }) {
                     </thead>
                     <tbody>
                         {data.map((order) => {
-                            return <OrderRow key={order.id} data={order} />;
+                            return <OrderRow key={order.id} tab={tab} data={order} />;
                         })}
                     </tbody>
                 </table>

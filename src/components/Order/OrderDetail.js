@@ -1,20 +1,7 @@
-import { useEffect, useState } from 'react';
-import axiosInstance from '../../services/axiosInstance';
+import { useSelector } from 'react-redux';
 
-function OrderDetail({ orderId }) {
-    const [orderDetails, setOrderDetails] = useState([]);
-
-    useEffect(() => {
-        const fetchOrderDetails = async () => {
-            try {
-                const res = await axiosInstance.get(`/order/details/${orderId}`);
-                setOrderDetails(res.data.data);
-            } catch (error) {
-                console.error('Lỗi: ', error);
-            }
-        };
-        fetchOrderDetails();
-    }, [orderId]);
+function OrderDetail() {
+    const orderDetails = useSelector((state) => state.orderDetail);
 
     return (
         <div className="modal fade" id="orderDetail" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -1,36 +1,37 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCanceled, setConfirmed, setDelivered, setDelivering, setOrdered, setOrders } from '../../redux/orderSlice';
 import axiosInstance from '../../services/axiosInstance';
 
 import OrderTable from './OrderTable';
 import OrderDetail from './OrderDetail';
 
 function Order() {
-    const [orders, setOrders] = useState([]);
-    const [ordered, setOrdered] = useState([]);
-    const [confirmed, setConfirmed] = useState([]);
-    const [delivering, setDelivering] = useState([]);
-    const [delivered, setDelivered] = useState([]);
-    const [canceled, setCanceled] = useState([]);
+    const orders = useSelector((state) => state.order.orders);
+    const ordered = useSelector((state) => state.order.ordered);
+    const confirmed = useSelector((state) => state.order.confirmed);
+    const delivering = useSelector((state) => state.order.delivering);
+    const delivered = useSelector((state) => state.order.delivered);
+    const canceled = useSelector((state) => state.order.canceled);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const res = await axiosInstance.get('/order');
-                setOrders(res.data.data.orders);
-                setOrdered(res.data.data.ordered);
-                setConfirmed(res.data.data.confirmed);
-                setDelivering(res.data.data.delivering);
-                setDelivered(res.data.data.delivered);
-                setCanceled(res.data.data.canceled);
+                dispatch(setOrders(res.data.data.orders));
+                dispatch(setOrdered(res.data.data.ordered));
+                dispatch(setConfirmed(res.data.data.confirmed));
+                dispatch(setDelivering(res.data.data.delivering));
+                dispatch(setDelivered(res.data.data.delivered));
+                dispatch(setCanceled(res.data.data.canceled));
             } catch (error) {
                 console.error('Lỗi: ', error);
             }
         }
 
         fetchData();
-    }, []);
-
-    console.log(orders)
+    }, [dispatch]);
 
     return (
         <div id="me" className="section">
@@ -73,7 +74,7 @@ function Order() {
 
                     <div className="card-body align-middle">
                         <div className="tab-content">
-                            <OrderTable tab="all" data={orders} />
+                            <OrderTable tab="orders" data={orders} />
                             <OrderTable tab="ordered" data={ordered} />
                             <OrderTable tab="confirmed" data={confirmed} />
                             <OrderTable tab="delivering" data={delivering} />
