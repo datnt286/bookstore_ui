@@ -9,7 +9,7 @@ function OrderRow({ data }) {
             case 2:
                 return 'Đã xác nhận';
             case 3:
-                return 'Đã vận chuyển';
+                return 'Đang giao';
             case 4:
                 return 'Đã giao';
             case 5:
@@ -61,24 +61,20 @@ function OrderRow({ data }) {
             <td className="align-middle">{data.total} đ</td>
             <td className="align-middle">{getStatusText(data.status)}</td>
             <td className="align-middle">
-                <button className="btn btn-primary" data-toggle="modal" data-target="#orderDetail">
+                <button className="btn btn-primary mx-1" data-toggle="modal" data-target="#orderDetail">
                     Chi tiết
                 </button>
-            </td>
-            {data.status === 3 && (
-                <td className="align-middle">
-                    <button className="btn btn-success" onClick={() => handleConfirm(data.id)}>
+                {data.status === 3 && (
+                    <button className="btn btn-success mx-1" onClick={() => handleConfirm(data.id)}>
                         Xác nhận
                     </button>
-                </td>
-            )}
-            {!(data.status === 4 || data.status === 5) && (
-                <td className="align-middle">
-                    <button className="btn btn-danger" onClick={() => handleCancel(data.id)}>
+                )}
+                {(data.status === 1 || data.status === 2) && (
+                    <button className="btn btn-danger mx-1" onClick={() => handleCancel(data.id)}>
                         Huỷ
                     </button>
-                </td>
-            )}
+                )}
+            </td>
         </tr>
     );
 }
