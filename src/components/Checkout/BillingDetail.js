@@ -45,16 +45,6 @@ function BillingDetail() {
                     />
                 </div>
                 <div className="form-group">
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="Email"
-                        className="form-control input"
-                    />
-                </div>
-                <div className="form-group">
                     <textarea
                         type="text"
                         name="address"
@@ -115,9 +105,6 @@ function BillingDetail() {
                         </div>
                         <div className="form-group">
                             <input type="tel" name="tel" placeholder="Điện thoại" className="form-control input" />
-                        </div>
-                        <div className="form-group">
-                            <input type="email" name="email" placeholder="Email" className="form-control input" />
                         </div>
                         <div className="form-group">
                             <textarea

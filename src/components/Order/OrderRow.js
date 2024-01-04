@@ -36,7 +36,7 @@ function OrderRow({ data }) {
     const handleConfirm = (id) => {
         async function fetchData() {
             try {
-                const confirmRes = await axiosInstance.get(`order/confirm/${id}`);
+                const confirmRes = await axiosInstance.get(`/order/confirm/${id}`);
                 const ordersRes = await axiosInstance.get('/order');
 
                 dispatch(setOrders(ordersRes.data.data.orders));
@@ -73,7 +73,7 @@ function OrderRow({ data }) {
             if (result.isConfirmed) {
                 try {
                     const cancelRes = await axiosInstance.get(`order/cancel/${id}`);
-                    const ordersRes = await axiosInstance.get('/order');
+                    const ordersRes = await axiosInstance.get('order');
 
                     dispatch(setOrders(ordersRes.data.data.orders));
                     dispatch(setOrdered(ordersRes.data.data.ordered));
