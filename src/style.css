@@ -202,7 +202,7 @@
 
 .cart-detail {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .btn-cart {
@@ -314,4 +314,15 @@
 /* Modal */
 .modal-title {
     margin-right: auto;
+}
+
+.order-detail {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.order-detail-image {
+    max-width: 80px;
+    max-height: 120px;
+    margin-right: 10px;
 }

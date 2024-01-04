@@ -31,8 +31,6 @@ function CartDetail({ product }) {
             <td>
                 <Link to={`/${product.slug}`}>
                     <img src={product.image} alt={product.name || 'Hình ảnh'} className="product-cart-image" />
-                </Link>
-                <Link to={`/${product.slug}`}>
                     <span className="cart-detail mx-2">{product.name}</span>
                 </Link>
             </td>
