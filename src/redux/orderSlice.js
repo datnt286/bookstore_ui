@@ -33,34 +33,10 @@ const orderSlice = createSlice({
         setOrderDetails: (state, action) => {
             state.orderDetails = action.payload;
         },
-        confirmOrder: (state, action) => {
-            const orderId = action.payload;
-
-            const updatedOrders = state.orders.map((order) => (order.id === orderId ? { ...order, status: 2 } : order));
-
-            state.orders = updatedOrders;
-        },
-
-        cancelOrder: (state, action) => {
-            const orderId = action.payload;
-
-            const updatedOrders = state.orders.map((order) => (order.id === orderId ? { ...order, status: 5 } : order));
-
-            state.orders = updatedOrders;
-        },
     },
 });
 
-export const {
-    setOrders,
-    setOrdered,
-    setConfirmed,
-    setDelivering,
-    setDelivered,
-    setCanceled,
-    setOrderDetails,
-    confirmOrder,
-    cancelOrder,
-} = orderSlice.actions;
+export const { setOrders, setOrdered, setConfirmed, setDelivering, setDelivered, setCanceled, setOrderDetails } =
+    orderSlice.actions;
 
 export default orderSlice.reducer;

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { setOrderDetails } from '../../redux/orderDetailSlice';
-import { cancelOrder, confirmOrder } from '../../redux/orderSlice';
+import { setOrders, setOrdered, setConfirmed, setDelivering, setDelivered, setCanceled } from '../../redux/orderSlice';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
 
@@ -36,12 +36,19 @@ function OrderRow({ data }) {
     const handleConfirm = (id) => {
         async function fetchData() {
             try {
-                const res = await axiosInstance(`order/confirm/${id}`);
-                dispatch(confirmOrder(id));
+                const confirmRes = await axiosInstance.get(`order/confirm/${id}`);
+                const ordersRes = await axiosInstance.get('/order');
+
+                dispatch(setOrders(ordersRes.data.data.orders));
+                dispatch(setOrdered(ordersRes.data.data.ordered));
+                dispatch(setConfirmed(ordersRes.data.data.confirmed));
+                dispatch(setDelivering(ordersRes.data.data.delivering));
+                dispatch(setDelivered(ordersRes.data.data.delivered));
+                dispatch(setCanceled(ordersRes.data.data.canceled));
 
                 Swal.fire({
                     icon: 'success',
-                    title: res.data.message,
+                    title: confirmRes.data.message,
                     timer: 2000,
                 });
             } catch (error) {
@@ -58,18 +65,26 @@ function OrderRow({ data }) {
             text: 'Bạn sẽ không thể khôi phục hoá đơn đã huỷ!',
             icon: 'warning',
             showCancelButton: true,
+            confirmButtonText: 'Vâng, tôi muốn huỷ',
             confirmButtonColor: '#3085d6',
+            cancelButtonText: 'Huỷ',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Vâng, tôi muốn huỷ!',
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await axiosInstance(`order/cancel/${id}`);
-                    dispatch(cancelOrder);
+                    const cancelRes = await axiosInstance.get(`order/cancel/${id}`);
+                    const ordersRes = await axiosInstance.get('/order');
+
+                    dispatch(setOrders(ordersRes.data.data.orders));
+                    dispatch(setOrdered(ordersRes.data.data.ordered));
+                    dispatch(setConfirmed(ordersRes.data.data.confirmed));
+                    dispatch(setDelivering(ordersRes.data.data.delivering));
+                    dispatch(setDelivered(ordersRes.data.data.delivered));
+                    dispatch(setCanceled(ordersRes.data.data.canceled));
 
                     Swal.fire({
                         icon: 'success',
-                        title: res.data.message,
+                        title: cancelRes.data.message,
                         timer: 2000,
                     });
                 } catch (error) {
