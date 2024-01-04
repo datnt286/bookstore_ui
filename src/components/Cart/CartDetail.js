@@ -2,10 +2,14 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../../redux/cartSlice';
 import { Link } from 'react-router-dom';
+import axiosInstance from '../../services/axiosInstance';
+import Swal from 'sweetalert2';
 
 function CartDetail({ product }) {
     const [quantity, setQuantity] = useState(product.quantity);
     const [amount, setAmount] = useState(parseInt(product.price) * parseInt(product.quantity));
+    const [productQuantity, setProductQuantity] = useState(null);
+    const [loadingQuantity, setLoadingQuantity] = useState(true);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -13,17 +17,74 @@ function CartDetail({ product }) {
         dispatch(updateQuantity({ slug: product.slug, quantity }));
     }, [product.price, quantity, dispatch, product.slug]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await axiosInstance.get(`/${product.slug}`);
+                setProductQuantity(res.data.data.quantity);
+                setLoadingQuantity(false);
+            } catch (error) {
+                console.error('Lỗi :', error);
+            }
+        };
+
+        if (productQuantity === null) {
+            fetchData();
+        }
+    }, [product.slug, productQuantity]);
+
     const handleQuantityChange = (value) => {
-        setQuantity((prevQuantity) => Math.max(1, prevQuantity + value));
+        if (loadingQuantity) {
+            return;
+        }
+
+        const newQuantity = Math.max(1, quantity + value);
+
+        if (newQuantity > productQuantity) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Số lượng sản phẩm không đủ!',
+                timer: 2000,
+            });
+            return;
+        }
+
+        setQuantity(newQuantity);
     };
 
     const handleQuantityInputChange = (event) => {
+        if (loadingQuantity) {
+            return;
+        }
+
         const value = parseInt(event.target.value);
-        setQuantity(isNaN(value) ? 0 : Math.max(1, value));
+
+        if (isNaN(value) || value < 0) {
+            return;
+        }
+
+        const newQuantity = Math.max(1, value);
+
+        if (newQuantity > productQuantity) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Số lượng sản phẩm không đủ!',
+                timer: 2000,
+            });
+            return;
+        }
+
+        setQuantity(newQuantity);
     };
 
     const handleDelete = (slug) => {
         dispatch(removeFromCart(slug));
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Xoá khỏi giỏ hàng thành công!',
+            timer: 2000,
+        });
     };
 
     return (

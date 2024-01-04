@@ -30,7 +30,7 @@ function BillingDetail() {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="Tên"
+                        placeholder="Họ tên"
                         className="form-control input"
                     />
                 </div>

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Footer() {
     return (
         <footer id="footer">
@@ -7,25 +9,21 @@ function Footer() {
                         <div className="col-md-3 col-xs-6">
                             <div className="footer">
                                 <h3 className="footer-title">Về chúng tôi</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut.
-                                </p>
                                 <ul className="footer-links">
                                     <li>
-                                        <a href="#">
+                                        <Link to="/lien-he">
                                             <i className="fa fa-map-marker"></i>1234 TP. HCM
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <Link to="/lien-he">
                                             <i className="fa fa-phone"></i>+0123456789
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <Link to="/lien-he">
                                             <i className="fa fa-envelope-o"></i>email@email.com
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -61,10 +59,10 @@ function Footer() {
                                 <h3 className="footer-title">Thông tin</h3>
                                 <ul className="footer-links">
                                     <li>
-                                        <a href="#">Về chúng tôi</a>
+                                        <Link to="/lien-he">Về chúng tôi</Link>
                                     </li>
                                     <li>
-                                        <a href="#">Liên hệ</a>
+                                        <Link to="/lien-he">Liên hệ</Link>
                                     </li>
                                     <li>
                                         <a href="#">Chính sách bảo mật</a>
@@ -114,7 +112,7 @@ function Footer() {
                                 <script>document.write(new Date().getFullYear());</script>
                                 All rights reserved | This template is made with
                                 <i className="fa fa-heart-o" aria-hidden="true"></i> by{' '}
-                                <a href="https://colorlib.com" target="_blank">
+                                <a href="https://colorlib.com" target="_blank" rel="noreferrer">
                                     Colorlib
                                 </a>
                             </span>

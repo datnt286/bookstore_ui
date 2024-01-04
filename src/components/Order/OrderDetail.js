@@ -36,6 +36,7 @@ function OrderDetail() {
                                     <th className="fs-2" scope="col">
                                         Thành tiền
                                     </th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,10 +63,13 @@ function OrderDetail() {
                                         <td className="order-detail align-middle">
                                             {parseInt(detail.quantity) * parseInt(detail.price)} đ
                                         </td>
+                                        <td className="align-middle">
+                                            <button className="btn btn-sm btn-danger">Đánh giá</button>
+                                        </td>
                                     </tr>
                                 ))}
                                 <tr>
-                                    <td colSpan="3" className="order-detail text-right">
+                                    <td colSpan="4" className="order-detail text-right">
                                         Tổng thành tiền:
                                     </td>
                                     <td className="order-detail fw-bold text-danger">{totalAmount} đ</td>

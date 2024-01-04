@@ -19,7 +19,7 @@ function ProductTab({ data }) {
                 </ul>
 
                 <div className="tab-content">
-                    <Description data={data}/>
+                    <Description data={data} />
                     <Reviews />
                 </div>
             </div>

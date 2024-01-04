@@ -27,12 +27,39 @@ function Detail({ data }) {
     };
 
     const handleQuantityChange = (value) => {
-        setQuantity((prevQuantity) => Math.max(1, prevQuantity + value));
+        const newQuantity = Math.max(1, quantity + value);
+
+        if (newQuantity > data.quantity) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Số lượng sản phẩm không đủ!',
+                timer: 3000,
+            });
+            return;
+        }
+
+        setQuantity(newQuantity);
     };
 
     const handleQuantityInputChange = (event) => {
         const value = parseInt(event.target.value);
-        setQuantity(Math.max(1, value));
+
+        if (isNaN(value) || value < 0) {
+            return;
+        }
+
+        const newQuantity = Math.max(1, value);
+
+        if (newQuantity > data.quantity) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Số lượng sản phẩm không đủ!',
+                timer: 2000,
+            });
+            return;
+        }
+
+        setQuantity(newQuantity);
     };
 
     const handleAddToCart = () => {
@@ -127,10 +154,12 @@ function Detail({ data }) {
                         {data.price} ₫ <del className="product-old-price">990.00 ₫</del>
                     </h3>
 
+                    <div>Số lượng có sẵn: {data.quantity}</div>
+
                     <div className="add-to-cart">
                         <div className="qty-label d-block mt-4">
-                            <span className="mx-4">Số lượng</span>
-                            <div className="input-number">
+                            <span>Số lượng</span>
+                            <div className="input-number mx-4">
                                 <input
                                     type="number"
                                     value={quantity}

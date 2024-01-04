@@ -4,7 +4,7 @@ function Pagination() {
             <ul className="store-pagination">
                 <li>
                     <a href="#">
-                        <i class="fa fa-angle-left"></i>
+                        <i className="fa fa-angle-left"></i>
                     </a>
                 </li>
                 <li className="active">1</li>

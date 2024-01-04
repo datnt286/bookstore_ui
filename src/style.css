@@ -65,6 +65,18 @@
     background-color: #b02a37;
 }
 
+.btn-warning {
+    background-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #ffca2c;
+}
+
+.btn-warning:focus {
+    background-color: #ffcd39;
+}
+
 /* Navigattion */
 .nav-item.active {
     color: #D10024;
@@ -174,7 +186,7 @@
     width: 30px;
     height: 31px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 500;
     padding: 0;
     border: 1px solid #333;
     text-align: center;
