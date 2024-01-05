@@ -47,7 +47,8 @@ function TopHeader() {
                         </li>
                         <li>
                             <Link to="/tai-khoan">
-                                <i className="fa fa-user-o"></i> {user.name}
+                                <img src={user.avatar_image} alt="Ảnh đại diện" className="avatar-img-header" />
+                                {user.name}
                             </Link>
                         </li>
                         <li onClick={handleLogout}>

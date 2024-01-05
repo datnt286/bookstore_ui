@@ -8,7 +8,7 @@ function CategoryPage() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchCategories() {
             try {
                 const res = await axiosInstance.get('/category');
                 setCategories(res.data.data);
@@ -17,7 +17,7 @@ function CategoryPage() {
             }
         }
 
-        fetchData();
+        fetchCategories();
     }, []);
 
     return (

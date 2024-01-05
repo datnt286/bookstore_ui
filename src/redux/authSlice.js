@@ -15,7 +15,9 @@ const authSlice = createSlice({
             state.user = null;
             state.token = null;
         },
-        updateUser: () => {},
+        updateUser: (state, action) => {
+            state.user = { ...action.payload.userData };
+        },
         updateUserBill: (state, action) => {
             state.user = { ...state.user, ...action.payload };
         },

@@ -6,16 +6,15 @@ import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
 
 function Login() {
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+    });
     const [showPassword, setShowPassword] = useState(false);
     const [validationErrors, setValidationErrors] = useState({});
     const [authenticationError, setAuthenticationError] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-    });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;

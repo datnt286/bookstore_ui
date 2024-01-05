@@ -8,7 +8,7 @@ function StorePage() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchProducts() {
             try {
                 const res = await axiosInstance.get('/index');
                 setProducts(res.data.data);
@@ -17,7 +17,7 @@ function StorePage() {
             }
         }
 
-        fetchData();
+        fetchProducts();
     }, []);
 
     return (

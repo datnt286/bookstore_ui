@@ -51,6 +51,7 @@ function ChangePassword() {
             });
 
             resetFormData();
+            setAuthenticationError('');
 
             Swal.fire({
                 icon: 'success',

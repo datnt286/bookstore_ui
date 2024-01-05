@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 function Account() {
     const user = useSelector((state) => state.auth);
     const [formData, setFormData] = useState({ ...user.user });
+    const [selectedAvatar, setSelectedAvatar] = useState(null);
     const [errors, setErrors] = useState({});
     const dispatch = useDispatch();
 
@@ -24,12 +25,34 @@ function Account() {
         });
     };
 
+    const handleAvatarChange = (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onloadend = () => {
+                setSelectedAvatar(reader.result);
+            };
+
+            reader.readAsDataURL(file);
+
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                avatar: file,
+            }));
+        }
+    };
+
     async function handleSubmit(event) {
         event.preventDefault();
 
         try {
             const res = await axiosInstance.post('/update', formData, {
-                headers: { Authorization: 'Bearer ' + user.token },
+                headers: {
+                    Authorization: 'Bearer ' + user.token,
+                    'Content-Type': 'multipart/form-data',
+                },
             });
 
             const userData = await axiosInstance.get('/me', {
@@ -60,12 +83,31 @@ function Account() {
 
     return (
         <div id="account" className="active tab-pane">
-            <form>
+            <form encType="multipart/form-data">
                 <div className="row d-flex justify-content-center">
-                    <div className="col-md-5">
-                        <div className="section-title text-center">
-                            <h3 className="title">Thông tin tài khoản</h3>
+                    <div className="section-title text-center">
+                        <h3 className="title">Thông tin tài khoản</h3>
+                    </div>
+                    <div className="col-md-2">
+                        <div className="text-center">
+                            <img
+                                src={selectedAvatar || user.user.avatar_image}
+                                alt="Ảnh đại diện"
+                                className="profile-user-img img-fluid img-circle avatar-img"
+                            />
+                            <input
+                                type="file"
+                                name="avatar"
+                                id="avatar"
+                                className="d-none"
+                                onChange={handleAvatarChange}
+                            ></input>
+                            <label htmlFor="avatar" className="btn btn-secondary my-3">
+                                Chọn ảnh
+                            </label>
                         </div>
+                    </div>
+                    <div className="col-md-5">
                         <div className="form-group">
                             <input
                                 type="text"
@@ -81,9 +123,9 @@ function Account() {
                                 type="text"
                                 name="name"
                                 value={formData.name}
-                                onChange={handleInputChange}
-                                placeholder="Tên"
+                                placeholder="Họ tên"
                                 className={`form-control input ${errors.name ? 'is-invalid' : ''}`}
+                                onChange={handleInputChange}
                             />
                             <div className="invalid-feedback name-error">{errors.name}</div>
                         </div>
@@ -92,9 +134,9 @@ function Account() {
                                 type="text"
                                 name="phone"
                                 value={formData.phone}
-                                onChange={handleInputChange}
                                 placeholder="Điện thoại"
                                 className={`form-control input ${errors.phone ? 'is-invalid' : ''}`}
+                                onChange={handleInputChange}
                             />
                             <div className="invalid-feedback phone-error">{errors.phone}</div>
                         </div>
@@ -120,11 +162,11 @@ function Account() {
                             ></textarea>
                             <div className="invalid-feedback address-error">{errors.address}</div>
                         </div>
-                        <div className="text-center my-4">
-                            <button type="submit" onClick={handleSubmit} className="primary-btn w-50">
-                                Lưu
-                            </button>
-                        </div>
+                    </div>
+                    <div className="text-center my-4">
+                        <button type="submit" onClick={handleSubmit} className="primary-btn w-25">
+                            Lưu
+                        </button>
                     </div>
                 </div>
             </form>

@@ -4,8 +4,8 @@ import { updateUserBill } from '../../redux/authSlice';
 
 function BillingDetail() {
     const user = useSelector((state) => state.auth.user);
-    const dispatch = useDispatch();
     const [formData, setFormData] = useState({ ...user });
+    const dispatch = useDispatch();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;

@@ -18,7 +18,7 @@ function CartDetail({ product }) {
     }, [product.price, quantity, dispatch, product.slug]);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchProductQuantity = async () => {
             try {
                 const res = await axiosInstance.get(`/${product.slug}`);
                 setProductQuantity(res.data.data.quantity);
@@ -29,7 +29,7 @@ function CartDetail({ product }) {
         };
 
         if (productQuantity === null) {
-            fetchData();
+            fetchProductQuantity();
         }
     }, [product.slug, productQuantity]);
 

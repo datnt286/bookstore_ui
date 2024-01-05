@@ -8,7 +8,7 @@ function CombosPage() {
     const [combos, setCombos] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchCombos() {
             try {
                 const res = await axiosInstance.get('/get-combos');
                 setCombos(res.data.data);
@@ -17,7 +17,7 @@ function CombosPage() {
             }
         }
 
-        fetchData();
+        fetchCombos();
     }, []);
 
     return (

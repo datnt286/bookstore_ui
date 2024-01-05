@@ -77,6 +77,20 @@
     background-color: #ffcd39;
 }
 
+/* Avatar image */
+.avatar-img {
+    max-width: 100px;
+    max-height: 100px;
+    border: 1px solid #E4E7ED;
+}
+
+.avatar-img-header {
+    max-width: 16px;
+    max-height: 16px;
+    margin-right: 6px;
+    border-radius: 50%;
+}
+
 /* Navigattion */
 .nav-item.active {
     color: #D10024;

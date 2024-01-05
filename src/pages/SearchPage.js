@@ -11,7 +11,7 @@ function SearchPage() {
     const { keyword } = useParams();
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchProducts() {
             try {
                 const res = await axiosInstance.get(`/search/${keyword}`);
                 setProducts(res.data.data);
@@ -20,7 +20,7 @@ function SearchPage() {
             }
         }
 
-        fetchData();
+        fetchProducts();
     }, [keyword]);
 
     return (

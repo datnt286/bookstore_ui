@@ -12,7 +12,7 @@ function ProductsByCategoryPage() {
     const { categorySlug } = useParams();
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchProducts() {
             try {
                 const res = await axiosInstance.get(`/category/${categorySlug}`);
                 setBooks(res.data.data.books);
@@ -22,7 +22,7 @@ function ProductsByCategoryPage() {
             }
         }
 
-        fetchData();
+        fetchProducts();
     }, [categorySlug]);
 
     return (

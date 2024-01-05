@@ -8,7 +8,7 @@ function NewBooksPage() {
     const [newbooks, setNewbooks] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchNewBooks() {
             try {
                 const res = await axiosInstance.get('/get-newbooks');
                 setNewbooks(res.data.data);
@@ -17,7 +17,7 @@ function NewBooksPage() {
             }
         }
 
-        fetchData();
+        fetchNewBooks();
     }, []);
 
     return (

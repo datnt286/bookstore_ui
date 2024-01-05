@@ -12,7 +12,7 @@ function HomePage() {
     });
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchNewBooksAndCombos() {
             try {
                 const res = await axiosInstance.get('/get-newbooks-and-combos');
                 setProducts(res.data.data);
@@ -21,7 +21,7 @@ function HomePage() {
             }
         }
 
-        fetchData();
+        fetchNewBooksAndCombos();
     }, []);
 
     return (
