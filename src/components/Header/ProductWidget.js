@@ -22,7 +22,7 @@ function ProductWidget({ data }) {
                     <Link to={`/${data.slug}`}>{data.name}</Link>
                 </h3>
                 <h4 className="product-price">
-                    <span className="qty">{data.quantity}x</span>
+                    <span className="qty">{data.quantity} x</span>
                     {data.price.toLocaleString()} ₫
                 </h4>
             </div>

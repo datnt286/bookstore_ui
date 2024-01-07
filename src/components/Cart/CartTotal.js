@@ -20,12 +20,12 @@ function CartTotal() {
                     <h3>Tổng hoá đơn</h3>
 
                     <div className="d-flex justify-content-between my-5">
-                        <span className="cart-price-label">Tổng phụ</span>
+                        <span className="cart-price-label">Tổng thành tiền</span>
                         <span className="cart-price">{total.toLocaleString()} ₫</span>
                     </div>
 
                     <div className="d-flex justify-content-between my-5">
-                        <span className="cart-price-label">Tổng tiền</span>
+                        <span className="cart-price-label">Sau khi giảm</span>
                         <span className="cart-price">{total.toLocaleString()} ₫</span>
                     </div>
 

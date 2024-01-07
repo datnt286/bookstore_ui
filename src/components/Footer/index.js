@@ -12,7 +12,7 @@ function Footer() {
                                 <ul className="footer-links">
                                     <li>
                                         <Link to="/lien-he">
-                                            <i className="fa fa-map-marker"></i>1234 TP. HCM
+                                            <i className="fa fa-map-marker"></i>3/2 TP. HCM
                                         </Link>
                                     </li>
                                     <li>
@@ -22,7 +22,7 @@ function Footer() {
                                     </li>
                                     <li>
                                         <Link to="/lien-he">
-                                            <i className="fa fa-envelope-o"></i>email@email.com
+                                            <i className="fa fa-envelope-o"></i>ddlbookstore@gmail.com
                                         </Link>
                                     </li>
                                 </ul>

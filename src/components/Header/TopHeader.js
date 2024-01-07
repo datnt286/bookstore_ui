@@ -34,7 +34,7 @@ function TopHeader() {
                     </li>
                     <li>
                         <Link to="/lien-he">
-                            <i className="fa fa-map-marker"></i> TP. HCM
+                            <i className="fa fa-map-marker"></i> 3/2 TP. HCM
                         </Link>
                     </li>
                 </ul>

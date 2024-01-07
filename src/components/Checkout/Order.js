@@ -67,14 +67,14 @@ function Order() {
                     })}
                 </div>
                 <div className="order-col">
-                    <div>Phí vận chuyển</div>
                     <div>
-                        <strong>Miễn phí</strong>
+                        <strong>Phí vận chuyển</strong>
                     </div>
+                    <div>Miễn phí</div>
                 </div>
                 <div className="order-col">
                     <div>
-                        <strong>Tổng tiền</strong>
+                        <strong>Tổng thành tiền</strong>
                     </div>
                     <div>
                         <strong className="order-total">{cart.total.toLocaleString()} ₫</strong>

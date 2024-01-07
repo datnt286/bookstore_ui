@@ -3,7 +3,6 @@ import ReviewForm from './ReviewForm';
 import ReviewRow from './ReviewRow';
 
 function Reviews({ data }) {
-    console.log(data)
     return (
         <div id="reviews" className="tab-pane fade in">
             <div className="row">
