@@ -21,12 +21,12 @@ function CartTotal() {
 
                     <div className="d-flex justify-content-between my-5">
                         <span className="cart-price-label">Tổng phụ</span>
-                        <span className="cart-price">{total} ₫</span>
+                        <span className="cart-price">{total.toLocaleString()} ₫</span>
                     </div>
 
                     <div className="d-flex justify-content-between my-5">
                         <span className="cart-price-label">Tổng tiền</span>
-                        <span className="cart-price">{total} ₫</span>
+                        <span className="cart-price">{total.toLocaleString()} ₫</span>
                     </div>
 
                     <Link to={checkoutLink}>

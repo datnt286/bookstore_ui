@@ -39,10 +39,10 @@ function OrderDetail() {
                                         Sản phẩm
                                     </th>
                                     <th className="fs-2" scope="col">
-                                        Số lượng
+                                        Giá bán
                                     </th>
                                     <th className="fs-2" scope="col">
-                                        Giá bán
+                                        Số lượng
                                     </th>
                                     <th className="fs-2" scope="col">
                                         Thành tiền
@@ -70,10 +70,13 @@ function OrderDetail() {
                                                     <span className="order-detail">{detail.product_name}</span>
                                                 </Link>
                                             </td>
-                                            <td className="order-detail align-middle">{detail.quantity}</td>
-                                            <td className="order-detail align-middle">{detail.price} đ</td>
                                             <td className="order-detail align-middle">
-                                                {parseInt(detail.quantity) * parseInt(detail.price)} đ
+                                                {detail.price.toLocaleString()} ₫
+                                            </td>
+                                            <td className="order-detail align-middle">{detail.quantity}</td>
+                                            <td className="order-detail align-middle">
+                                                {(parseInt(detail.quantity) * parseInt(detail.price)).toLocaleString()}{' '}
+                                                ₫
                                             </td>
                                             {orderDetail.status === 4 && (
                                                 <td className="align-middle">

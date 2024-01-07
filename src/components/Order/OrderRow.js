@@ -97,7 +97,7 @@ function OrderRow({ data }) {
     return (
         <tr>
             <td className="align-middle">{data.order_date}</td>
-            <td className="align-middle">{data.total} đ</td>
+            <td className="align-middle">{data.total.toLocaleString()} ₫</td>
             <td className="align-middle">{getStatusText(data.status)}</td>
             <td className="align-middle">
                 <button

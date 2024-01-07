@@ -61,7 +61,7 @@ function Order() {
                             <div key={index} className="order-col">
                                 <div>{product.name}</div>
                                 <div>x {product.quantity}</div>
-                                <div>{parseInt(product.quantity) * parseInt(product.price)} ₫</div>
+                                <div>{(parseInt(product.quantity) * parseInt(product.price)).toLocaleString()} ₫</div>
                             </div>
                         );
                     })}
@@ -77,7 +77,7 @@ function Order() {
                         <strong>Tổng tiền</strong>
                     </div>
                     <div>
-                        <strong className="order-total">{cart.total} ₫</strong>
+                        <strong className="order-total">{cart.total.toLocaleString()} ₫</strong>
                     </div>
                 </div>
             </div>

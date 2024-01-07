@@ -95,7 +95,7 @@ function CartRow({ product }) {
                     <span className="cart-detail mx-2">{product.name}</span>
                 </Link>
             </td>
-            <td className="cart-detail align-middle">{product.price} ₫</td>
+            <td className="cart-detail align-middle">{product.price.toLocaleString()} ₫</td>
             <td className="align-middle">
                 <button onClick={() => handleQuantityChange(-1)} className="btn-quantity">
                     -
@@ -111,7 +111,7 @@ function CartRow({ product }) {
                 </button>
             </td>
             <td className="cart-detail align-middle">
-                <span>{amount} ₫</span>
+                <span>{amount.toLocaleString()} ₫</span>
             </td>
             <td className="cart-detail align-middle">
                 <button onClick={() => handleDelete(product.slug)} className="btn-delete">
