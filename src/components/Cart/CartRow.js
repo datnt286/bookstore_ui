@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
 
-function CartDetail({ product }) {
+function CartRow({ product }) {
     const [quantity, setQuantity] = useState(product.quantity);
     const [amount, setAmount] = useState(parseInt(product.price) * parseInt(product.quantity));
     const [productQuantity, setProductQuantity] = useState(null);
@@ -122,4 +122,4 @@ function CartDetail({ product }) {
     );
 }
 
-export default CartDetail;
+export default CartRow;

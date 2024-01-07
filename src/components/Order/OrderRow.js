@@ -24,10 +24,10 @@ function OrderRow({ data }) {
         }
     };
 
-    const handleDetailClick = async (id) => {
+    const handleDetailClick = async (id, status) => {
         try {
             const res = await axiosInstance.get(`/order/details/${id}`);
-            dispatch(setOrderDetails(res.data.data));
+            dispatch(setOrderDetails({ items: res.data.data, status }));
         } catch (error) {
             console.error('Lỗi: ', error);
         }
@@ -102,7 +102,7 @@ function OrderRow({ data }) {
             <td className="align-middle">
                 <button
                     className="btn btn-primary mx-1"
-                    onClick={() => handleDetailClick(data.id)}
+                    onClick={() => handleDetailClick(data.id, data.status)}
                     data-toggle="modal"
                     data-target="#orderDetail"
                 >

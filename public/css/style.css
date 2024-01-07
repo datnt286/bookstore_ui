@@ -1774,23 +1774,34 @@ textarea.input {
 
 .reviews li {
   position: relative;
-  padding-left: 145px;
+  padding-left: 170px;
   margin-bottom: 30px;
 }
 
 .reviews .review-heading {
   position: absolute;
-  width: 130px;
+  width: 170px;
   left: 0;
   top: 0;
   height: 70px;
+  padding-top: 4px;
+  display: flex;
 }
 
 .reviews .review-body {
   min-height: 70px;
 }
 
+.reviews .review-heading .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
 .reviews .review-heading .name {
+  min-width: 50px;
+  font-size: 12px;
   margin-bottom: 5px;
   margin-top: 0px;
 }
@@ -1803,6 +1814,7 @@ textarea.input {
 
 .reviews .review-heading .review-rating {
   margin-top: 5px;
+  text-align: left;
 }
 
 .reviews .review-heading .review-rating>i {

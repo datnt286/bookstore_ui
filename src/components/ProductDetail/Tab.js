@@ -20,7 +20,7 @@ function ProductTab({ data }) {
 
                 <div className="tab-content">
                     <Description data={data} />
-                    <Reviews />
+                    <Reviews data={data}/>
                 </div>
             </div>
         </div>

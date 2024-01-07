@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import CartDetail from './CartDetail';
+import CartRow from './CartRow';
 
 function CartTable() {
     const cart = useSelector((state) => state.cart.items);
@@ -27,7 +27,7 @@ function CartTable() {
                     </thead>
                     <tbody>
                         {cart.map((product, index) => {
-                            return <CartDetail key={index} product={product} />;
+                            return <CartRow key={index} product={product} />;
                         })}
                     </tbody>
                 </table>

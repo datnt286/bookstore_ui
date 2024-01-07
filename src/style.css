@@ -352,3 +352,30 @@
     max-height: 120px;
     margin-right: 10px;
 }
+
+/* Review */
+#review {}
+
+.review-input {
+    width: 75%;
+}
+
+.stars-wrapper {
+    margin: 8px 0;
+}
+
+.stars {
+    display: inline;
+}
+
+.review-rating {
+    text-align: center;
+}
+
+.btn-review {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 16px;
+    margin-top: 8px;
+    border-radius: 20px;
+}

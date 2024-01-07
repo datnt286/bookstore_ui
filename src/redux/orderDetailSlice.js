@@ -2,10 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const orderDetailSlice = createSlice({
     name: 'orderDetail',
-    initialState: [],
+    initialState: {
+        items: [],
+        status: null,
+    },
     reducers: {
         setOrderDetails: (state, action) => {
-            return action.payload;
+            state.items = action.payload.items || [];
+            state.status = action.payload.status || null;
         },
     },
 });

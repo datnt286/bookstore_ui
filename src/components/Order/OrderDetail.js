@@ -1,12 +1,23 @@
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Review from './Review';
 
 function OrderDetail() {
-    const orderDetails = useSelector((state) => state.orderDetail);
+    const orderDetail = useSelector((state) => state.orderDetail);
+    const [reviewVisible, setReviewVisible] = useState(false);
 
-    const totalAmount = orderDetails.reduce((total, detail) => {
+    const totalAmount = orderDetail.items.reduce((total, detail) => {
         return total + parseInt(detail.quantity) * parseInt(detail.price);
     }, 0);
+
+    const handleReviewClick = () => {
+        setReviewVisible(true);
+    };
+
+    const hideReview = () => {
+        setReviewVisible(false);
+    };
 
     return (
         <div className="modal fade" id="orderDetail" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -40,36 +51,52 @@ function OrderDetail() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {orderDetails.map((detail) => (
-                                    <tr key={detail.id}>
-                                        <td className="align-middle d-flex align-items-center">
-                                            <Link
-                                                to={`/${detail.product_slug}`}
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    window.location.href = `/${detail.product_slug}`;
-                                                }}
-                                            >
-                                                <img
-                                                    className="order-detail-image"
-                                                    src={detail.product_image}
-                                                    alt={detail.name || 'Hình ảnh'}
-                                                />
-                                                <span className="order-detail">{detail.product_name}</span>
-                                            </Link>
-                                        </td>
-                                        <td className="order-detail align-middle">{detail.quantity}</td>
-                                        <td className="order-detail align-middle">{detail.price} đ</td>
-                                        <td className="order-detail align-middle">
-                                            {parseInt(detail.quantity) * parseInt(detail.price)} đ
-                                        </td>
-                                        <td className="align-middle">
-                                            <button className="btn btn-sm btn-danger">Đánh giá</button>
-                                        </td>
-                                    </tr>
+                                {orderDetail.items.map((detail) => (
+                                    <React.Fragment key={detail.id}>
+                                        <tr>
+                                            <td className="align-middle d-flex align-items-center">
+                                                <Link
+                                                    to={`/${detail.product_slug}`}
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        window.location.href = `/${detail.product_slug}`;
+                                                    }}
+                                                >
+                                                    <img
+                                                        className="order-detail-image"
+                                                        src={detail.product_image}
+                                                        alt={detail.name || 'Hình ảnh'}
+                                                    />
+                                                    <span className="order-detail">{detail.product_name}</span>
+                                                </Link>
+                                            </td>
+                                            <td className="order-detail align-middle">{detail.quantity}</td>
+                                            <td className="order-detail align-middle">{detail.price} đ</td>
+                                            <td className="order-detail align-middle">
+                                                {parseInt(detail.quantity) * parseInt(detail.price)} đ
+                                            </td>
+                                            {orderDetail.status === 4 && (
+                                                <td className="align-middle">
+                                                    <button
+                                                        className="btn btn-sm btn-danger"
+                                                        onClick={handleReviewClick}
+                                                    >
+                                                        Đánh giá
+                                                    </button>
+                                                </td>
+                                            )}
+                                        </tr>
+                                        <tr>
+                                            <td colSpan="5">
+                                                {reviewVisible && (
+                                                    <Review orderDetailId={detail.id} hideReview={hideReview} />
+                                                )}
+                                            </td>
+                                        </tr>
+                                    </React.Fragment>
                                 ))}
                                 <tr>
-                                    <td colSpan="4" className="order-detail text-right">
+                                    <td colSpan="3" className="order-detail text-right">
                                         Tổng thành tiền:
                                     </td>
                                     <td className="order-detail fw-bold text-danger">{totalAmount} đ</td>
