@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axiosInstance from '../../../services/axiosInstance';
 
-function CommentForm({ data, onCommentSubmitted }) {
+function CommentForm({ data, parent_id, onCommentSubmitted }) {
     const user = useSelector((state) => state.auth.user);
     const [content, setContent] = useState('');
 
@@ -13,6 +13,7 @@ function CommentForm({ data, onCommentSubmitted }) {
             const comment = {
                 customer_id: user.id,
                 content: content,
+                parent_id: parent_id,
                 ...(data.is_combo ? { combo_id: data.id, book_id: null } : { book_id: data.id, combo_id: null }),
             };
 
@@ -32,7 +33,7 @@ function CommentForm({ data, onCommentSubmitted }) {
                 <img className="avatar" src={user.avatar_image} alt="Ảnh đại diện" />
                 <h5 className="name">Bạn</h5>
                 <textarea
-                    className="form-control"
+                    className="form-control comment-input"
                     value={content}
                     onChange={(event) => setContent(event.target.value)}
                     placeholder="Nhập bình luận của bạn"

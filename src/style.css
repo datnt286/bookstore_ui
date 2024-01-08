@@ -416,6 +416,21 @@
     margin-right: 6px;
 }
 
+.comment-body {
+    display: block;
+    width: 500px;
+}
+
+.replying {
+    position: relative;
+}
+
+.replying .comment-body {
+    margin-bottom: 100px;
+    /* Điều chỉnh giá trị theo nhu cầu */
+}
+
+
 .list-comments>li {
     display: flex;
     padding: 10px 0;
@@ -429,7 +444,19 @@
     margin-right: 6px;
 }
 
+.comment-input {
+    flex: 1;
+}
+
 .reply:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.replying {
+    position: relative;
+}
+
+.replying .comment-body {
+    margin-bottom: 40px;
 }
