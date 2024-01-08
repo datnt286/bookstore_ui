@@ -1,5 +1,6 @@
 import Description from './Description';
 import Reviews from './Reviews';
+import Comments from './Comments';
 
 function ProductTab({ data }) {
     return (
@@ -16,11 +17,17 @@ function ProductTab({ data }) {
                             Đánh giá (3)
                         </a>
                     </li>
+                    <li>
+                        <a data-toggle="tab" href="#comments">
+                            Bình luận (3)
+                        </a>
+                    </li>
                 </ul>
 
                 <div className="tab-content">
                     <Description data={data} />
-                    <Reviews data={data}/>
+                    <Reviews data={data} />
+                    <Comments data={data} />
                 </div>
             </div>
         </div>

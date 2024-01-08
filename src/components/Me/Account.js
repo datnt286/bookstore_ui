@@ -83,7 +83,7 @@ function Account() {
 
     return (
         <div id="account" className="active tab-pane">
-            <form encType="multipart/form-data">
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="row d-flex justify-content-center">
                     <div className="section-title text-center">
                         <h3 className="title">Thông tin tài khoản</h3>
@@ -164,7 +164,7 @@ function Account() {
                         </div>
                     </div>
                     <div className="text-center my-4">
-                        <button type="submit" onClick={handleSubmit} className="primary-btn w-25">
+                        <button type="submit" className="primary-btn w-25">
                             Lưu
                         </button>
                     </div>

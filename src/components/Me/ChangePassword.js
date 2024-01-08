@@ -78,7 +78,7 @@ function ChangePassword() {
 
     return (
         <div id="change-password" className="tab-pane">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-5">
                         <div className="section-title text-center">
@@ -140,7 +140,7 @@ function ChangePassword() {
                         </div>
 
                         <div className="text-center my-4">
-                            <button type="submit" onClick={handleSubmit} className="primary-btn w-50">
+                            <button type="submit" className="primary-btn w-50">
                                 Lưu
                             </button>
                         </div>

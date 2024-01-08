@@ -29,7 +29,7 @@ function Review({ orderDetailId, hideReview }) {
 
     return (
         <div id="review row">
-            <form>
+            <form onSubmit={handlePostReview}>
                 <textarea
                     value={content}
                     className="form-control input review-input col-md-9"
@@ -52,9 +52,7 @@ function Review({ orderDetailId, hideReview }) {
                             <label htmlFor="star5"></label>
                         </div>
                     </div>
-                    <button className="btn btn-sm btn-danger btn-review" onClick={handlePostReview}>
-                        Đăng
-                    </button>
+                    <button className="btn btn-sm btn-danger btn-review">Đăng</button>
                 </div>
             </form>
         </div>

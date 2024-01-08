@@ -74,7 +74,7 @@ function Login() {
     return (
         <div id="login" className="section">
             <div className="container">
-                <form>
+                <form onSubmit={handleLogin}>
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-4">
                             <div className="section-title text-center">
@@ -124,7 +124,7 @@ function Login() {
                             </div>
 
                             <div className="text-center my-4">
-                                <button type="submit" onClick={handleLogin} className="primary-btn w-100">
+                                <button type="submit" className="primary-btn w-100">
                                     Đăng nhập
                                 </button>
                             </div>

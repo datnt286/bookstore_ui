@@ -68,7 +68,7 @@ function Register() {
     return (
         <div id="register" className="section">
             <div className="container">
-                <form>
+                <form onSubmit={handleRegister}>
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-4">
                             <div className="section-title text-center">
@@ -146,7 +146,7 @@ function Register() {
                             </div>
 
                             <div className="text-center my-4">
-                                <button type="submit" onClick={handleRegister} className="primary-btn w-100">
+                                <button type="submit" className="primary-btn w-100">
                                     Đăng ký
                                 </button>
                             </div>

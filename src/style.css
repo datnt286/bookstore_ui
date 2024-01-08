@@ -379,3 +379,57 @@
     margin-top: 8px;
     border-radius: 20px;
 }
+
+/* Comment */
+#comments {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.comment-form {
+    display: flex;
+    margin-bottom: 14px;
+}
+
+.comment-form .name {
+    margin: 6px 8px 0 0;
+}
+
+.btn-comment {
+    display: inline-block;
+    height: 40px;
+    padding: 0 20px;
+    margin-top: 8px;
+    margin-left: 8px;
+    background-color: #D10024;
+    border: none;
+    border-radius: 40px;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+}
+
+.comment-heading {
+    display: flex;
+    padding-top: 2px;
+    margin-right: 6px;
+}
+
+.list-comments>li {
+    display: flex;
+    padding: 10px 0;
+}
+
+.comment-form .avatar,
+.comment-heading .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.reply:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
