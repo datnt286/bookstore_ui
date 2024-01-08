@@ -3,6 +3,7 @@ import CommentForm from './CommentForm';
 
 function CommentRow({ data, comment }) {
     const [isReplying, setIsReplying] = useState(false);
+    const parent_id = comment.parent_id ? comment.parent_id : comment.id;
 
     const toggleReplyForm = () => {
         setIsReplying(!isReplying);
@@ -26,8 +27,13 @@ function CommentRow({ data, comment }) {
                 </div>
             </li>
 
+            {comment.replys &&
+                comment.replys.map((reply, index) => {
+                    return <CommentRow key={index} data={data} comment={reply} />;
+                })}
+
             {isReplying && (
-                <CommentForm data={data} parent_id={comment.id} onCommentSubmitted={() => setIsReplying(false)} />
+                <CommentForm data={data} parent_id={parent_id} onCommentSubmitted={() => setIsReplying(false)} />
             )}
         </>
     );
