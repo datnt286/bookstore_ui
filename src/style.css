@@ -443,16 +443,12 @@
     cursor: pointer;
 }
 
-.replying {
+.reply-row {
     position: relative;
 }
 
-.replying .comment-body {
+.reply-row .comment-body {
     margin-bottom: 40px;
-}
-
-.reply-row {
-    padding-left: 10px;
 }
 
 .reply-form {
