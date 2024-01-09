@@ -29,11 +29,11 @@ function CommentForm({ data, parent_id, onCommentSubmitted }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="comment-form">
+            <div className={`comment-form ${parent_id ? 'reply-form' : ''}`}>
                 <img className="avatar" src={user.avatar_image} alt="Ảnh đại diện" />
                 <h5 className="name">Bạn</h5>
                 <textarea
-                    className="form-control comment-input"
+                    className="form-control"
                     value={content}
                     onChange={(event) => setContent(event.target.value)}
                     placeholder="Nhập bình luận của bạn"

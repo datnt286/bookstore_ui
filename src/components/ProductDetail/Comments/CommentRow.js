@@ -11,18 +11,18 @@ function CommentRow({ data, comment, setCommentSubmitted }) {
 
     return (
         <>
-            <li className={isReplying ? 'replying' : ''}>
+            <li className={`comment-row ${isReplying ? 'replying' : ''}`}>
                 <div className="comment-heading">
                     <img className="avatar" src={comment.customer.avatar_image} alt="Ảnh đại diện" />
-                    <div>
+                    <div className="comment-user">
                         <h5 className="name">{comment.customer.name}</h5>
                         <p className="date">{comment.comment_date}</p>
-                        <span className="reply" onClick={toggleReplyForm}>
+                        <span className="btn-reply" onClick={toggleReplyForm}>
                             Phản hồi
                         </span>
                     </div>
                 </div>
-                <div className="comment-body">
+                <div className={`comment-body ${comment.parent_id ? 'reply-body' : ''}`}>
                     <p>{comment.content}</p>
                 </div>
             </li>

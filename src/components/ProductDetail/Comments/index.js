@@ -29,7 +29,7 @@ function Comments({ data }) {
     return (
         <div id="comments" className="tab-pane fade in">
             <CommentForm data={data} parent_id={null} onCommentSubmitted={() => setCommentSubmitted(true)} />
-            <ul className="list-comments">
+            <ul className="comments-wrapper">
                 {comments.length > 0 ? (
                     comments.map((comment, index) => {
                         return (

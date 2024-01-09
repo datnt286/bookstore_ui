@@ -354,8 +354,6 @@
 }
 
 /* Review */
-#review {}
-
 .review-input {
     width: 75%;
 }
@@ -389,6 +387,7 @@
 .comment-form {
     display: flex;
     margin-bottom: 14px;
+    justify-content: end;
 }
 
 .comment-form .name {
@@ -410,29 +409,9 @@
     text-align: center;
 }
 
-.comment-heading {
+.comment-row {
     display: flex;
-    padding-top: 2px;
-    margin-right: 6px;
-}
-
-.comment-body {
-    display: block;
-    width: 500px;
-}
-
-.replying {
-    position: relative;
-}
-
-.replying .comment-body {
-    margin-bottom: 100px;
-    /* Điều chỉnh giá trị theo nhu cầu */
-}
-
-
-.list-comments>li {
-    display: flex;
+    justify-content: end;
     padding: 10px 0;
 }
 
@@ -444,11 +423,22 @@
     margin-right: 6px;
 }
 
-.comment-input {
-    flex: 1;
+.comment-heading {
+    display: flex;
+    padding-top: 2px;
 }
 
-.reply:hover {
+.comment-user {
+    width: 160px;
+}
+
+.comment-body {
+    display: block;
+    width: 600px;
+    padding-left: 6px;
+}
+
+.btn-reply:hover {
     text-decoration: underline;
     cursor: pointer;
 }
@@ -463,4 +453,12 @@
 
 .reply-row {
     padding-left: 10px;
+}
+
+.reply-form {
+    margin-left: 46px;
+}
+
+.reply-body {
+    width: 550px;
 }
