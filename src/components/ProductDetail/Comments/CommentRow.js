@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import CommentForm from './CommentForm';
 
-function CommentRow({ data, comment }) {
+function CommentRow({ data, comment, setCommentSubmitted }) {
     const [isReplying, setIsReplying] = useState(false);
     const parent_id = comment.parent_id ? comment.parent_id : comment.id;
 
@@ -27,14 +27,23 @@ function CommentRow({ data, comment }) {
                 </div>
             </li>
 
+            {isReplying && (
+                <CommentForm
+                    data={data}
+                    parent_id={parent_id}
+                    onCommentSubmitted={() => {
+                        setIsReplying(false);
+                        setCommentSubmitted(true);
+                    }}
+                />
+            )}
+
             {comment.replys &&
                 comment.replys.map((reply, index) => {
-                    return <CommentRow key={index} data={data} comment={reply} />;
+                    return (
+                        <CommentRow key={index} data={data} comment={reply} setCommentSubmitted={setCommentSubmitted} />
+                    );
                 })}
-
-            {isReplying && (
-                <CommentForm data={data} parent_id={parent_id} onCommentSubmitted={() => setIsReplying(false)} />
-            )}
         </>
     );
 }

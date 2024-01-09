@@ -460,3 +460,7 @@
 .replying .comment-body {
     margin-bottom: 40px;
 }
+
+.reply-row {
+    padding-left: 10px;
+}

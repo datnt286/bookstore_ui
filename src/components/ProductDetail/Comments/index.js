@@ -25,14 +25,21 @@ function Comments({ data }) {
 
         fetchComments();
     }, [commentSubmitted, data.is_combo, data.id]);
-    console.log(data);
+
     return (
         <div id="comments" className="tab-pane fade in">
             <CommentForm data={data} parent_id={null} onCommentSubmitted={() => setCommentSubmitted(true)} />
             <ul className="list-comments">
                 {comments.length > 0 ? (
                     comments.map((comment, index) => {
-                        return <CommentRow key={index} data={data} comment={comment} />;
+                        return (
+                            <CommentRow
+                                key={index}
+                                data={data}
+                                comment={comment}
+                                setCommentSubmitted={setCommentSubmitted}
+                            />
+                        );
                     })
                 ) : (
                     <p>Không có bình luận nào.</p>
