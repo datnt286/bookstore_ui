@@ -42,7 +42,7 @@ function Comments({ data }) {
                         );
                     })
                 ) : (
-                    <p>Không có bình luận nào.</p>
+                    <p>Chưa có bình luận.</p>
                 )}
             </ul>
         </div>

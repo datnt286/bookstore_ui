@@ -10,29 +10,35 @@ function Reviews({ data }) {
 
                 <div className="col-md-6">
                     <div id="reviews">
-                        <ul className="reviews">
-                            {data.reviews &&
-                                data.reviews.map((review, index) => {
-                                    return <ReviewRow key={index} data={review} />;
-                                })}
-                        </ul>
-                        <ul className="reviews-pagination">
-                            <li className="active">1</li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i className="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        {data.reviews > 0 ? (
+                            <>
+                                <ul className="reviews">
+                                    {data.reviews &&
+                                        data.reviews.map((review, index) => {
+                                            return <ReviewRow key={index} data={review} />;
+                                        })}
+                                </ul>
+                                <ul className="reviews-pagination">
+                                    <li className="active">1</li>
+                                    <li>
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">4</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i className="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </>
+                        ) : (
+                            <p>Chưa có đánh giá.</p>
+                        )}
                     </div>
                 </div>
 
