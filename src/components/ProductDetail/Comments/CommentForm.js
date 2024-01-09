@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axiosInstance from '../../../services/axiosInstance';
+import Swal from 'sweetalert2';
 
 function CommentForm({ data, parent_id, onCommentSubmitted }) {
     const user = useSelector((state) => state.auth.user);
@@ -23,7 +24,15 @@ function CommentForm({ data, parent_id, onCommentSubmitted }) {
             setContent('');
             onCommentSubmitted();
         } catch (error) {
-            console.error('Lỗi: ', error);
+            if (error.response.status === 403) {
+                Swal.fire({
+                    icon: 'error',
+                    title: error.response.data.message,
+                    timer: 3000,
+                });
+            } else {
+                console.error('Lỗi: ', error);
+            }
         }
     };
 

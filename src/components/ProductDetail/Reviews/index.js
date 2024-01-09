@@ -37,7 +37,7 @@ function Reviews({ data }) {
                                 </ul>
                             </>
                         ) : (
-                            <p>Chưa có đánh giá.</p>
+                            <p className="text-center">Chưa có đánh giá.</p>
                         )}
                     </div>
                 </div>

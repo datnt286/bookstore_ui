@@ -353,6 +353,11 @@
     margin-right: 10px;
 }
 
+/* Tab */
+#product-tab .tab-nav {
+    padding-bottom: 6px;
+}
+
 /* Review */
 .review-input {
     width: 75%;
@@ -382,6 +387,16 @@
 #comments {
     width: 70%;
     margin: 0 auto;
+}
+
+.comment-link {
+    color: #d10024;
+    font-weight: 500;
+    margin-left: 6px;
+}
+
+.comment-link:hover {
+    text-decoration: underline;
 }
 
 .comment-form {
@@ -452,9 +467,9 @@
 }
 
 .reply-form {
-    margin-left: 46px;
+    margin-left: 38px;
 }
 
 .reply-body {
-    width: 550px;
+    width: 543px;
 }

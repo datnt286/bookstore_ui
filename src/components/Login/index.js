@@ -46,7 +46,7 @@ function Login() {
 
             dispatch(login({ token: res.data.access_token, user: userData.data }));
 
-            navigate('/');
+            navigate(-1);
 
             Swal.fire({
                 icon: 'success',
