@@ -453,7 +453,12 @@
     padding-left: 6px;
 }
 
-.btn-reply:hover {
+.btn-detete-comment {
+    margin-left: 10px;
+}
+
+.btn-reply:hover,
+.btn-detete-comment:hover {
     text-decoration: underline;
     cursor: pointer;
 }

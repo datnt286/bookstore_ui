@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import CommentForm from './CommentForm';
 
 function CommentRow({ data, comment, setCommentSubmitted }) {
+    const user = useSelector((state) => state.auth.user);
     const [isReplying, setIsReplying] = useState(false);
     const parent_id = comment.parent_id ? comment.parent_id : comment.id;
 
@@ -20,6 +22,7 @@ function CommentRow({ data, comment, setCommentSubmitted }) {
                         <span className="btn-reply" onClick={toggleReplyForm}>
                             Phản hồi
                         </span>
+                        {user.id === comment.customer_id && <span className="btn-detete-comment">Xoá</span>}
                     </div>
                 </div>
                 <div className={`comment-body ${comment.parent_id ? 'reply-body' : ''}`}>
