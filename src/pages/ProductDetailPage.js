@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axiosInstance from '../services/axiosInstance';
-
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductDetail from '../components/ProductDetail';
 import ProductSection from '../components/ProductSection';

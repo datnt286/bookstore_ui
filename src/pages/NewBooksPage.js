@@ -2,26 +2,35 @@ import { useEffect, useState } from 'react';
 import axiosInstance from '../services/axiosInstance';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Products from '../components/Products';
+import Pagination from '../components/Pagination';
 
 function NewBooksPage() {
-    const [newbooks, setNewbooks] = useState([]);
+    const [newBooks, setNewBooks] = useState([]);
+    const [pageCount, setPageCount] = useState(1);
+
+    const fetchNewBooks = async (page = 1) => {
+        try {
+            const res = await axiosInstance.get(`/get-newbooks?page=${page}`);
+            setNewBooks(res.data.data);
+            setPageCount(Math.ceil(res.data.total / res.data.per_page));
+        } catch (error) {
+            console.error('Lỗi: ', error);
+        }
+    };
 
     useEffect(() => {
-        async function fetchNewBooks() {
-            try {
-                const res = await axiosInstance.get('/get-newbooks');
-                setNewbooks(res.data.data);
-            } catch (error) {
-                console.error('Lỗi: ', error);
-            }
-        }
-
         fetchNewBooks();
     }, []);
 
+    const handlePageChange = ({ selected }) => {
+        const page = selected + 1;
+        fetchNewBooks(page);
+    };
+
     return (
         <DefaultLayout>
-            <Products title="Sách mới" data={newbooks} />
+            <Products title="Sách mới" data={newBooks} />
+            <Pagination pageCount={pageCount} onPageChange={handlePageChange} />
         </DefaultLayout>
     );
 }

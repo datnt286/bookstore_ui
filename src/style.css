@@ -77,6 +77,16 @@
     background-color: #ffcd39;
 }
 
+/* Products */
+.products {
+    min-height: 2000px;
+}
+
+/* Store */
+.store {
+    min-height: 1855px;
+}
+
 /* Avatar image */
 .avatar-img {
     max-width: 100px;
@@ -477,4 +487,39 @@
 
 .reply-body {
     width: 543px;
+}
+
+/*-- Pagination --*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.page-item {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.page-link {
+    display: block;
+    padding: 8px 14px !important;
+    font-size: 14px;
+    border: 1px solid #E4E7ED !important;
+    color: #000 !important;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-link:hover {
+    background-color: #E4E7ED !important;
+    color: #D10024 !important;
+}
+
+.active .page-link {
+    background-color: #D10024 !important;
+    color: #fff !important;
+    cursor: default;
 }

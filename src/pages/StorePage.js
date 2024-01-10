@@ -2,26 +2,35 @@ import { useEffect, useState } from 'react';
 import axiosInstance from '../services/axiosInstance';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Store from '../components/Store';
+import Pagination from '../components/Pagination';
 
 function StorePage() {
     const [products, setProducts] = useState([]);
+    const [pageCount, setPageCount] = useState(1);
+
+    const fetchProducts = async (page = 1) => {
+        try {
+            const res = await axiosInstance.get(`/index?page=${page}`);
+            setProducts(res.data.data);
+            setPageCount(Math.ceil(res.data.total / res.data.per_page));
+        } catch (error) {
+            console.error('Lỗi: ', error);
+        }
+    };
 
     useEffect(() => {
-        async function fetchProducts() {
-            try {
-                const res = await axiosInstance.get('/index');
-                setProducts(res.data.data);
-            } catch (error) {
-                console.error('Lỗi: ', error);
-            }
-        }
-
         fetchProducts();
     }, []);
+
+    const handlePageChange = ({ selected }) => {
+        const page = selected + 1;
+        fetchProducts(page);
+    };
 
     return (
         <DefaultLayout>
             <Store data={products} />
+            <Pagination pageCount={pageCount} onPageChange={handlePageChange} />
         </DefaultLayout>
     );
 }

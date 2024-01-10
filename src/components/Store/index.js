@@ -3,7 +3,7 @@ import axiosInstance from '../../services/axiosInstance';
 import Aside from './Aside';
 import ProductGrid from './ProductGrid';
 
-function StoreSection({ data }) {
+function Store({ data }) {
     const [categories, setCategories] = useState([]);
     const [authors, setAuthors] = useState([]);
 
@@ -23,7 +23,7 @@ function StoreSection({ data }) {
     }, []);
 
     return (
-        <div className="section">
+        <div className="section store">
             <div className="container">
                 <div className="row">
                     <Aside categories={categories} authors={authors} />
@@ -34,4 +34,4 @@ function StoreSection({ data }) {
     );
 }
 
-export default StoreSection;
+export default Store;
