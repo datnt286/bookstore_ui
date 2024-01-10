@@ -12,7 +12,7 @@ function StorePage() {
         try {
             const res = await axiosInstance.get(`/index?page=${page}`);
             setProducts(res.data.data);
-            setPageCount(Math.ceil(res.data.total / res.data.per_page));
+            setPageCount(res.data.total_pages);
         } catch (error) {
             console.error('Lỗi: ', error);
         }

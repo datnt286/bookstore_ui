@@ -12,7 +12,7 @@ function NewBooksPage() {
         try {
             const res = await axiosInstance.get(`/get-newbooks?page=${page}`);
             setNewBooks(res.data.data);
-            setPageCount(Math.ceil(res.data.total / res.data.per_page));
+            setPageCount(res.data.total_pages);
         } catch (error) {
             console.error('Lỗi: ', error);
         }

@@ -8,14 +8,13 @@ import Pagination from '../components/Pagination';
 function SearchPage() {
     const [products, setProducts] = useState([]);
     const [pageCount, setPageCount] = useState(1);
-
     const { keyword } = useParams();
 
     const fetchProducts = async (page = 1) => {
         try {
             const res = await axiosInstance.get(`/search/${keyword}?page=${page}`);
             setProducts(res.data.data);
-            setPageCount(Math.ceil(res.data.total / res.data.per_page));
+            setPageCount(res.data.total_pages);
         } catch (error) {
             console.error('Lỗi: ', error);
         }
@@ -23,7 +22,7 @@ function SearchPage() {
 
     useEffect(() => {
         fetchProducts();
-    }, []);
+    }, [keyword]);
 
     const handlePageChange = ({ selected }) => {
         const page = selected + 1;

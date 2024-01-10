@@ -7,7 +7,6 @@ import Products from '../components/Products';
 function ProductsByCategoryPage() {
     const [books, setBooks] = useState([]);
     const [title, setTitle] = useState('');
-
     const { categorySlug } = useParams();
 
     useEffect(() => {

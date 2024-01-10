@@ -13,7 +13,6 @@ function ProductDetailPage() {
     const [combos, setCombos] = useState([]);
     const [relatedBooks, setRelatedBooks] = useState([]);
     const [categorySlug, setCategorySlug] = useState('');
-
     const { slug } = useParams();
 
     useEffect(() => {
