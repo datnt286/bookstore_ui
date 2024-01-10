@@ -1,7 +1,7 @@
 import Heading from './Heading';
 import ProductGrid from './ProductGrid';
 
-function RelatedBook({ data, slug, url }) {
+function RelatedBooks({ data, slug, url }) {
     return (
         <div className="section">
             <div className="container">
@@ -12,4 +12,4 @@ function RelatedBook({ data, slug, url }) {
     );
 }
 
-export default RelatedBook;
+export default RelatedBooks;

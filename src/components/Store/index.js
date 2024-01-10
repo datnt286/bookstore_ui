@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../services/axiosInstance';
-
 import Aside from './Aside';
 import ProductGrid from './ProductGrid';
 

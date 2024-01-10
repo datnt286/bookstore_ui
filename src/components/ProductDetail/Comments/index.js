@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axiosInstance from '../../../services/axiosInstance';
 import CommentForm from './CommentForm';
 import CommentRow from './CommentRow';
-import { Link } from 'react-router-dom';
 
 function Comments({ data }) {
     const isLoggedIn = useSelector((state) => state.auth.token !== null);

@@ -5,7 +5,7 @@ import axiosInstance from '../services/axiosInstance';
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductDetail from '../components/ProductDetail';
 import ProductSection from '../components/ProductSection';
-import RelatedBook from '../components/RelatedBook';
+import RelatedBooks from '../components/RelatedBooks';
 
 const EXPIRATION_DAYS = 30;
 
@@ -65,7 +65,7 @@ function ProductDetailPage() {
         <DefaultLayout>
             <ProductDetail data={product} />
             {product.combos && <ProductSection title="Combo" data={combos} url="/combo" />}
-            {!product.is_combo && <RelatedBook data={relatedBooks} slug={slug} url={`/danh-muc/${categorySlug}`} />}
+            {!product.is_combo && <RelatedBooks data={relatedBooks} slug={slug} url={`/danh-muc/${categorySlug}`} />}
         </DefaultLayout>
     );
 }

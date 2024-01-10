@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import TopHeader from './TopHeader';
 import Logo from '../../img/logo.png';
 import Search from './Search';

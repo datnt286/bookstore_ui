@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axiosInstance from '../services/axiosInstance';
-
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductSection from '../components/ProductSection';
 import HotDealBanner from '../components/HotDealBanner';

@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import axiosInstance from '../services/axiosInstance';
-
 import DefaultLayout from '../layouts/DefaultLayout';
-import Product from '../components/Product';
+import Products from '../components/Products';
 
 function NewBooksPage() {
     const [newbooks, setNewbooks] = useState([]);
@@ -22,7 +21,7 @@ function NewBooksPage() {
 
     return (
         <DefaultLayout>
-            <Product title="Sách mới" data={newbooks} />
+            <Products title="Sách mới" data={newbooks} />
         </DefaultLayout>
     );
 }

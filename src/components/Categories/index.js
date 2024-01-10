@@ -1,6 +1,6 @@
 import Category from './Category';
 
-function CategorySection({ data }) {
+function Categories({ data }) {
     const categories = data.map((category) => {
         return <Category key={category.id} data={category} />;
     });
@@ -14,4 +14,4 @@ function CategorySection({ data }) {
     );
 }
 
-export default CategorySection;
+export default Categories;

@@ -1,6 +1,6 @@
 import ProductGrid from './ProductGrid';
 
-function Product({ title, data }) {
+function Products({ title, data }) {
     return (
         <div className="section">
             <div className="container">
@@ -13,4 +13,4 @@ function Product({ title, data }) {
     );
 }
 
-export default Product;
+export default Products;

@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import axiosInstance from '../services/axiosInstance';
-
 import DefaultLayout from '../layouts/DefaultLayout';
-import Category from '../components/CategorySection';
+import Categories from '../components/Categories';
 
-function CategoryPage() {
+function CategoriesPage() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -22,9 +21,9 @@ function CategoryPage() {
 
     return (
         <DefaultLayout>
-            <Category data={categories} />
+            <Categories data={categories} />
         </DefaultLayout>
     );
 }
 
-export default CategoryPage;
+export default CategoriesPage;

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axiosInstance from '../services/axiosInstance';
-
 import DefaultLayout from '../layouts/DefaultLayout';
 import Store from '../components/Store';
 

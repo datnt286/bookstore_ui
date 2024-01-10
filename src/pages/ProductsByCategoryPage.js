@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axiosInstance from '../services/axiosInstance';
-
 import DefaultLayout from '../layouts/DefaultLayout';
-import Product from '../components/Product';
+import Products from '../components/Products';
 
 function ProductsByCategoryPage() {
     const [books, setBooks] = useState([]);
@@ -27,7 +26,7 @@ function ProductsByCategoryPage() {
 
     return (
         <DefaultLayout>
-            <Product title={title} data={books} />
+            <Products title={title} data={books} />
         </DefaultLayout>
     );
 }
