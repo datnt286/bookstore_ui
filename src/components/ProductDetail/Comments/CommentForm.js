@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 function CommentForm({ data, parent_id, onCommentSubmitted }) {
     const user = useSelector((state) => state.auth.user);
     const [content, setContent] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -22,9 +23,12 @@ function CommentForm({ data, parent_id, onCommentSubmitted }) {
             console.log(res.data.message);
 
             setContent('');
+            setError('');
             onCommentSubmitted();
         } catch (error) {
-            if (error.response.status === 403) {
+            if (error.response.status === 422) {
+                setError(error.response.data.message);
+            } else if (error.response.status === 403) {
                 Swal.fire({
                     icon: 'error',
                     title: error.response.data.message,
@@ -45,7 +49,7 @@ function CommentForm({ data, parent_id, onCommentSubmitted }) {
                     className="form-control"
                     value={content}
                     onChange={(event) => setContent(event.target.value)}
-                    placeholder="Nhập bình luận của bạn"
+                    placeholder={error ? `${error}` : 'Nhập bình luận của bạn'}
                 ></textarea>
                 <button type="submit" className="btn-comment">
                     Đăng

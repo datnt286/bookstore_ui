@@ -6,7 +6,7 @@ function Category({ data }) {
             <Link to={`/danh-muc/${data.slug}`}>
                 <div className="shop">
                     <div className="shop-img d-flex justify-content-center align-items-center">
-                        <img src={data.absolute_path} alt="" />
+                        <img src={data.absolute_path} alt="Hình ảnh" />
                     </div>
 
                     <div className="shop-body">

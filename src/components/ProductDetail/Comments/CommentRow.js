@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import axiosInstance from '../../../services/axiosInstance';
 import CommentForm from './CommentForm';
 
 function CommentRow({ data, comment, setCommentSubmitted }) {
@@ -9,6 +10,17 @@ function CommentRow({ data, comment, setCommentSubmitted }) {
 
     const toggleReplyForm = () => {
         setIsReplying(!isReplying);
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            const res = await axiosInstance.get(`/comment/destroy/${id}`);
+            console.log(res.data.message);
+
+            setCommentSubmitted(true);
+        } catch (error) {
+            console.error('Lỗi: ', error);
+        }
     };
 
     return (
@@ -22,7 +34,11 @@ function CommentRow({ data, comment, setCommentSubmitted }) {
                         <span className="btn-reply" onClick={toggleReplyForm}>
                             Phản hồi
                         </span>
-                        {user.id === comment.customer_id && <span className="btn-detete-comment">Xoá</span>}
+                        {user.id === comment.customer_id && (
+                            <span className="btn-detete-comment" onClick={() => handleDelete(comment.id)}>
+                                Xoá
+                            </span>
+                        )}
                     </div>
                 </div>
                 <div className={`comment-body ${comment.parent_id ? 'reply-body' : ''}`}>

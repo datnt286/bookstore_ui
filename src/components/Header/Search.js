@@ -27,7 +27,7 @@ function Search() {
         event.preventDefault();
 
         if (!keyword) {
-            setValidationError('Vui lòng nhập từ khoá.'); // Set validation error if keyword is empty
+            setValidationError('Vui lòng nhập từ khoá.');
             return;
         } else {
             navigate(`/tim-kiem/${keyword}`);

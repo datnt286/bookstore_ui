@@ -26,7 +26,7 @@ function OrderDetailRow({ data }) {
                             window.location.href = `/${data.product_slug}`;
                         }}
                     >
-                        <img className="order-detail-image" src={data.product_image} alt={data.name || 'Hình ảnh'} />
+                        <img className="order-detail-image" src={data.product_image} alt="Hình ảnh" />
                         <span className="order-detail">{data.product_name}</span>
                     </Link>
                 </td>

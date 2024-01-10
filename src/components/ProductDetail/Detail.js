@@ -87,7 +87,7 @@ function Detail({ data }) {
             <div className="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div id="product-main-image" className="product-preview">
-                        <img src={data.absolute_path || absolute_path} alt={data.name || 'Hình ảnh'} />
+                        <img src={data.absolute_path || absolute_path} alt="Hình ảnh" />
                     </div>
                 </div>
             </div>
@@ -97,14 +97,7 @@ function Detail({ data }) {
                     <div id="product-imgs">
                         <div className="product-preview">
                             {data.images.map((image, index) => {
-                                return (
-                                    <img
-                                        key={index}
-                                        src={image.absolute_path}
-                                        alt={image.name || 'Hình ảnh'}
-                                        className="mb-4"
-                                    />
-                                );
+                                return <img key={index} src={image.absolute_path} alt="Hình ảnh" className="mb-4" />;
                             })}
                         </div>
                     </div>

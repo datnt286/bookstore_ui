@@ -48,11 +48,7 @@ function ProductCard({ data }) {
             <div className="product">
                 <Link to={`/${data.slug}`}>
                     <div className="product-img d-flex justify-content-center align-items-center">
-                        <img
-                            src={data.absolute_path || absolute_path}
-                            alt={data.name || 'Hình ảnh'}
-                            className="product-image"
-                        />
+                        <img src={data.absolute_path || absolute_path} alt="Hình ảnh" className="product-image" />
                     </div>
 
                     <div className="product-body">
