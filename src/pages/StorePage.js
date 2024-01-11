@@ -11,8 +11,8 @@ function StorePage() {
     const fetchProducts = async (page = 1) => {
         try {
             const res = await axiosInstance.get(`/index?page=${page}`);
-            setProducts(res.data.data);
-            setPageCount(res.data.total_pages);
+            setProducts(res.data.data.books);
+            setPageCount(res.data.data.total_pages);
         } catch (error) {
             console.error('Lỗi: ', error);
         }

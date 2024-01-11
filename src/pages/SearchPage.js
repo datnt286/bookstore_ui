@@ -13,8 +13,8 @@ function SearchPage() {
     const fetchProducts = async (page = 1) => {
         try {
             const res = await axiosInstance.get(`/search/${keyword}?page=${page}`);
-            setProducts(res.data.data);
-            setPageCount(res.data.total_pages);
+            setProducts(res.data.data.products);
+            setPageCount(res.data.data.total_pages);
         } catch (error) {
             console.error('Lỗi: ', error);
         }

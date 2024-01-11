@@ -11,8 +11,8 @@ function CombosPage() {
     const fetchCombos = async (page = 1) => {
         try {
             const res = await axiosInstance.get(`/get-combos?page=${page}`);
-            setCombos(res.data.data);
-            setPageCount(res.data.total_pages);
+            setCombos(res.data.data.combos);
+            setPageCount(res.data.data.total_pages);
         } catch (error) {
             console.error('Lỗi: ', error);
         }
