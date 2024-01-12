@@ -40,9 +40,9 @@ function OrderDetail() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {orderDetail.items.map((detail) => (
-                                    <OrderDetailRow data={detail} />
-                                ))}
+                                {orderDetail.items.map((detail) => {
+                                    return <OrderDetailRow data={detail} />;
+                                })}
                                 <tr>
                                     <td colSpan="3" className="order-detail text-right">
                                         Tổng thành tiền:
@@ -54,14 +54,6 @@ function OrderDetail() {
                             </tbody>
                         </table>
                     </div>
-                    {/* <div className="modal-footer">
-                        <button type="button" className="btn btn-default" data-dismiss="modal">
-                            Close
-                        </button>
-                        <button type="button" className="btn btn-primary">
-                            Save changes
-                        </button>
-                    </div> */}
                 </div>
             </div>
         </div>

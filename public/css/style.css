@@ -222,8 +222,15 @@ textarea.input {
   font-weight: 500;
   min-height: 20px;
   padding-left: 20px;
-  margin-bottom: 5px;
   cursor: pointer;
+}
+
+.input-checkbox label {
+  margin-bottom: 5px;
+}
+
+.input-radio label {
+  margin-bottom: 10px;
 }
 
 .input-radio input[type="radio"]+label span,
@@ -1266,7 +1273,7 @@ textarea.input {
 
 .checkbox-filter .input-radio label,
 .checkbox-filter .input-checkbox label {
-  font-size: 12px;
+  /* font-size: 12px; */
 }
 
 .checkbox-filter .input-radio label small,

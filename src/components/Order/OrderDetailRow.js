@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Review from './Review';
+import ReviewForm from './ReviewForm';
 
 function OrderDetailRow({ data }) {
     const orderDetail = useSelector((state) => state.orderDetail);
@@ -44,7 +44,7 @@ function OrderDetailRow({ data }) {
                 )}
             </tr>
             <tr>
-                <td colSpan="5">{reviewVisible && <Review orderDetailId={data.id} hideReview={hideReview} />}</td>
+                <td colSpan="5">{reviewVisible && <ReviewForm orderDetailId={data.id} hideReview={hideReview} />}</td>
             </tr>
         </React.Fragment>
     );

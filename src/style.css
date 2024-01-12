@@ -395,7 +395,7 @@
 
 /* Comment */
 #comments {
-    width: 70%;
+    width: 65%;
     margin: 0 auto;
 }
 
@@ -522,4 +522,11 @@
     background-color: #D10024 !important;
     color: #fff !important;
     cursor: default;
+}
+
+/* Aside */
+.btn-aside {
+    padding: 8px 20px;
+    margin-top: 20px;
+    margin-left: 14px;
 }

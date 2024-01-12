@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axiosInstance from '../../services/axiosInstance';
 
-function Review({ orderDetailId, hideReview }) {
+function ReviewForm({ orderDetailId, hideReview }) {
     const user = useSelector((state) => state.auth.user);
     const [rating, setRating] = useState(null);
     const [content, setContent] = useState('');
@@ -59,4 +59,4 @@ function Review({ orderDetailId, hideReview }) {
     );
 }
 
-export default Review;
+export default ReviewForm;
