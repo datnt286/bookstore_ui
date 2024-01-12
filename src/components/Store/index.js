@@ -3,7 +3,7 @@ import axiosInstance from '../../services/axiosInstance';
 import Aside from './Aside';
 import ProductGrid from './ProductGrid';
 
-function Store({ data }) {
+function Store({ data, onApplyFilters }) {
     const [categories, setCategories] = useState([]);
     const [authors, setAuthors] = useState([]);
 
@@ -26,8 +26,14 @@ function Store({ data }) {
         <div className="section store">
             <div className="container">
                 <div className="row">
-                    <Aside categories={categories} authors={authors} />
-                    <ProductGrid data={data} />
+                    <Aside categories={categories} authors={authors} onApplyFilters={onApplyFilters} />
+                    {data.length > 0 ? (
+                        <ProductGrid data={data} />
+                    ) : (
+                        <div className="col-md-9">
+                            <h3 className='mt-4'>Không có kết quả tìm kiếm.</h3>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
