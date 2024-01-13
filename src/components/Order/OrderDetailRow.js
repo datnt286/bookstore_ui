@@ -44,7 +44,7 @@ function OrderDetailRow({ data }) {
                 )}
             </tr>
             <tr>
-                <td colSpan="5">{reviewVisible && <ReviewForm orderDetailId={data.id} hideReview={hideReview} />}</td>
+                <td colSpan="5">{reviewVisible && <ReviewForm data={data} hideReview={hideReview} />}</td>
             </tr>
         </React.Fragment>
     );

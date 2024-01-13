@@ -450,7 +450,7 @@
 
 .comment-heading {
     display: flex;
-    padding-top: 2px;
+    padding-top: 3px;
 }
 
 .comment-user {
@@ -461,6 +461,10 @@
     display: block;
     width: 525px;
     padding-left: 6px;
+}
+
+.comment-body p {
+    font-size: 15px;
 }
 
 .btn-detete-comment {

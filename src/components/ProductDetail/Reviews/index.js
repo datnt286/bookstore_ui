@@ -17,7 +17,7 @@ function Reviews({ data }) {
                     [data.is_combo ? 'combo_id' : 'book_id']: data.id,
                 };
 
-                const res = await axiosInstance.get('/order/check-delivered', { params });
+                const res = await axiosInstance.get('/review/check-delivered', { params });
                 setIsDelivered(res.data.is_delivered);
             } catch (error) {
                 console.error('Lỗi: ', error);
@@ -34,39 +34,19 @@ function Reviews({ data }) {
 
                 <div className="col-md-6">
                     <div id="reviews">
-                        {data.reviews > 0 ? (
-                            <>
-                                <ul className="reviews">
-                                    {data.reviews &&
-                                        data.reviews.map((review, index) => {
-                                            return <ReviewRow key={index} data={review} />;
-                                        })}
-                                </ul>
-                                <ul className="reviews-pagination">
-                                    <li className="active">1</li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i className="fa fa-angle-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </>
+                        {data.reviews && data.reviews.length > 0 ? (
+                            <ul className="reviews">
+                                {data.reviews.map((review, index) => (
+                                    <ReviewRow key={index} data={review} />
+                                ))}
+                            </ul>
                         ) : (
                             <p className="text-center">Chưa có đánh giá.</p>
                         )}
                     </div>
                 </div>
 
-                {isDelivered && <ReviewForm data={data}/>}
+                {isDelivered && <ReviewForm data={data} />}
             </div>
         </div>
     );

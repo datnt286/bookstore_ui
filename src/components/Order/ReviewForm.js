@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axiosInstance from '../../services/axiosInstance';
 
-function ReviewForm({ orderDetailId, hideReview }) {
+function ReviewForm({ data, hideReview }) {
     const user = useSelector((state) => state.auth.user);
     const [rating, setRating] = useState(null);
     const [content, setContent] = useState('');
@@ -11,14 +11,15 @@ function ReviewForm({ orderDetailId, hideReview }) {
         event.preventDefault();
 
         try {
-            const data = {
+            const review = {
                 customer_id: user.id,
-                order_detail_id: orderDetailId,
+                book_id: data.book_id,
+                combo_id: data.combo_id,
                 rating: rating,
                 content: content,
             };
 
-            const res = await axiosInstance.post('/review/create', data);
+            const res = await axiosInstance.post('/review/create', review);
             console.log(res.data.message);
         } catch (error) {
             console.error('Lỗi: ', error);
@@ -36,6 +37,7 @@ function ReviewForm({ orderDetailId, hideReview }) {
                     placeholder="Đánh giá của bạn"
                     onChange={(e) => setContent(e.target.value)}
                 ></textarea>
+
                 <div className="review-rating col-md-3">
                     <div className="stars-wrapper">
                         <span>Đánh giá: </span>
@@ -52,6 +54,7 @@ function ReviewForm({ orderDetailId, hideReview }) {
                             <label htmlFor="star5"></label>
                         </div>
                     </div>
+
                     <button className="btn btn-sm btn-danger btn-review">Đăng</button>
                 </div>
             </form>
