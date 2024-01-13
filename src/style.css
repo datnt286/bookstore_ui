@@ -459,7 +459,7 @@
 
 .comment-body {
     display: block;
-    width: 600px;
+    width: 525px;
     padding-left: 6px;
 }
 
@@ -486,7 +486,7 @@
 }
 
 .reply-body {
-    width: 543px;
+    width: 487px;
 }
 
 /*-- Pagination --*/

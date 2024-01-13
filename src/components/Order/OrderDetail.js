@@ -40,8 +40,8 @@ function OrderDetail() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {orderDetail.items.map((detail) => {
-                                    return <OrderDetailRow data={detail} />;
+                                {orderDetail.items.map((detail, index) => {
+                                    return <OrderDetailRow key={index} data={detail} />;
                                 })}
                                 <tr>
                                     <td colSpan="3" className="order-detail text-right">
