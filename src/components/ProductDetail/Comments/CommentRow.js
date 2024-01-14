@@ -57,8 +57,8 @@ function CommentRow({ data, comment, setCommentSubmitted }) {
                 />
             )}
 
-            {comment.replys &&
-                comment.replys.map((reply, index) => {
+            {comment.replies &&
+                comment.replies.map((reply, index) => {
                     return (
                         <CommentRow key={index} data={data} comment={reply} setCommentSubmitted={setCommentSubmitted} />
                     );

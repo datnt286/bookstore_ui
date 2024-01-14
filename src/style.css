@@ -188,6 +188,12 @@
     border: 1px solid #E4E7ED;
 }
 
+.average {
+    color: #D10024;
+    font-weight: 500;
+    margin-right: 6px;
+}
+
 /* Shop */
 .shop {
     width: 350px;

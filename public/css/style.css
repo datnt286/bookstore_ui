@@ -1730,7 +1730,7 @@ textarea.input {
 }
 
 .rating-avg .rating-stars {
-  margin-left: 10px;
+  margin: 0 10px;
 }
 
 .rating-avg .rating-stars,

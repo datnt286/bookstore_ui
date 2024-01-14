@@ -53,49 +53,44 @@ function ReviewForm({ data, onReviewSubmitted }) {
                         <div className="stars">
                             <input
                                 type="radio"
-                                id="star1"
+                                id="star5"
                                 name="rating"
-                                value="1"
-                                onChange={() => setRating(1)}
-                                key={`star1-${resetRating}`}
+                                onChange={() => setRating(5)}
+                                key={`star5-${resetRating}`}
                             />
-                            <label htmlFor="star1"></label>
-                            <input
-                                type="radio"
-                                id="star2"
-                                name="rating"
-                                value="2"
-                                onChange={() => setRating(2)}
-                                key={`star2-${resetRating}`}
-                            />
-                            <label htmlFor="star2"></label>
-                            <input
-                                type="radio"
-                                id="star3"
-                                name="rating"
-                                value="3"
-                                onChange={() => setRating(3)}
-                                key={`star3-${resetRating}`}
-                            />
-                            <label htmlFor="star3"></label>
+                            <label htmlFor="star5"></label>
                             <input
                                 type="radio"
                                 id="star4"
                                 name="rating"
-                                value="4"
                                 onChange={() => setRating(4)}
                                 key={`star4-${resetRating}`}
                             />
                             <label htmlFor="star4"></label>
                             <input
                                 type="radio"
-                                id="star5"
+                                id="star3"
                                 name="rating"
-                                value="5"
-                                onChange={() => setRating(5)}
-                                key={`star5-${resetRating}`}
+                                onChange={() => setRating(3)}
+                                key={`star3-${resetRating}`}
                             />
-                            <label htmlFor="star5"></label>
+                            <label htmlFor="star3"></label>
+                            <input
+                                type="radio"
+                                id="star2"
+                                name="rating"
+                                onChange={() => setRating(2)}
+                                key={`star2-${resetRating}`}
+                            />
+                            <label htmlFor="star2"></label>
+                            <input
+                                type="radio"
+                                id="star1"
+                                name="rating"
+                                onChange={() => setRating(1)}
+                                key={`star1-${resetRating}`}
+                            />
+                            <label htmlFor="star1"></label>
                         </div>
                     </div>
                     <button className="primary-btn">Đăng</button>

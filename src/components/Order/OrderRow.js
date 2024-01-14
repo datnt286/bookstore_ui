@@ -10,17 +10,17 @@ function OrderRow({ data }) {
     const getStatusText = (status) => {
         switch (status) {
             case 1:
-                return 'Đã đặt';
+                return <span className="badge text-bg-info">Đã đặt</span>;
             case 2:
-                return 'Đã xác nhận';
+                return <span className="badge text-bg-primary">Đã xác nhận</span>;
             case 3:
-                return 'Đang giao';
+                return <span className="badge text-bg-warning">Đang giao</span>;
             case 4:
-                return 'Đã giao';
+                return <span className="badge text-bg-success">Đã giao</span>;
             case 5:
-                return 'Đã huỷ';
+                return <span className="badge text-bg-danger">Đã huỷ</span>;
             default:
-                return 'Trạng thái không xác định';
+                return <span className="badge text-bg-default">Trạng thái không xác định</span>;
         }
     };
 

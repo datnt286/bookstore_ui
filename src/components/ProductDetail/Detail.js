@@ -109,15 +109,17 @@ function Detail({ data }) {
                     <h2 className="product-name">{data.name}</h2>
 
                     <div>
+                        <span className="average">{data.average_rating}</span>
                         <div className="product-rating mt-3">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star-o"></i>
+                            {[...Array(5)].map((_, index) => (
+                                <i
+                                    key={index}
+                                    className={index + 1 <= data.average_rating ? 'fa fa-star' : 'fa fa-star-o empty'}
+                                ></i>
+                            ))}
                         </div>
                         <a className="review-link" href="#">
-                            10 Đánh giá | Thêm đánh giá
+                            {data.total_reviews} Đánh giá | Thêm đánh giá
                         </a>
                     </div>
 
