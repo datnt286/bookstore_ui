@@ -8,11 +8,7 @@ function OrderDetailRow({ data }) {
     const [reviewVisible, setReviewVisible] = useState(false);
 
     const handleReviewClick = () => {
-        setReviewVisible(true);
-    };
-
-    const hideReview = () => {
-        setReviewVisible(false);
+        setReviewVisible(!reviewVisible);
     };
 
     return (
@@ -44,7 +40,9 @@ function OrderDetailRow({ data }) {
                 )}
             </tr>
             <tr>
-                <td colSpan="5">{reviewVisible && <ReviewForm data={data} hideReview={hideReview} />}</td>
+                <td colSpan="5">
+                    {reviewVisible && <ReviewForm data={data} hideReview={() => setReviewVisible(false)} />}
+                </td>
             </tr>
         </React.Fragment>
     );

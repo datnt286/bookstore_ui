@@ -6,6 +6,7 @@ import OrderTable from './OrderTable';
 import OrderDetail from './OrderDetail';
 
 function Order() {
+    const user = useSelector((state) => state.auth.user);
     const orders = useSelector((state) => state.order.orders);
     const ordered = useSelector((state) => state.order.ordered);
     const confirmed = useSelector((state) => state.order.confirmed);
@@ -17,7 +18,7 @@ function Order() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axiosInstance.get('/order');
+                const res = await axiosInstance.get(`/order?customer_id=${user.id}`);
                 dispatch(setOrders(res.data.data.orders));
                 dispatch(setOrdered(res.data.data.ordered));
                 dispatch(setConfirmed(res.data.data.confirmed));

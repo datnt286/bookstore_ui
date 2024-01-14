@@ -376,19 +376,15 @@
 
 /* Review */
 .review-input {
-    width: 75%;
+    width: 72%;
 }
 
 .stars-wrapper {
-    margin: 8px 0;
+    margin: 0 !important;
 }
 
 .stars {
     display: inline;
-}
-
-.review-rating {
-    text-align: center;
 }
 
 .btn-review {

@@ -12,11 +12,6 @@ function ReviewForm({ data, onReviewSubmitted }) {
     const handlePostReview = async (event) => {
         event.preventDefault();
 
-        if (!content.trim() && !rating) {
-            setErrorMessage('Vui lòng nhập nội dung đánh giá.');
-            return;
-        }
-
         try {
             const review = {
                 customer_id: user.id,
@@ -28,12 +23,17 @@ function ReviewForm({ data, onReviewSubmitted }) {
             const res = await axiosInstance.post('/review/create', review);
             console.log(res.data.message);
 
+            setRating(null);
             setContent('');
             setResetRating(Date.now());
             setErrorMessage('');
             onReviewSubmitted();
         } catch (error) {
-            console.error('Lỗi: ', error);
+            if (error.response.status === 422) {
+                setErrorMessage(error.response.data.message);
+            } else {
+                console.error('Lỗi: ', error);
+            }
         }
     };
 
@@ -47,7 +47,7 @@ function ReviewForm({ data, onReviewSubmitted }) {
                         onChange={(e) => setContent(e.target.value)}
                         placeholder="Nhập nội dung đánh giá."
                     ></textarea>
-                    {errorMessage && <p className="text-center text-danger">{errorMessage}</p>}
+
                     <div className="input-rating">
                         <span>Đánh giá: </span>
                         <div className="stars">
@@ -92,6 +92,7 @@ function ReviewForm({ data, onReviewSubmitted }) {
                             />
                             <label htmlFor="star1"></label>
                         </div>
+                        {errorMessage && <p className="text-danger my-2">{errorMessage}</p>}
                     </div>
                     <button className="primary-btn">Đăng</button>
                 </form>
