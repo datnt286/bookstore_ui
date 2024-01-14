@@ -1797,6 +1797,9 @@ textarea.input {
 
 .reviews .review-body {
   min-height: 70px;
+  max-width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .reviews .review-heading .avatar {
@@ -1866,11 +1869,11 @@ textarea.input {
 /*-- Review Form --*/
 
 .review-form .input {
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
 }
 
 .review-form .input-rating {
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 .review-form .input-rating .stars {

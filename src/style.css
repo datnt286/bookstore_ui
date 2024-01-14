@@ -465,6 +465,9 @@
 
 .comment-body p {
     font-size: 15px;
+    max-width: 100%;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .btn-detete-comment {

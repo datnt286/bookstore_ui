@@ -1,9 +1,9 @@
-function Rating() {
+function Rating({ data, reviews }) {
     return (
         <div className="col-md-3">
             <div id="rating">
                 <div className="rating-avg">
-                    <span>4.5</span>
+                    <span>{data.average_rating || 0.0}</span>
                     <div className="rating-stars">
                         <i className="fa fa-star"></i>
                         <i className="fa fa-star"></i>

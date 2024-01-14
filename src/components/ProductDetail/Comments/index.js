@@ -27,7 +27,7 @@ function Comments({ data }) {
         }
 
         fetchComments();
-    }, [commentSubmitted, data.is_combo, data.id]);
+    }, [data.is_combo, data.id, commentSubmitted]);
 
     return (
         <div id="comments" className="tab-pane fade in">
