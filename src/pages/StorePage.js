@@ -10,6 +10,7 @@ function StorePage() {
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [priceRangeFilter, setPriceRangeFilter] = useState(null);
     const [authorFilter, setAuthorFilter] = useState([]);
+    const [sortFilter, setSortFilter] = useState(0);
 
     const fetchProducts = async (page = 1) => {
         try {
@@ -27,6 +28,10 @@ function StorePage() {
             if (authorFilter.length > 0) {
                 const authorIds = authorFilter.join(',');
                 url += `&author_id=${authorIds}`;
+            }
+
+            if (sortFilter) {
+                url += `&sort=${sortFilter}`;
             }
 
             const res = await axiosInstance.get(url);

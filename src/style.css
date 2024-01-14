@@ -395,6 +395,11 @@
     border-radius: 20px;
 }
 
+.review-rating-order {
+    width: 28%;
+    padding: 12px;
+}
+
 /* Comment */
 #comments {
     width: 65%;

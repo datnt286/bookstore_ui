@@ -46,7 +46,7 @@ function ReviewForm({ data, hideReview }) {
                     onChange={(e) => setContent(e.target.value)}
                 ></textarea>
 
-                <div className="review-rating text-center col-md-3">
+                <div className="review-rating review-rating-order text-center col-md-3">
                     <div className="stars-wrapper input-rating">
                         <span>Đánh giá: </span>
                         <div className="stars">

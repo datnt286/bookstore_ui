@@ -1,4 +1,4 @@
-function Filter() {
+function Sort() {
     return (
         <div className="store-filter clearfix">
             <div className="store-sort">
@@ -12,4 +12,4 @@ function Filter() {
     );
 }
 
-export default Filter;
+export default Sort;
