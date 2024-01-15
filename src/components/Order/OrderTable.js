@@ -1,6 +1,6 @@
 import OrderRow from './OrderRow';
 
-function OrderTable({ tab, data }) {
+function OrderTable({ tab, data, setOrders, onOrderStatusChanged }) {
     return (
         <div id={tab} className={`tab-pane ${tab === 'orders' ? 'active' : ''}`}>
             {data.length > 0 ? (
@@ -22,7 +22,15 @@ function OrderTable({ tab, data }) {
                     </thead>
                     <tbody>
                         {data.map((order) => {
-                            return <OrderRow key={order.id} tab={tab} data={order} />;
+                            return (
+                                <OrderRow
+                                    key={order.id}
+                                    tab={tab}
+                                    data={order}
+                                    setOrders={setOrders}
+                                    onOrderStatusChanged={onOrderStatusChanged}
+                                />
+                            );
                         })}
                     </tbody>
                 </table>

@@ -12,7 +12,7 @@ function OrderDetailRow({ data }) {
     };
 
     return (
-        <React.Fragment key={data.id}>
+        <>
             <tr>
                 <td className="align-middle d-flex align-items-center">
                     <Link
@@ -44,7 +44,7 @@ function OrderDetailRow({ data }) {
                     {reviewVisible && <ReviewForm data={data} hideReview={() => setReviewVisible(false)} />}
                 </td>
             </tr>
-        </React.Fragment>
+        </>
     );
 }
 

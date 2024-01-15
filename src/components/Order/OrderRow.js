@@ -1,10 +1,10 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setOrderDetails } from '../../redux/orderDetailSlice';
-import { setOrders, setOrdered, setConfirmed, setDelivering, setDelivered, setCanceled } from '../../redux/orderSlice';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
 
-function OrderRow({ data }) {
+function OrderRow({ data, setOrders, onOrderStatusChanged }) {
+    const user = useSelector((state) => state.auth.user);
     const dispatch = useDispatch();
 
     const getStatusText = (status) => {
@@ -34,17 +34,21 @@ function OrderRow({ data }) {
     };
 
     const handleConfirm = (id) => {
-        async function fetchData() {
+        async function fetchOrders() {
             try {
                 const confirmRes = await axiosInstance.get(`/order/confirm/${id}`);
-                const ordersRes = await axiosInstance.get('/order');
+                const ordersRes = await axiosInstance.get(`/order?customer_id=${user.id}`);
 
-                dispatch(setOrders(ordersRes.data.orders));
-                dispatch(setOrdered(ordersRes.data.ordered));
-                dispatch(setConfirmed(ordersRes.data.confirmed));
-                dispatch(setDelivering(ordersRes.data.delivering));
-                dispatch(setDelivered(ordersRes.data.delivered));
-                dispatch(setCanceled(ordersRes.data.canceled));
+                setOrders({
+                    orders: ordersRes.data.orders,
+                    ordered: ordersRes.data.ordered,
+                    confirmed: ordersRes.data.confirmed,
+                    delivering: ordersRes.data.delivering,
+                    delivered: ordersRes.data.delivered,
+                    canceled: ordersRes.data.canceled,
+                });
+
+                onOrderStatusChanged();
 
                 Swal.fire({
                     icon: 'success',
@@ -56,7 +60,7 @@ function OrderRow({ data }) {
             }
         }
 
-        fetchData();
+        fetchOrders();
     };
 
     const handleCancel = (id) => {
@@ -72,15 +76,19 @@ function OrderRow({ data }) {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const cancelRes = await axiosInstance.get(`order/cancel/${id}`);
-                    const ordersRes = await axiosInstance.get('order');
+                    const cancelRes = await axiosInstance.get(`/order/cancel/${id}`);
+                    const ordersRes = await axiosInstance.get(`/order?customer_id=${user.id}`);
 
-                    dispatch(setOrders(ordersRes.data.orders));
-                    dispatch(setOrdered(ordersRes.data.ordered));
-                    dispatch(setConfirmed(ordersRes.data.confirmed));
-                    dispatch(setDelivering(ordersRes.data.delivering));
-                    dispatch(setDelivered(ordersRes.data.delivered));
-                    dispatch(setCanceled(ordersRes.data.canceled));
+                    setOrders({
+                        orders: ordersRes.data.orders,
+                        ordered: ordersRes.data.ordered,
+                        confirmed: ordersRes.data.confirmed,
+                        delivering: ordersRes.data.delivering,
+                        delivered: ordersRes.data.delivered,
+                        canceled: ordersRes.data.canceled,
+                    });
+
+                    onOrderStatusChanged();
 
                     Swal.fire({
                         icon: 'success',

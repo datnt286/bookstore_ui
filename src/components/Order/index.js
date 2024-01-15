@@ -1,37 +1,46 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCanceled, setConfirmed, setDelivered, setDelivering, setOrdered, setOrders } from '../../redux/orderSlice';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import axiosInstance from '../../services/axiosInstance';
 import OrderTable from './OrderTable';
 import OrderDetail from './OrderDetail';
 
 function Order() {
     const user = useSelector((state) => state.auth.user);
-    const orders = useSelector((state) => state.order.orders);
-    const ordered = useSelector((state) => state.order.ordered);
-    const confirmed = useSelector((state) => state.order.confirmed);
-    const delivering = useSelector((state) => state.order.delivering);
-    const delivered = useSelector((state) => state.order.delivered);
-    const canceled = useSelector((state) => state.order.canceled);
-    const dispatch = useDispatch();
+    const [orderStatusChanged, setOrderStatusChanged] = useState(false);
+    const [orders, setOrders] = useState({
+        orders: [],
+        ordered: [],
+        confirmed: [],
+        delivering: [],
+        delivered: [],
+        canceled: [],
+    });
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchOrders() {
             try {
                 const res = await axiosInstance.get(`/order?customer_id=${user.id}`);
-                dispatch(setOrders(res.data.orders));
-                dispatch(setOrdered(res.data.ordered));
-                dispatch(setConfirmed(res.data.confirmed));
-                dispatch(setDelivering(res.data.delivering));
-                dispatch(setDelivered(res.data.delivered));
-                dispatch(setCanceled(res.data.canceled));
+
+                setOrders({
+                    orders: res.data.orders,
+                    ordered: res.data.ordered,
+                    confirmed: res.data.confirmed,
+                    delivering: res.data.delivering,
+                    delivered: res.data.delivered,
+                    canceled: res.data.canceled,
+                });
             } catch (error) {
                 console.error('Lỗi: ', error);
             }
         }
 
-        fetchData();
-    }, [dispatch]);
+        if (orderStatusChanged) {
+            fetchOrders();
+            setOrderStatusChanged(false);
+        }
+
+        fetchOrders();
+    }, [user.id, orderStatusChanged]);
 
     return (
         <div id="me" className="section">
@@ -40,7 +49,7 @@ function Order() {
                     <div className="card-header p-2">
                         <ul className="nav nav-pills">
                             <li className="nav-item">
-                                <a href="#all" className="nav-link" data-toggle="tab">
+                                <a href="#orders" className="nav-link" data-toggle="tab">
                                     Tất cả
                                 </a>
                             </li>
@@ -74,12 +83,42 @@ function Order() {
 
                     <div className="card-body align-middle">
                         <div className="tab-content">
-                            <OrderTable tab="orders" data={orders} />
-                            <OrderTable tab="ordered" data={ordered} />
-                            <OrderTable tab="confirmed" data={confirmed} />
-                            <OrderTable tab="delivering" data={delivering} />
-                            <OrderTable tab="delivered" data={delivered} />
-                            <OrderTable tab="canceled" data={canceled} />
+                            <OrderTable
+                                tab="orders"
+                                data={orders.orders}
+                                setOrders={setOrders}
+                                onOrderStatusChanged={() => setOrderStatusChanged(true)}
+                            />
+                            <OrderTable
+                                tab="ordered"
+                                data={orders.ordered}
+                                setOrders={setOrders}
+                                onOrderStatusChanged={() => setOrderStatusChanged(true)}
+                            />
+                            <OrderTable
+                                tab="confirmed"
+                                data={orders.confirmed}
+                                setOrders={setOrders}
+                                onOrderStatusChanged={() => setOrderStatusChanged(true)}
+                            />
+                            <OrderTable
+                                tab="delivering"
+                                data={orders.delivering}
+                                setOrders={setOrders}
+                                onOrderStatusChanged={() => setOrderStatusChanged(true)}
+                            />
+                            <OrderTable
+                                tab="delivered"
+                                data={orders.delivered}
+                                setOrders={setOrders}
+                                onOrderStatusChanged={() => setOrderStatusChanged(true)}
+                            />
+                            <OrderTable
+                                tab="canceled"
+                                data={orders.canceled}
+                                setOrders={setOrders}
+                                onOrderStatusChanged={() => setOrderStatusChanged(true)}
+                            />
                         </div>
                     </div>
                 </div>

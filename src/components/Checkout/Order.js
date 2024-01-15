@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { clearCart } from '../../redux/cartSlice';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
@@ -7,6 +8,7 @@ function Order() {
     const user = useSelector((state) => state.auth.user);
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleOrder = async () => {
         try {
@@ -21,6 +23,7 @@ function Order() {
             const res = await axiosInstance.post('/order/create', data);
 
             dispatch(clearCart());
+            navigate('/hoa-don');
 
             Swal.fire({
                 icon: 'success',
