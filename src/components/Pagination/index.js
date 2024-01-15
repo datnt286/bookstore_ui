@@ -9,7 +9,7 @@ function Pagination({ pageCount, onPageChange }) {
             pageClassName="page-item"
             previousClassName="page-item"
             nextClassName="page-item"
-            activeClassName="active"
+            activeClassName="page-active"
             pageLinkClassName="page-link"
             previousLinkClassName="page-link"
             nextLinkClassName="page-link"
