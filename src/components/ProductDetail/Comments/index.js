@@ -4,23 +4,27 @@ import { Link } from 'react-router-dom';
 import axiosInstance from '../../../services/axiosInstance';
 import CommentForm from './CommentForm';
 import CommentRow from './CommentRow';
+import Pagination from '../../Pagination';
 
 function Comments({ data }) {
     const isLoggedIn = useSelector((state) => state.auth.token !== null);
-    const [comments, setComments] = useState(data.comments || []);
+    const [comments, setComments] = useState([]);
     const [commentSubmitted, setCommentSubmitted] = useState(false);
+    const [pageCount, setPageCount] = useState(1);
+
+    const fetchComments = async (page = 1) => {
+        try {
+            const params = data.is_combo ? { combo_id: data.id, page } : { book_id: data.id, page };
+            const res = await axiosInstance.get('comment/get-comments-by-product-id', { params });
+
+            setComments(res.data.comments);
+            setPageCount(res.data.total_pages);
+        } catch (error) {
+            console.error('Lỗi: ', error);
+        }
+    };
 
     useEffect(() => {
-        async function fetchComments() {
-            try {
-                const params = data.is_combo ? { combo_id: data.id } : { book_id: data.id };
-                const res = await axiosInstance.get('comment/get-comments-by-product-id', { params });
-                setComments(res.data);
-            } catch (error) {
-                console.error('Lỗi: ', error);
-            }
-        }
-
         if (commentSubmitted) {
             fetchComments();
             setCommentSubmitted(false);
@@ -28,6 +32,11 @@ function Comments({ data }) {
 
         fetchComments();
     }, [data.is_combo, data.id, commentSubmitted]);
+
+    const handlePageChange = ({ selected }) => {
+        const page = selected + 1;
+        fetchComments(page);
+    };
 
     return (
         <div id="comments" className="tab-pane fade in">
@@ -57,6 +66,7 @@ function Comments({ data }) {
                     <p className="text-center mt-3">Chưa có bình luận.</p>
                 )}
             </ul>
+            {comments.length > 0 && <Pagination pageCount={pageCount} onPageChange={handlePageChange} />}
         </div>
     );
 }

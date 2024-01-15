@@ -14,12 +14,12 @@ function ProductTab({ data }) {
                     </li>
                     <li>
                         <a data-toggle="tab" href="#reviews">
-                            Đánh giá (3)
+                            Đánh giá ({data.total_reviews})
                         </a>
                     </li>
                     <li>
                         <a data-toggle="tab" href="#comments">
-                            Bình luận (3)
+                            Bình luận ({data.total_comments})
                         </a>
                     </li>
                 </ul>
