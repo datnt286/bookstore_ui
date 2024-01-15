@@ -21,7 +21,7 @@ function ReviewForm({ data, hideReview }) {
             };
 
             const res = await axiosInstance.post('/review/create', review);
-            console.log(res.data.message);
+            console.log(res.message);
 
             setRating(null);
             setContent('');

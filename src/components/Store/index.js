@@ -12,8 +12,8 @@ function Store({ data, onApplyFilters }) {
             try {
                 const categoriesRes = await axiosInstance.get('/category');
                 const authorsRes = await axiosInstance.get('/author');
-                setCategories(categoriesRes.data.data);
-                setAuthors(authorsRes.data.data);
+                setCategories(categoriesRes.data);
+                setAuthors(authorsRes.data);
             } catch (error) {
                 console.error('Lỗi: ', error);
             }
@@ -31,7 +31,7 @@ function Store({ data, onApplyFilters }) {
                         <ProductGrid data={data} />
                     ) : (
                         <div className="col-md-9">
-                            <h3 className='mt-4'>Không có kết quả tìm kiếm.</h3>
+                            <h3 className="mt-4">Không có kết quả tìm kiếm.</h3>
                         </div>
                     )}
                 </div>

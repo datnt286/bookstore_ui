@@ -11,8 +11,8 @@ function NewBooksPage() {
     const fetchNewBooks = async (page = 1) => {
         try {
             const res = await axiosInstance.get(`/get-newbooks?page=${page}`);
-            setNewBooks(res.data.data.new_books);
-            setPageCount(res.data.data.total_pages);
+            setNewBooks(res.data.new_books);
+            setPageCount(res.data.total_pages);
         } catch (error) {
             console.error('Lỗi: ', error);
         }

@@ -14,7 +14,7 @@ function HomePage() {
         async function fetchNewBooksAndCombos() {
             try {
                 const res = await axiosInstance.get('/get-newbooks-and-combos');
-                setProducts(res.data.data);
+                setProducts(res.data);
             } catch (error) {
                 console.error('Lỗi: ', error);
             }

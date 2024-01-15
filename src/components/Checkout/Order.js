@@ -24,7 +24,7 @@ function Order() {
 
             Swal.fire({
                 icon: 'success',
-                title: res.data.message,
+                title: res.message,
                 timer: 2000,
             });
         } catch (error) {

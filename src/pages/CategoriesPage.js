@@ -10,7 +10,7 @@ function CategoriesPage() {
         async function fetchCategories() {
             try {
                 const res = await axiosInstance.get('/category');
-                setCategories(res.data.data);
+                setCategories(res.data);
             } catch (error) {
                 console.error('Lỗi: ', error);
             }

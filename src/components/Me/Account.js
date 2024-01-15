@@ -5,8 +5,8 @@ import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
 
 function Account() {
-    const user = useSelector((state) => state.auth);
-    const [formData, setFormData] = useState({ ...user.user });
+    const auth = useSelector((state) => state.auth);
+    const [formData, setFormData] = useState({ ...auth.user });
     const [selectedAvatar, setSelectedAvatar] = useState(null);
     const [errors, setErrors] = useState({});
     const dispatch = useDispatch();
@@ -50,20 +50,20 @@ function Account() {
         try {
             const res = await axiosInstance.post('/update', formData, {
                 headers: {
-                    Authorization: 'Bearer ' + user.token,
+                    Authorization: 'Bearer ' + auth.token,
                     'Content-Type': 'multipart/form-data',
                 },
             });
 
-            const userData = await axiosInstance.get('/me', {
-                headers: { Authorization: 'Bearer ' + user.token },
+            const newUser = await axiosInstance.get('/me', {
+                headers: { Authorization: 'Bearer ' + auth.token },
             });
 
-            dispatch(updateUser({ userData: userData.data }));
+            dispatch(updateUser({ newUser: newUser }));
 
             Swal.fire({
                 icon: 'success',
-                title: res.data.message,
+                title: res.message,
                 timer: 2000,
             });
         } catch (error) {
@@ -91,7 +91,7 @@ function Account() {
                     <div className="col-md-2">
                         <div className="text-center">
                             <img
-                                src={selectedAvatar || user.user.avatar_image}
+                                src={selectedAvatar || auth.user.avatar_image}
                                 alt="Ảnh đại diện"
                                 className="profile-user-img img-fluid img-circle avatar-img"
                             />
@@ -105,6 +105,7 @@ function Account() {
                             <label htmlFor="avatar" className="btn btn-secondary my-3">
                                 Chọn ảnh
                             </label>
+                            <div className="invalid-feedback avatar-error">{errors.avatar}</div>
                         </div>
                     </div>
                     <div className="col-md-5">
@@ -112,7 +113,7 @@ function Account() {
                             <input
                                 type="text"
                                 name="username"
-                                value={user.user.username}
+                                value={auth.user.username}
                                 placeholder="Tên đăng nhập"
                                 className="form-control input"
                                 readOnly

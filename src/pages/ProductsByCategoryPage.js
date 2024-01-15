@@ -14,9 +14,9 @@ function ProductsByCategoryPage() {
     const fetchProducts = async (page = 1) => {
         try {
             const res = await axiosInstance.get(`/category/${categorySlug}?page=${page}`);
-            setBooks(res.data.data.books);
-            setTitle(res.data.data.category.name);
-            setPageCount(res.data.data.total_pages);
+            setBooks(res.data.books);
+            setTitle(res.data.category.name);
+            setPageCount(res.data.total_pages);
         } catch (error) {
             console.error('Lỗi: ', error);
         }

@@ -19,15 +19,15 @@ function ProductDetailPage() {
         async function fetchData() {
             try {
                 const productRes = await axiosInstance.get(`/${slug}`);
-                setProduct(productRes.data.data);
-                setCombos(productRes.data.data.combos);
+                setProduct(productRes.data);
+                setCombos(productRes.data.combos);
 
-                const categoryId = productRes.data.data.category_id;
-                const categorySlug = productRes.data.data.category_slug;
+                const categoryId = productRes.data.category_id;
+                const categorySlug = productRes.data.category_slug;
                 setCategorySlug(categorySlug);
 
                 const relatedBooksRes = await axiosInstance.get(`/get-books-by-category-id/${categoryId}`);
-                setRelatedBooks(relatedBooksRes.data.data);
+                setRelatedBooks(relatedBooksRes.data);
 
                 const viewedProducts = JSON.parse(localStorage.getItem('viewedProducts')) || [];
 
@@ -38,7 +38,7 @@ function ProductDetailPage() {
                         new Date().getTime() + EXPIRATION_DAYS * 24 * 60 * 60 * 1000;
                 } else {
                     const newViewedProduct = {
-                        ...productRes.data.data,
+                        ...productRes.data,
                         timestamp: new Date().getTime() + EXPIRATION_DAYS * 24 * 60 * 60 * 1000,
                     };
                     viewedProducts.push(newViewedProduct);

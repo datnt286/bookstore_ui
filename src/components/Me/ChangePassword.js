@@ -4,9 +4,9 @@ import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
 
 function ChangePassword() {
-    const user = useSelector((state) => state.auth);
+    const auth = useSelector((state) => state.auth);
     const [formData, setFormData] = useState({
-        id: user.user.id,
+        id: auth.user.id,
         old_password: '',
         new_password: '',
         re_enter_password: '',
@@ -35,7 +35,7 @@ function ChangePassword() {
 
     const resetFormData = () => {
         setFormData({
-            id: user.user.id,
+            id: auth.user.id,
             old_password: '',
             new_password: '',
             re_enter_password: '',
@@ -47,7 +47,7 @@ function ChangePassword() {
 
         try {
             const res = await axiosInstance.post('/change-password', formData, {
-                headers: { Authorization: 'Bearer ' + user.token },
+                headers: { Authorization: 'Bearer ' + auth.token },
             });
 
             resetFormData();
@@ -55,7 +55,7 @@ function ChangePassword() {
 
             Swal.fire({
                 icon: 'success',
-                title: res.data.message,
+                title: res.message,
                 timer: 2000,
             });
         } catch (error) {

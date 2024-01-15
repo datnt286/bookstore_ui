@@ -40,17 +40,17 @@ function Login() {
         try {
             const res = await axiosInstance.post('/login', formData);
 
-            const userData = await axiosInstance.get('/me', {
-                headers: { Authorization: 'Bearer ' + res.data.access_token },
+            const user = await axiosInstance.get('/me', {
+                headers: { Authorization: 'Bearer ' + res.access_token },
             });
 
-            dispatch(login({ token: res.data.access_token, user: userData.data }));
+            dispatch(login({ token: res.access_token, user: user }));
 
             navigate(-1);
 
             Swal.fire({
                 icon: 'success',
-                title: res.data.message,
+                title: res.message,
                 timer: 2000,
             });
         } catch (error) {

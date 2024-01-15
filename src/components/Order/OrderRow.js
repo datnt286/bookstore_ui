@@ -27,7 +27,7 @@ function OrderRow({ data }) {
     const handleDetailClick = async (id, status) => {
         try {
             const res = await axiosInstance.get(`/order/details/${id}`);
-            dispatch(setOrderDetails({ items: res.data.data, status }));
+            dispatch(setOrderDetails({ items: res.data, status }));
         } catch (error) {
             console.error('Lỗi: ', error);
         }
@@ -39,16 +39,16 @@ function OrderRow({ data }) {
                 const confirmRes = await axiosInstance.get(`/order/confirm/${id}`);
                 const ordersRes = await axiosInstance.get('/order');
 
-                dispatch(setOrders(ordersRes.data.data.orders));
-                dispatch(setOrdered(ordersRes.data.data.ordered));
-                dispatch(setConfirmed(ordersRes.data.data.confirmed));
-                dispatch(setDelivering(ordersRes.data.data.delivering));
-                dispatch(setDelivered(ordersRes.data.data.delivered));
-                dispatch(setCanceled(ordersRes.data.data.canceled));
+                dispatch(setOrders(ordersRes.data.orders));
+                dispatch(setOrdered(ordersRes.data.ordered));
+                dispatch(setConfirmed(ordersRes.data.confirmed));
+                dispatch(setDelivering(ordersRes.data.delivering));
+                dispatch(setDelivered(ordersRes.data.delivered));
+                dispatch(setCanceled(ordersRes.data.canceled));
 
                 Swal.fire({
                     icon: 'success',
-                    title: confirmRes.data.message,
+                    title: confirmRes.message,
                     timer: 2000,
                 });
             } catch (error) {
@@ -75,16 +75,16 @@ function OrderRow({ data }) {
                     const cancelRes = await axiosInstance.get(`order/cancel/${id}`);
                     const ordersRes = await axiosInstance.get('order');
 
-                    dispatch(setOrders(ordersRes.data.data.orders));
-                    dispatch(setOrdered(ordersRes.data.data.ordered));
-                    dispatch(setConfirmed(ordersRes.data.data.confirmed));
-                    dispatch(setDelivering(ordersRes.data.data.delivering));
-                    dispatch(setDelivered(ordersRes.data.data.delivered));
-                    dispatch(setCanceled(ordersRes.data.data.canceled));
+                    dispatch(setOrders(ordersRes.data.orders));
+                    dispatch(setOrdered(ordersRes.data.ordered));
+                    dispatch(setConfirmed(ordersRes.data.confirmed));
+                    dispatch(setDelivering(ordersRes.data.delivering));
+                    dispatch(setDelivered(ordersRes.data.delivered));
+                    dispatch(setCanceled(ordersRes.data.canceled));
 
                     Swal.fire({
                         icon: 'success',
-                        title: cancelRes.data.message,
+                        title: cancelRes.message,
                         timer: 2000,
                     });
                 } catch (error) {

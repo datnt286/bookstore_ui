@@ -6,14 +6,14 @@ export const localStorageMiddleware = (store) => (next) => (action) => {
         case 'auth/login':
             const { user, token } = action.payload;
             localStorage.setItem('token', token);
-            localStorage.setItem('userData', JSON.stringify(user));
+            localStorage.setItem('user', JSON.stringify(user));
             break;
         case 'auth/logout':
             localStorage.removeItem('token');
-            localStorage.removeItem('userData');
+            localStorage.removeItem('user');
             break;
         case 'auth/updateUser':
-            localStorage.setItem('userData', JSON.stringify(action.payload.userData));
+            localStorage.setItem('user', JSON.stringify(action.payload.newUser));
             break;
 
         // Cart Slice

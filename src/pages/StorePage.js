@@ -30,8 +30,8 @@ function StorePage() {
             }
 
             const res = await axiosInstance.get(url);
-            setProducts(res.data.data.books);
-            setPageCount(res.data.data.total_pages);
+            setProducts(res.data.books);
+            setPageCount(res.data.total_pages);
         } catch (error) {
             console.error('Lỗi: ', error);
         }

@@ -19,12 +19,12 @@ function Order() {
         async function fetchData() {
             try {
                 const res = await axiosInstance.get(`/order?customer_id=${user.id}`);
-                dispatch(setOrders(res.data.data.orders));
-                dispatch(setOrdered(res.data.data.ordered));
-                dispatch(setConfirmed(res.data.data.confirmed));
-                dispatch(setDelivering(res.data.data.delivering));
-                dispatch(setDelivered(res.data.data.delivered));
-                dispatch(setCanceled(res.data.data.canceled));
+                dispatch(setOrders(res.data.orders));
+                dispatch(setOrdered(res.data.ordered));
+                dispatch(setConfirmed(res.data.confirmed));
+                dispatch(setDelivering(res.data.delivering));
+                dispatch(setDelivered(res.data.delivered));
+                dispatch(setCanceled(res.data.canceled));
             } catch (error) {
                 console.error('Lỗi: ', error);
             }

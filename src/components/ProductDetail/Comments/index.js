@@ -15,7 +15,7 @@ function Comments({ data }) {
             try {
                 const params = data.is_combo ? { combo_id: data.id } : { book_id: data.id };
                 const res = await axiosInstance.get('comment/get-comments-by-product-id', { params });
-                setComments(res.data.data);
+                setComments(res.data);
             } catch (error) {
                 console.error('Lỗi: ', error);
             }

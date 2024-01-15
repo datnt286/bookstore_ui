@@ -33,7 +33,7 @@ function Reviews({ data }) {
                     };
 
                     const res = await axiosInstance.get('/review/check-delivered', { params });
-                    setIsDelivered(res.data.is_delivered);
+                    setIsDelivered(res.is_delivered);
                 }
             } catch (error) {
                 console.error('Lỗi: ', error);
@@ -46,15 +46,15 @@ function Reviews({ data }) {
                 const response = await axiosInstance.get('review/get-reviews-by-product-id', { params });
                 const res = response.data;
 
-                setReviews(res.data.reviews);
-                setAverageRating(res.data.average_rating);
-                setTotalReviews(res.data.total_reviews);
+                setReviews(res.reviews);
+                setAverageRating(res.average_rating);
+                setTotalReviews(res.total_reviews);
                 setReviewStats({
-                    count1Star: res.data.review_stats.count_1_star,
-                    count2Stars: res.data.review_stats.count_2_stars,
-                    count3Stars: res.data.review_stats.count_3_stars,
-                    count4Stars: res.data.review_stats.count_4_stars,
-                    count5Stars: res.data.review_stats.count_5_stars,
+                    count1Star: res.review_stats.count_1_star,
+                    count2Stars: res.review_stats.count_2_stars,
+                    count3Stars: res.review_stats.count_3_stars,
+                    count4Stars: res.review_stats.count_4_stars,
+                    count5Stars: res.review_stats.count_5_stars,
                 });
             } catch (error) {
                 console.error('Lỗi: ', error);

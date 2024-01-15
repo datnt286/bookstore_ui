@@ -20,7 +20,7 @@ function CommentForm({ data, parent_id, onCommentSubmitted }) {
             };
 
             const res = await axiosInstance.post('/comment/create', comment);
-            console.log(res.data.message);
+            console.log(res.message);
 
             setContent('');
             setError('');
