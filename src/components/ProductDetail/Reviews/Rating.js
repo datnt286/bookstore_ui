@@ -1,28 +1,20 @@
-function Rating({
-    data,
-    totalReviews,
-    count1StarReviews,
-    count2StarsReviews,
-    count3StarsReviews,
-    count4StarsReviews,
-    count5StarsReviews,
-}) {
-    const width1Star = (count1StarReviews / totalReviews) * 100;
-    const width2Stars = (count2StarsReviews / totalReviews) * 100;
-    const width3Stars = (count3StarsReviews / totalReviews) * 100;
-    const width4Stars = (count4StarsReviews / totalReviews) * 100;
-    const width5Stars = (count5StarsReviews / totalReviews) * 100;
+function Rating({ averageRating, totalReviews, reviewStats }) {
+    const width1Star = (reviewStats.count1Star / totalReviews) * 100;
+    const width2Stars = (reviewStats.count2Stars / totalReviews) * 100;
+    const width3Stars = (reviewStats.count3Stars / totalReviews) * 100;
+    const width4Stars = (reviewStats.count4Stars / totalReviews) * 100;
+    const width5Stars = (reviewStats.count5Stars / totalReviews) * 100;
 
     return (
         <div className="col-md-3">
             <div id="rating">
                 <div className="rating-avg">
-                    <span>{data.average_rating || 0.0}</span>
+                    <span>{averageRating || 0.0}</span>
                     <div className="rating-stars">
                         {[...Array(5)].map((_, index) => (
                             <i
                                 key={index}
-                                className={index + 1 <= data.average_rating ? 'fa fa-star' : 'fa fa-star-o empty'}
+                                className={index + 1 <= averageRating ? 'fa fa-star' : 'fa fa-star-o empty'}
                             ></i>
                         ))}
                     </div>
@@ -43,7 +35,7 @@ function Rating({
                             <div style={{ width: `${width5Stars}%` }}></div>
                         </div>
 
-                        <span className="sum">{count5StarsReviews}</span>
+                        <span className="sum">{reviewStats.count5Stars}</span>
                     </li>
                     <li>
                         <div className="rating-stars">
@@ -56,7 +48,7 @@ function Rating({
                         <div className="rating-progress">
                             <div style={{ width: `${width4Stars}%` }}></div>
                         </div>
-                        <span className="sum">{count4StarsReviews}</span>
+                        <span className="sum">{reviewStats.count4Stars}</span>
                     </li>
                     <li>
                         <div className="rating-stars">
@@ -69,7 +61,7 @@ function Rating({
                         <div className="rating-progress">
                             <div style={{ width: `${width3Stars}%` }}></div>
                         </div>
-                        <span className="sum">{count3StarsReviews}</span>
+                        <span className="sum">{reviewStats.count3Stars}</span>
                     </li>
                     <li>
                         <div className="rating-stars">
@@ -82,7 +74,7 @@ function Rating({
                         <div className="rating-progress">
                             <div style={{ width: `${width2Stars}%` }}></div>
                         </div>
-                        <span className="sum">{count2StarsReviews}</span>
+                        <span className="sum">{reviewStats.count2Stars}</span>
                     </li>
                     <li>
                         <div className="rating-stars">
@@ -95,7 +87,7 @@ function Rating({
                         <div className="rating-progress">
                             <div style={{ width: `${width1Star}%` }}></div>
                         </div>
-                        <span className="sum">{count1StarReviews}</span>
+                        <span className="sum">{reviewStats.count1Star}</span>
                     </li>
                 </ul>
             </div>

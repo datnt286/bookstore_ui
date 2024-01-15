@@ -8,16 +8,20 @@ import ReviewForm from './ReviewForm';
 function Reviews({ data }) {
     const isLoggedIn = useSelector((state) => state.auth.token !== null);
     const user = useSelector((state) => state.auth.user);
+
     const [isDelivered, setIsDelivered] = useState(false);
-    const [reviews, setReviews] = useState(data.comments || []);
     const [reviewSubmitted, setReviewSubmitted] = useState(false);
 
+    const [reviews, setReviews] = useState(data.comments || []);
+    const [averageRating, setAverageRating] = useState(0);
     const [totalReviews, setTotalReviews] = useState(0);
-    const [count1StarReviews, setCount1StarReviews] = useState(0);
-    const [count2StarsReviews, setCount2StarsReviews] = useState(0);
-    const [count3StarsReviews, setCount3StarsReviews] = useState(0);
-    const [count4StarsReviews, setCount4StarsReviews] = useState(0);
-    const [count5StarsReviews, setCount5StarsReviews] = useState(0);
+    const [reviewStats, setReviewStats] = useState({
+        count1Star: 0,
+        count2Stars: 0,
+        count3Stars: 0,
+        count4Stars: 0,
+        count5Stars: 0,
+    });
 
     useEffect(() => {
         async function fetchCheckDelivered() {
@@ -39,14 +43,19 @@ function Reviews({ data }) {
         async function fetchReviews() {
             try {
                 const params = data.is_combo ? { combo_id: data.id } : { book_id: data.id };
-                const res = await axiosInstance.get('review/get-reviews-by-product-id', { params });
-                setReviews(res.data.data.reviews);
-                setTotalReviews(res.data.data.total_reviews);
-                setCount1StarReviews(res.data.data.count_1_star_reviews);
-                setCount2StarsReviews(res.data.data.count_2_stars_reviews);
-                setCount3StarsReviews(res.data.data.count_3_stars_reviews);
-                setCount4StarsReviews(res.data.data.count_4_stars_reviews);
-                setCount5StarsReviews(res.data.data.count_5_stars_reviews);
+                const response = await axiosInstance.get('review/get-reviews-by-product-id', { params });
+                const res = response.data;
+
+                setReviews(res.data.reviews);
+                setAverageRating(res.data.average_rating);
+                setTotalReviews(res.data.total_reviews);
+                setReviewStats({
+                    count1Star: res.data.review_stats.count_1_star,
+                    count2Stars: res.data.review_stats.count_2_stars,
+                    count3Stars: res.data.review_stats.count_3_stars,
+                    count4Stars: res.data.review_stats.count_4_stars,
+                    count5Stars: res.data.review_stats.count_5_stars,
+                });
             } catch (error) {
                 console.error('Lỗi: ', error);
             }
@@ -67,11 +76,8 @@ function Reviews({ data }) {
                 <Rating
                     data={data}
                     totalReviews={totalReviews}
-                    count1StarReviews={count1StarReviews}
-                    count2StarsReviews={count2StarsReviews}
-                    count3StarsReviews={count3StarsReviews}
-                    count4StarsReviews={count4StarsReviews}
-                    count5StarsReviews={count5StarsReviews}
+                    reviewStats={reviewStats}
+                    averageRating={averageRating}
                 />
 
                 <div className="col-md-6">
