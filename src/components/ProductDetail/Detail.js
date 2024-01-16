@@ -9,20 +9,9 @@ function Detail({ data }) {
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
 
-    var absolute_path;
-
-    if (!data || !data.absolute_path) {
-        if (!data || !data.images || data.images.length === 0) {
-            return null;
-        }
-
-        ({ absolute_path } = data.images[0] || {});
-    }
-
     const product = {
         ...data,
         quantity: isNaN(quantity) ? 1 : quantity,
-        image: data.absolute_path || (data.images && data.images.length > 0 ? data.images[0].absolute_path : null),
         ...(data.is_combo ? { combo_id: data.id, book_id: null } : { book_id: data.id, combo_id: null }),
     };
 
@@ -87,7 +76,7 @@ function Detail({ data }) {
             <div className="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div id="product-main-image" className="product-preview">
-                        <img src={data.absolute_path || absolute_path} alt="Hình ảnh" />
+                        <img src={data.image_path} alt="Hình ảnh" />
                     </div>
                 </div>
             </div>
@@ -97,7 +86,7 @@ function Detail({ data }) {
                     <div id="product-imgs">
                         <div className="product-preview">
                             {data.images.map((image, index) => {
-                                return <img key={index} src={image.absolute_path} alt="Hình ảnh" className="mb-4" />;
+                                return <img key={index} src={image.image_path} alt="Hình ảnh" className="mb-4" />;
                             })}
                         </div>
                     </div>
@@ -125,28 +114,32 @@ function Detail({ data }) {
 
                     {!data.is_combo && (
                         <>
-                            <ul className="product-links">
-                                <li>Thể loại:</li>
-                                <li>
-                                    <Link to={`/danh-muc/${data.category.slug}`}>{data.category_name}</Link>
-                                </li>
-                            </ul>
+                            {data.category && (
+                                <ul className="product-links">
+                                    <li>Thể loại:</li>
+                                    <li>
+                                        <Link to={`/danh-muc/${data.category.slug}`}>{data.category_name}</Link>
+                                    </li>
+                                </ul>
+                            )}
 
-                            <ul className="product-links">
-                                <li>Tác giả:</li>
-                                {data.authors.map((author) => {
-                                    return (
-                                        <li key={author.id}>
-                                            <a href="#">{author.name}</a>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                            {data.authors && data.authors.length > 0 && (
+                                <ul className="product-links">
+                                    <li>Tác giả:</li>
+                                    {data.authors.map((author) => {
+                                        return (
+                                            <li key={author.id}>
+                                                <a href="#">{author.name}</a>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            )}
                         </>
                     )}
 
                     <h3 className="product-price mt-4">
-                        {data.price.toLocaleString()} ₫ <del className="product-old-price">990.00 ₫</del>
+                        {data.price && data.price.toLocaleString()} ₫ <del className="product-old-price">990.00 ₫</del>
                     </h3>
 
                     <div>Số lượng có sẵn: {data.quantity}</div>
@@ -169,6 +162,7 @@ function Detail({ data }) {
                                 </span>
                             </div>
                         </div>
+
                         <div>
                             <button onClick={handleAddToCart} className="add-to-cart-btn mt-4">
                                 <i className="fa fa-shopping-cart"></i> Thêm vào giỏ hàng

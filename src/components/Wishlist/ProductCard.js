@@ -6,20 +6,10 @@ import Swal from 'sweetalert2';
 
 function ProductCard({ data }) {
     const dispatch = useDispatch();
-    let absolute_path;
-
-    if (!data || !data.absolute_path) {
-        if (!data || !data.images || data.images.length === 0) {
-            return null;
-        }
-
-        ({ absolute_path } = data.images[0] || {});
-    }
 
     const product = {
         ...data,
         quantity: 1,
-        image: data.absolute_path || (data.images && data.images.length > 0 ? data.images[0].absolute_path : null),
         ...(data.is_combo ? { combo_id: data.id, book_id: null } : { book_id: data.id, combo_id: null }),
     };
 
@@ -48,7 +38,7 @@ function ProductCard({ data }) {
             <div className="product">
                 <Link to={`/${data.slug}`}>
                     <div className="product-img d-flex justify-content-center align-items-center">
-                        <img src={data.absolute_path || absolute_path} alt="Hình ảnh" className="product-image" />
+                        <img src={data.image_path} alt="Hình ảnh" className="product-image" />
                     </div>
 
                     <div className="product-body">

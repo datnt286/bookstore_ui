@@ -47,7 +47,7 @@ function TopHeader() {
                         </li>
                         <li>
                             <Link to="/tai-khoan">
-                                <img src={user.avatar_image} alt="Ảnh đại diện" className="avatar-img-header" />
+                                <img src={user.avatar_path} alt="Ảnh đại diện" className="avatar-img-header" />
                                 {user.name}
                             </Link>
                         </li>

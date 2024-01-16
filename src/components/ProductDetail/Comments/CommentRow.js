@@ -27,7 +27,7 @@ function CommentRow({ data, comment, setCommentSubmitted }) {
         <>
             <li className={`comment-row ${isReplying ? 'reply-row' : ''}`}>
                 <div className="comment-heading">
-                    <img className="avatar" src={comment.customer.avatar_image} alt="Ảnh đại diện" />
+                    <img className="avatar" src={comment.customer.avatar_path} alt="Ảnh đại diện" />
                     <div className="comment-user">
                         <h5 className="name">{comment.customer.name}</h5>
                         <p className="date">{comment.comment_date}</p>

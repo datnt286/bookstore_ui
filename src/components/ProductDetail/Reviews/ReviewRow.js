@@ -2,7 +2,7 @@ function ReviewRow({ data }) {
     return (
         <li>
             <div className="review-heading">
-                <img className="avatar" src={data.customer.avatar_image} alt="Ảnh đại diện" />
+                <img className="avatar" src={data.customer.avatar_path} alt="Ảnh đại diện" />
                 <div>
                     <h5 className="name">{data.customer.name}</h5>
                     <p className="date">{data.review_date}</p>

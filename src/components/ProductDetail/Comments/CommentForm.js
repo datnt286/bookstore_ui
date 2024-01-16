@@ -43,7 +43,7 @@ function CommentForm({ data, parent_id, onCommentSubmitted }) {
     return (
         <form onSubmit={handleSubmit}>
             <div className={`comment-form ${parent_id ? 'reply-form' : ''}`}>
-                <img className="avatar" src={user.avatar_image} alt="Ảnh đại diện" />
+                <img className="avatar" src={user.avatar_path} alt="Ảnh đại diện" />
                 <h5 className="name">Bạn</h5>
                 <textarea
                     className="form-control"

@@ -91,7 +91,7 @@ function Account() {
                     <div className="col-md-2">
                         <div className="text-center">
                             <img
-                                src={selectedAvatar || auth.user.avatar_image}
+                                src={selectedAvatar || auth.user.avatar_path}
                                 alt="Ảnh đại diện"
                                 className="profile-user-img img-fluid img-circle avatar-img"
                             />
