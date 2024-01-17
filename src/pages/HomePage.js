@@ -3,6 +3,7 @@ import axiosInstance from '../services/axiosInstance';
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductSection from '../components/ProductSection';
 import HotDealBanner from '../components/HotDealBanner';
+import Carousel from '../components/Carousel';
 
 function HomePage() {
     const [newBooks, setNewBooks] = useState([]);
@@ -26,6 +27,7 @@ function HomePage() {
 
     return (
         <DefaultLayout>
+            <Carousel />
             <ProductSection title="Sách mới" url="/sach-moi" data={newBooks} />
             <ProductSection title="Sách bán chạy" url="/sach-ban-chay" data={bestsellers} />
             <HotDealBanner />

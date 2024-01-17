@@ -82,6 +82,16 @@
     min-height: 2000px;
 }
 
+/* Product section */
+.product-section {
+    padding: 0;
+}
+
+.product-section .section-title {
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
 /* Store */
 .store {
     min-height: 1855px;
@@ -543,4 +553,16 @@
     padding: 8px 20px;
     margin-top: 20px;
     margin-left: 14px;
+}
+
+/* Slide */
+.carousel {
+    width: 1120px;
+    height: 452px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.slide-img {
+    width: 100%;
 }
