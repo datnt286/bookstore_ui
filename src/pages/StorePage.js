@@ -13,7 +13,7 @@ function StorePage() {
 
     const fetchProducts = async (page = 1) => {
         try {
-            let url = `/index?page=${page}`;
+            let url = `/store?page=${page}`;
 
             if (categoryFilter.length > 0) {
                 const categoryIds = categoryFilter.join(',');

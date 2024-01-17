@@ -26,7 +26,7 @@ function ProductDetailPage() {
                 const categorySlug = productRes.data.category_slug;
                 setCategorySlug(categorySlug);
 
-                const relatedBooksRes = await axiosInstance.get(`/get-books-by-category-id/${categoryId}`);
+                const relatedBooksRes = await axiosInstance.get(`/books-by-category-id/${categoryId}`);
                 setRelatedBooks(relatedBooksRes.data);
 
                 const viewedProducts = JSON.parse(localStorage.getItem('viewedProducts')) || [];

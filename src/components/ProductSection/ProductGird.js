@@ -1,7 +1,7 @@
 import ProductCard from '../ProductCard';
 
 function ProductGrid({ data }) {
-    const products = data.slice(0, 4).map((product, index) => {
+    const products = data.map((product, index) => {
         return <ProductCard key={index} data={product} />;
     });
 

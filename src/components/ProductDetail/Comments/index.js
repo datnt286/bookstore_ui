@@ -15,7 +15,7 @@ function Comments({ data }) {
     const fetchComments = async (page = 1) => {
         try {
             const params = data.is_combo ? { combo_id: data.id, page } : { book_id: data.id, page };
-            const res = await axiosInstance.get('comment/get-comments-by-product-id', { params });
+            const res = await axiosInstance.get('comment/comments-by-product-id', { params });
 
             setComments(res.data.comments);
             setPageCount(res.data.total_pages);

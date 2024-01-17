@@ -10,7 +10,7 @@ function CombosPage() {
 
     const fetchCombos = async (page = 1) => {
         try {
-            const res = await axiosInstance.get(`/get-combos?page=${page}`);
+            const res = await axiosInstance.get(`/combos?page=${page}`);
             setCombos(res.data.combos);
             setPageCount(res.data.total_pages);
         } catch (error) {

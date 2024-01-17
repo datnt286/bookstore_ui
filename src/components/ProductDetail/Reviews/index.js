@@ -29,7 +29,7 @@ function Reviews({ data }) {
     const fetchReviews = async (page = 1) => {
         try {
             const params = data.is_combo ? { combo_id: data.id, page } : { book_id: data.id, page };
-            const response = await axiosInstance.get('review/get-reviews-by-product-id', { params });
+            const response = await axiosInstance.get('review/reviews-by-product-id', { params });
             const res = response.data;
 
             setReviews(res.reviews);

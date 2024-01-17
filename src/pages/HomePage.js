@@ -5,29 +5,31 @@ import ProductSection from '../components/ProductSection';
 import HotDealBanner from '../components/HotDealBanner';
 
 function HomePage() {
-    const [products, setProducts] = useState({
-        newBooks: [],
-        combos: [],
-    });
+    const [newBooks, setNewBooks] = useState([]);
+    const [bestsellers, setBestsellers] = useState([]);
+    const [combos, setCombos] = useState([]);
 
     useEffect(() => {
-        async function fetchNewBooksAndCombos() {
+        async function fetchData() {
             try {
-                const res = await axiosInstance.get('/get-newbooks-and-combos');
-                setProducts(res.data);
+                const res = await axiosInstance.get('/home');
+                setNewBooks(res.data.new_books);
+                setBestsellers(res.data.bestsellers);
+                setCombos(res.data.combos);
             } catch (error) {
                 console.error('Lỗi: ', error);
             }
         }
 
-        fetchNewBooksAndCombos();
+        fetchData();
     }, []);
 
     return (
         <DefaultLayout>
-            <ProductSection title="Sách mới" url="/sach-moi" data={products.newBooks} />
+            <ProductSection title="Sách mới" url="/sach-moi" data={newBooks} />
+            <ProductSection title="Sách bán chạy" url="/sach-ban-chay" data={bestsellers} />
             <HotDealBanner />
-            <ProductSection title="Combo" url="/combo" data={products.combos} />
+            <ProductSection title="Combo" url="/combo" data={combos} />
         </DefaultLayout>
     );
 }

@@ -4,14 +4,14 @@ import DefaultLayout from '../layouts/DefaultLayout';
 import Products from '../components/Products';
 import Pagination from '../components/Pagination';
 
-function NewBooksPage() {
-    const [newBooks, setNewBooks] = useState([]);
+function BestsellersPage() {
+    const [bestsellers, setBestsellers] = useState([]);
     const [pageCount, setPageCount] = useState(1);
 
-    const fetchNewBooks = async (page = 1) => {
+    const fetchBestsellers = async (page = 1) => {
         try {
-            const res = await axiosInstance.get(`/newbooks?page=${page}`);
-            setNewBooks(res.data.new_books);
+            const res = await axiosInstance.get(`/bestsellers?page=${page}`);
+            setBestsellers(res.data.bestsellers);
             setPageCount(res.data.total_pages);
         } catch (error) {
             console.error('Lỗi: ', error);
@@ -19,20 +19,20 @@ function NewBooksPage() {
     };
 
     useEffect(() => {
-        fetchNewBooks();
+        fetchBestsellers();
     }, []);
 
     const handlePageChange = ({ selected }) => {
         const page = selected + 1;
-        fetchNewBooks(page);
+        fetchBestsellers(page);
     };
 
     return (
         <DefaultLayout>
-            <Products title="Sách mới" data={newBooks} />
+            <Products title="Sách bán chạy" url="/sach-ban-chay" data={bestsellers} />
             <Pagination pageCount={pageCount} onPageChange={handlePageChange} />
         </DefaultLayout>
     );
 }
 
-export default NewBooksPage;
+export default BestsellersPage;

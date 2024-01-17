@@ -1,10 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import './style.css';
 import HomePage from './pages/HomePage';
-import CategoriesPage from './pages/CategoriesPage';
 import NewBooksPage from './pages/NewBooksPage';
-import ProductsByCategoryPage from './pages/ProductsByCategoryPage';
+import BestsellersPage from './pages/BestsellersPage';
 import CombosPage from './pages/CombosPage';
+import CategoriesPage from './pages/CategoriesPage';
+import ProductsByCategoryPage from './pages/ProductsByCategoryPage';
 import StorePage from './pages/StorePage';
 import SearchPage from './pages/SearchPage';
 import ProductDetailPage from './pages/ProductDetailPage';
@@ -23,10 +24,11 @@ function App() {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/sach-moi" element={<NewBooksPage />} />
+            <Route path="/sach-ban-chay" element={<BestsellersPage />} />
+            <Route path="/combo" element={<CombosPage />} />
             <Route path="/danh-muc" element={<CategoriesPage />} />
             <Route path="/danh-muc/:categorySlug" element={<ProductsByCategoryPage />} />
-            <Route path="/sach-moi" element={<NewBooksPage />} />
-            <Route path="/combo" element={<CombosPage />} />
             <Route path="/cua-hang" element={<StorePage />} />
             <Route path="/tim-kiem/:keyword" element={<SearchPage />} />
             <Route path="/gio-hang" element={<CartPage />} />
