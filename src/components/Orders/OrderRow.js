@@ -105,7 +105,9 @@ function OrderRow({ data, setOrders, onOrderStatusChanged }) {
     return (
         <tr>
             <td className="align-middle">{data.order_date}</td>
-            <td className="align-middle">{data.total.toLocaleString()} ₫</td>
+            <td className="align-middle">
+                {data.total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+            </td>
             <td className="align-middle">{getStatusText(data.status)}</td>
             <td className="align-middle">
                 <button

@@ -26,10 +26,15 @@ function OrderDetailRow({ data }) {
                         <span className="order-detail">{data.product_name}</span>
                     </Link>
                 </td>
-                <td className="order-detail align-middle">{data.price.toLocaleString()} ₫</td>
+                <td className="order-detail align-middle">
+                    {data.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                </td>
                 <td className="order-detail align-middle">{data.quantity}</td>
                 <td className="order-detail align-middle">
-                    {(parseInt(data.quantity) * parseInt(data.price)).toLocaleString()} ₫
+                    {(parseInt(data.quantity) * parseInt(data.price)).toLocaleString('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND',
+                    })}
                 </td>
                 {orderDetail.status === 4 && (
                     <td className="align-middle">

@@ -64,7 +64,12 @@ function Order() {
                             <div key={index} className="order-col">
                                 <div>{product.name}</div>
                                 <div>x {product.quantity}</div>
-                                <div>{(parseInt(product.quantity) * parseInt(product.price)).toLocaleString()} ₫</div>
+                                <div>
+                                    {(parseInt(product.quantity) * parseInt(product.price)).toLocaleString('vi-VN', {
+                                        style: 'currency',
+                                        currency: 'VND',
+                                    })}
+                                </div>
                             </div>
                         );
                     })}
@@ -80,7 +85,9 @@ function Order() {
                         <strong>Tổng thành tiền</strong>
                     </div>
                     <div>
-                        <strong className="order-total">{cart.total.toLocaleString()} ₫</strong>
+                        <strong className="order-total">
+                            {cart.total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                        </strong>
                     </div>
                 </div>
             </div>

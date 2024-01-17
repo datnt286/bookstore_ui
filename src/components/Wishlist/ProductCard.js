@@ -45,7 +45,8 @@ function ProductCard({ data }) {
                         <p className="product-category">{data.category_name}</p>
                         <h3 className="product-name">{data.name}</h3>
                         <h4 className="product-price">
-                            {data.price.toLocaleString()} ₫ <del className="product-old-price">990.00 ₫</del>
+                            {data.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}{' '}
+                            <del className="product-old-price">990.00 ₫</del>
                         </h4>
                     </div>
                 </Link>

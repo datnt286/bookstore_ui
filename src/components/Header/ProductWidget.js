@@ -23,7 +23,7 @@ function ProductWidget({ data }) {
                 </h3>
                 <h4 className="product-price">
                     <span className="qty">{data.quantity} x</span>
-                    {data.price.toLocaleString()} ₫
+                    {data.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                 </h4>
             </div>
 

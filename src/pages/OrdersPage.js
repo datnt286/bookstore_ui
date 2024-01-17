@@ -1,10 +1,10 @@
 import DefaultLayout from '../layouts/DefaultLayout';
-import Order from '../components/Order';
+import Orders from '../components/Orders';
 
 function OrderPage() {
     return (
         <DefaultLayout>
-            <Order />
+            <Orders />
         </DefaultLayout>
     );
 }

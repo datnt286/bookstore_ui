@@ -4,7 +4,7 @@ import axiosInstance from '../../services/axiosInstance';
 import OrderTable from './OrderTable';
 import OrderDetail from './OrderDetail';
 
-function Order() {
+function Orders() {
     const user = useSelector((state) => state.auth.user);
     const [orderStatusChanged, setOrderStatusChanged] = useState(false);
     const [orders, setOrders] = useState({
@@ -129,4 +129,4 @@ function Order() {
     );
 }
 
-export default Order;
+export default Orders;

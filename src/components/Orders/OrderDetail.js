@@ -48,7 +48,7 @@ function OrderDetail() {
                                         Tổng thành tiền:
                                     </td>
                                     <td className="order-detail fw-bold text-danger">
-                                        {totalAmount.toLocaleString()} đ
+                                        {totalAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                                     </td>
                                 </tr>
                             </tbody>
