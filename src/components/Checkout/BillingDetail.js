@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserBill } from '../../redux/authSlice';
 
-function BillingDetail() {
+function BillingDetail({ validationErrors }) {
     const user = useSelector((state) => state.auth.user);
     const [formData, setFormData] = useState({ ...user });
     const dispatch = useDispatch();
@@ -33,6 +33,7 @@ function BillingDetail() {
                         placeholder="Họ tên"
                         className="form-control input"
                     />
+                    <div className="invalid-feedback name-error">{validationErrors.name}</div>
                 </div>
                 <div className="form-group">
                     <input
@@ -43,6 +44,7 @@ function BillingDetail() {
                         placeholder="Điện thoại"
                         className="form-control input"
                     />
+                    <div className="invalid-feedback phone-error">{validationErrors.phone}</div>
                 </div>
                 <div className="form-group">
                     <textarea
@@ -53,6 +55,7 @@ function BillingDetail() {
                         placeholder="Địa chỉ"
                         className="form-control input"
                     ></textarea>
+                    <div className="invalid-feedback address-error">{validationErrors.address}</div>
                 </div>
             </div>
 

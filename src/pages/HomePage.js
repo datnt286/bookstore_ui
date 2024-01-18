@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import axiosInstance from '../services/axiosInstance';
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductSection from '../components/ProductSection';
-import HotDealBanner from '../components/HotDealBanner';
 import Carousel from '../components/Carousel';
+import HotDealBanner from '../components/HotDealBanner';
 
 function HomePage() {
     const [newBooks, setNewBooks] = useState([]);

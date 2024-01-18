@@ -4,7 +4,7 @@ import { clearCart } from '../../redux/cartSlice';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
 
-function Order() {
+function Order({ setValidationErrors }) {
     const user = useSelector((state) => state.auth.user);
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function Order() {
                 },
                 products: cart.items,
             };
-
+            console.log(data);
             const res = await axiosInstance.post('/order/create', data);
 
             dispatch(clearCart());
@@ -31,13 +31,21 @@ function Order() {
                 timer: 2000,
             });
         } catch (error) {
-            console.error('Lỗi: ', error);
+            if (error.response.status === 422) {
+                setValidationErrors({
+                    name: error.response.data.errors.name || [],
+                    phone: error.response.data.errors.phone || [],
+                    address: error.response.data.errors.address || [],
+                  });
+            } else {
+                console.error('Lỗi: ', error);
 
-            Swal.fire({
-                icon: 'error',
-                title: 'Có lỗi xảy ra khi thanh toán. Vui lòng thử lại sau!',
-                timer: 2000,
-            });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Có lỗi xảy ra khi thanh toán. Vui lòng thử lại sau!',
+                    timer: 2000,
+                });
+            }
         }
     };
 
