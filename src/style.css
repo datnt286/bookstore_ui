@@ -555,7 +555,7 @@
     margin-left: 14px;
 }
 
-/* Slide */
+/* Carousel */
 .carousel {
     width: 1120px;
     height: 452px;
@@ -565,4 +565,14 @@
 
 .slide-img {
     width: 100%;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    padding: 10px;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    color: #3595ff;
 }
