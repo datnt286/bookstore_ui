@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axiosInstance from '../services/axiosInstance';
 import DefaultLayout from '../layouts/DefaultLayout';
-import Store from '../components/Store';
+import Products from '../components/Products';
 import Pagination from '../components/Pagination';
 
 function SearchPage() {
@@ -33,7 +33,7 @@ function SearchPage() {
         <DefaultLayout>
             {products.length > 0 ? (
                 <>
-                    <Store data={products} />
+                    <Products title="Kết quả tìm kiếm:" data={products} />
                     <Pagination pageCount={pageCount} onPageChange={handlePageChange} />
                 </>
             ) : (

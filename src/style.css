@@ -576,3 +576,17 @@
 .swiper-button-next:hover {
     color: #3595ff;
 }
+
+/* Not Found */
+.not-found {
+    width: 100vw;
+    height: 100vh;
+}
+
+.not-found-img {
+    width: 300px;
+}
+
+.not-found-link {
+    color: #D10024;
+}

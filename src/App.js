@@ -19,6 +19,7 @@ import MePage from './pages/MePage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import OrdersPage from './pages/OrdersPage';
 import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
     return (
@@ -42,6 +43,7 @@ function App() {
             <Route path="/hoa-don" element={<OrdersPage />} />
             <Route path="/lien-he" element={<ContactPage />} />
             <Route path="/:slug" element={<ProductDetailPage />} />
+            <Route element={<NotFoundPage />} />
         </Routes>
     );
 }
