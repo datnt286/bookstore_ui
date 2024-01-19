@@ -34,7 +34,7 @@ function CommentRow({ data, comment, setCommentSubmitted }) {
                         <span className="btn-reply" onClick={toggleReplyForm}>
                             Phản hồi
                         </span>
-                        {user.id === comment.customer_id && (
+                        {user && user.id === comment.customer_id && (
                             <span className="btn-detete-comment" onClick={() => handleDelete(comment.id)}>
                                 Xoá
                             </span>
