@@ -10,7 +10,7 @@ function RegisterPage() {
         }, 1000);
     }, []);
 
-    return <>{loading ? <div class="loader"></div> : <Register />}</>;
+    return <>{loading ? <div className="loader"></div> : <Register />}</>;
 }
 
 export default RegisterPage;

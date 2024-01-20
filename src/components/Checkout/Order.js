@@ -168,13 +168,6 @@ function Order({ setValidationErrors }) {
                     </div>
                 </div>
             </div>
-            <div className="input-checkbox">
-                <input type="checkbox" id="terms" />
-                <label htmlFor="terms">
-                    <span></span>
-                    Tôi đã đọc và chấp nhận các điều khoản và điều kiện
-                </label>
-            </div>
             <button onClick={handleOrder} className="primary-btn order-submit w-100">
                 Đặt hàng
             </button>

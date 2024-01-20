@@ -10,7 +10,7 @@ function LoginPage() {
         }, 1000);
     }, []);
 
-    return <>{loading ? <div class="loader"></div> : <Login />}</>;
+    return <>{loading ? <div className="loader"></div> : <Login />}</>;
 }
 
 export default LoginPage;

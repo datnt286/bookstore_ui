@@ -11,7 +11,7 @@ function ProductWidget({ data }) {
 
     return (
         <div className="product-widget">
-            <Link to={`/${data.slug}`}>
+            <Link to={`/san-pham/${data.slug}`}>
                 <div className="product-img">
                     <img src={data.image_path} alt="Hình ảnh" />
                 </div>
@@ -19,7 +19,7 @@ function ProductWidget({ data }) {
 
             <div className="product-body">
                 <h3 className="product-name">
-                    <Link to={`/${data.slug}`}>{data.name}</Link>
+                    <Link to={`/san-pham/${data.slug}`}>{data.name}</Link>
                 </h3>
                 <h4 className="product-price">
                     <span className="qty">{data.quantity} x</span>

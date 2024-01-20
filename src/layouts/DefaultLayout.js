@@ -14,7 +14,7 @@ function DefaultLayout({ children }) {
     return (
         <>
             {loading ? (
-                <div class="loader"></div>
+                <div className="loader"></div>
             ) : (
                 <>
                     <Header />

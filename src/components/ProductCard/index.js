@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function ProductCard({ data }) {
     return (
         <div className="col-md-3 col-xs-6">
-            <Link to={`/${data.slug}`}>
+            <Link to={`/san-pham/${data.slug}`}>
                 <div className="product">
                     <div className="product-img d-flex justify-content-center align-items-center">
                         <img src={data.image_path} alt="Hình ảnh" className="product-image" />

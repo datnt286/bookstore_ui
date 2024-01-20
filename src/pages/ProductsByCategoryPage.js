@@ -4,11 +4,13 @@ import axiosInstance from '../services/axiosInstance';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Products from '../components/Products';
 import Pagination from '../components/Pagination';
+import NotFoundPage from './NotFoundPage';
 
 function ProductsByCategoryPage() {
     const [books, setBooks] = useState([]);
     const [title, setTitle] = useState('');
     const [pageCount, setPageCount] = useState(1);
+    const [notFound, setNotFound] = useState(false);
     const { categorySlug } = useParams();
 
     const fetchProducts = async (page = 1) => {
@@ -18,13 +20,21 @@ function ProductsByCategoryPage() {
             setTitle(res.data.category.name);
             setPageCount(res.data.total_pages);
         } catch (error) {
-            console.error('Lỗi: ', error);
+            if (error.response.status === 404) {
+                setNotFound(true);
+            } else {
+                console.error('Lỗi: ', error);
+            }
         }
     };
 
     useEffect(() => {
         fetchProducts();
     }, []);
+
+    if (notFound) {
+        return <NotFoundPage />;
+    }
 
     const handlePageChange = ({ selected }) => {
         const page = selected + 1;

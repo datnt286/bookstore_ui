@@ -30,6 +30,7 @@ function App() {
             <Route path="/combo" element={<CombosPage />} />
             <Route path="/danh-muc" element={<CategoriesPage />} />
             <Route path="/danh-muc/:categorySlug" element={<ProductsByCategoryPage />} />
+            <Route path="/san-pham/:slug" element={<ProductDetailPage />} />
             <Route path="/cua-hang" element={<StorePage />} />
             <Route path="/tim-kiem/:keyword" element={<SearchPage />} />
             <Route path="/gio-hang" element={<CartPage />} />
@@ -42,8 +43,7 @@ function App() {
             <Route path="/quen-mat-khau" element={<ForgotPasswordPage />} />
             <Route path="/hoa-don" element={<OrdersPage />} />
             <Route path="/lien-he" element={<ContactPage />} />
-            <Route path="/:slug" element={<ProductDetailPage />} />
-            <Route element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
         </Routes>
     );
 }

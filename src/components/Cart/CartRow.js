@@ -90,7 +90,7 @@ function CartRow({ product }) {
     return (
         <tr>
             <td>
-                <Link to={`/${product.slug}`}>
+                <Link to={`/san-pham/${product.slug}`}>
                     <img src={product.image_path} alt="Hình ảnh" className="product-cart-image" />
                     <span className="cart-detail mx-2">{product.name}</span>
                 </Link>

@@ -12,7 +12,7 @@ function Carousel({ data }) {
             {data.map((slider, index) => {
                 return (
                     <SwiperSlide key={index}>
-                        <Link to={`/${slider.book.slug}`}>
+                        <Link to={`/san-pham/${slider.book.slug}`}>
                             <img className="slide-img" src={slider.image_path} alt="Banner" />
                         </Link>
                     </SwiperSlide>

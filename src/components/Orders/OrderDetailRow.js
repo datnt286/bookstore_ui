@@ -16,7 +16,7 @@ function OrderDetailRow({ data }) {
             <tr>
                 <td className="align-middle d-flex align-items-center">
                     <Link
-                        to={`/${data.product_slug}`}
+                        to={`/san-pham/${data.product_slug}`}
                         onClick={(event) => {
                             event.preventDefault();
                             window.location.href = `/${data.product_slug}`;
