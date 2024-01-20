@@ -2,18 +2,29 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { clearCart } from '../../redux/cartSlice';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
 
 function Order({ setValidationErrors }) {
     const user = useSelector((state) => state.auth.user);
     const cart = useSelector((state) => state.cart);
-    const [payment, setPayment] = useState(1);
+    const [paymentMethod, setPaymentMethod] = useState(2);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const initialOptions = {
+        clientId: 'Af8dbnEB_JRx87dbcb-HrO67XOlUz1uvMs18JgrzZHqYEWGs49ZgjX-JCR4kp8M_tQSF396z8vHuZr_J',
+        currency: 'USD',
+        vault: true,
+    };
+
+    function handleApprove() {
+        handleOrder();
+    }
+
     const handlePaymentChange = (event) => {
-        setPayment(parseInt(event.target.value));
+        setPaymentMethod(parseInt(event.target.value));
     };
 
     const handleOrder = async () => {
@@ -24,7 +35,8 @@ function Order({ setValidationErrors }) {
                     customer_id: user.id || null,
                 },
                 products: cart.items,
-                payment: payment,
+                payment_method: paymentMethod,
+                payment_status: paymentMethod === 1 ? 0 : 1,
             };
 
             const res = await axiosInstance.post('/order/create', data);
@@ -111,60 +123,55 @@ function Order({ setValidationErrors }) {
                     <input
                         type="radio"
                         name="payment"
-                        id="payment-1"
-                        value={1}
-                        checked={payment === 1}
-                        onChange={handlePaymentChange}
-                    />
-                    <label htmlFor="payment-1">
-                        <span></span>
-                        Thanh toán khi nhận hàng
-                    </label>
-                    <div className="caption">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua.
-                        </p>
-                    </div>
-                </div>
-                <div className="input-radio">
-                    <input
-                        type="radio"
-                        name="payment"
                         id="payment-2"
                         value={2}
-                        checked={payment === 2}
+                        checked={paymentMethod === 2}
                         onChange={handlePaymentChange}
                     />
                     <label htmlFor="payment-2">
                         <span></span>
-                        Chuyển khoản trực tiếp
+                        Thanh toán khi nhận hàng
                     </label>
                     <div className="caption">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua.
-                        </p>
+                        <p>Thanh toán ngay khi nhận hàng.</p>
                     </div>
                 </div>
                 <div className="input-radio">
                     <input
                         type="radio"
                         name="payment"
-                        id="payment-3"
-                        value={3}
-                        checked={payment === 3}
+                        id="payment-1"
+                        value={1}
+                        checked={paymentMethod === 1}
                         onChange={handlePaymentChange}
                     />
-                    <label htmlFor="payment-3">
+                    <label htmlFor="payment-1">
                         <span></span>
-                        Hệ thống Paypal
+                        Thanh toán Paypal
                     </label>
                     <div className="caption">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua.
-                        </p>
+                        <PayPalScriptProvider deferLoading={false} options={initialOptions}>
+                            <PayPalButtons
+                                createOrder={(data, actions) => {
+                                    return actions.order.create({
+                                        intent: 'CAPTURE',
+                                        application_context: {
+                                            brand_name: 'Bookstore',
+                                            shipping_preference: 'NO_SHIPPING',
+                                        },
+                                        purchase_units: [
+                                            {
+                                                description: 'Supcription',
+                                                amount: {
+                                                    value: parseFloat((cart.total / 24500).toFixed(2)),
+                                                },
+                                            },
+                                        ],
+                                    });
+                                }}
+                                onApprove={handleApprove}
+                            />
+                        </PayPalScriptProvider>
                     </div>
                 </div>
             </div>
