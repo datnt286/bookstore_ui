@@ -322,7 +322,6 @@
 
 .form-login,
 .form-register {
-    border: 1px solid #D10024;
     border-radius: 4px;
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.5);
 }
@@ -359,6 +358,11 @@
 .btn-forgot-password {
     width: 200px;
     height: 40px;
+}
+
+.register-link {
+    color: #d10024;
+    margin-left: 4px;
 }
 
 /* Nav pills */

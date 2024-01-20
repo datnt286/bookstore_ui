@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { login } from '../../redux/authSlice';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
@@ -146,6 +146,13 @@ function Login() {
                                             <i className="fa fa-facebook-square"></i> Facebook
                                         </button>
                                     </div>
+                                </div>
+
+                                <div className="d-flex justify-content-center mt-4">
+                                    <span>Chưa có tài khoản?</span>
+                                    <Link to="/dang-ky" className="register-link">
+                                        Đăng ký
+                                    </Link>
                                 </div>
                             </div>
                         </div>
