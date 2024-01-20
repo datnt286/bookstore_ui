@@ -1,14 +1,27 @@
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Newsletter from '../components/Newsletter';
 
 function DefaultLayout({ children }) {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+    }, []);
+
     return (
         <>
-            <Header />
-            <main>{children}</main>
-            <Newsletter />
-            <Footer />
+            {loading ? (
+                <div class="loader"></div>
+            ) : (
+                <>
+                    <Header />
+                    <main>{children}</main>
+                    <Footer />
+                </>
+            )}
         </>
     );
 }

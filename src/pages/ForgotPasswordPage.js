@@ -1,14 +1,11 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import DefaultLayout from '../layouts/DefaultLayout';
 import ForgotPassword from '../components/ForgotPassword';
 
 function ForgotPasswordPage() {
     return (
-        <>
-            <Header />
+        <DefaultLayout>
             <ForgotPassword />
-            <Footer />
-        </>
+        </DefaultLayout>
     );
 }
 

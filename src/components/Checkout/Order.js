@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { clearCart } from '../../redux/cartSlice';
@@ -7,8 +8,13 @@ import Swal from 'sweetalert2';
 function Order({ setValidationErrors }) {
     const user = useSelector((state) => state.auth.user);
     const cart = useSelector((state) => state.cart);
+    const [payment, setPayment] = useState(1);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const handlePaymentChange = (event) => {
+        setPayment(parseInt(event.target.value));
+    };
 
     const handleOrder = async () => {
         try {
@@ -18,8 +24,9 @@ function Order({ setValidationErrors }) {
                     customer_id: user.id || null,
                 },
                 products: cart.items,
+                payment: payment,
             };
-            console.log(data);
+
             const res = await axiosInstance.post('/order/create', data);
 
             dispatch(clearCart());
@@ -36,7 +43,7 @@ function Order({ setValidationErrors }) {
                     name: error.response.data.errors.name || [],
                     phone: error.response.data.errors.phone || [],
                     address: error.response.data.errors.address || [],
-                  });
+                });
             } else {
                 console.error('Lỗi: ', error);
 
@@ -101,8 +108,35 @@ function Order({ setValidationErrors }) {
             </div>
             <div className="payment-method">
                 <div className="input-radio">
-                    <input type="radio" name="payment" id="payment-1" />
+                    <input
+                        type="radio"
+                        name="payment"
+                        id="payment-1"
+                        value={1}
+                        checked={payment === 1}
+                        onChange={handlePaymentChange}
+                    />
                     <label htmlFor="payment-1">
+                        <span></span>
+                        Thanh toán khi nhận hàng
+                    </label>
+                    <div className="caption">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>
+                <div className="input-radio">
+                    <input
+                        type="radio"
+                        name="payment"
+                        id="payment-2"
+                        value={2}
+                        checked={payment === 2}
+                        onChange={handlePaymentChange}
+                    />
+                    <label htmlFor="payment-2">
                         <span></span>
                         Chuyển khoản trực tiếp
                     </label>
@@ -114,20 +148,14 @@ function Order({ setValidationErrors }) {
                     </div>
                 </div>
                 <div className="input-radio">
-                    <input type="radio" name="payment" id="payment-2" />
-                    <label htmlFor="payment-2">
-                        <span></span>
-                        Thanh toán séc
-                    </label>
-                    <div className="caption">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua.
-                        </p>
-                    </div>
-                </div>
-                <div className="input-radio">
-                    <input type="radio" name="payment" id="payment-3" />
+                    <input
+                        type="radio"
+                        name="payment"
+                        id="payment-3"
+                        value={3}
+                        checked={payment === 3}
+                        onChange={handlePaymentChange}
+                    />
                     <label htmlFor="payment-3">
                         <span></span>
                         Hệ thống Paypal

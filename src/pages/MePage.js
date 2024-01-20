@@ -1,14 +1,11 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import DefaultLayout from '../layouts/DefaultLayout';
 import Me from '../components/Me';
 
 function MePage() {
     return (
-        <>
-            <Header />
+        <DefaultLayout>
             <Me />
-            <Footer />
-        </>
+        </DefaultLayout>
     );
 }
 

@@ -66,89 +66,95 @@ function Register() {
     };
 
     return (
-        <div id="register" className="section">
+        <div id="register" className="section d-flex justify-content-center align-items-center">
             <div className="container">
                 <form onSubmit={handleRegister}>
                     <div className="row d-flex justify-content-center">
-                        <div className="col-md-4">
-                            <div className="section-title text-center">
-                                <h3 className="title">Đăng ký</h3>
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    name="username"
-                                    onChange={handleInputChange}
-                                    placeholder="Tên đăng nhập"
-                                    className={`form-control input ${validationErrors.username ? 'is-invalid' : ''}`}
-                                />
-                                <div className="invalid-feedback username-error">{validationErrors.username}</div>
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type={showPassword ? 'text' : 'password'}
-                                    name="password"
-                                    onChange={handleInputChange}
-                                    placeholder="Mật khẩu"
-                                    className={`form-control input ${validationErrors.password ? 'is-invalid' : ''}`}
-                                />
-                                <div className="invalid-feedback password-error">{validationErrors.password}</div>
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type={showPassword ? 'text' : 'password'}
-                                    name="re_enter_password"
-                                    onChange={handleInputChange}
-                                    placeholder="Nhập lại mật khẩu"
-                                    className={`form-control input ${
-                                        validationErrors.re_enter_password ? 'is-invalid' : ''
-                                    }`}
-                                />
-                                <div className="invalid-feedback re_enter_password-error">
-                                    {validationErrors.re_enter_password}
+                        <div className="col-md-5">
+                            <div className="form-register">
+                                <div className="section-title text-center">
+                                    <h3 className="title">Đăng ký</h3>
                                 </div>
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    name="phone"
-                                    placeholder="Điện thoại"
-                                    onChange={handleInputChange}
-                                    className={`form-control input ${validationErrors.phone ? 'is-invalid' : ''}`}
-                                />
-                                <div className="invalid-feedback phone-error">{validationErrors.phone}</div>
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    name="email"
-                                    placeholder="Email"
-                                    onChange={handleInputChange}
-                                    className={`form-control input ${validationErrors.email ? 'is-invalid' : ''}`}
-                                />
-                                <div className="invalid-feedback email-error">{validationErrors.email}</div>
-                            </div>
-
-                            {reEnterPasswordError && (
-                                <div className="alert alert-danger" role="alert">
-                                    {reEnterPasswordError}
+                                <div className="form-group">
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        onChange={handleInputChange}
+                                        placeholder="Tên đăng nhập"
+                                        className={`form-control input ${
+                                            validationErrors.username ? 'is-invalid' : ''
+                                        }`}
+                                    />
+                                    <div className="invalid-feedback username-error">{validationErrors.username}</div>
                                 </div>
-                            )}
-
-                            <div className="d-flex justify-content-center">
-                                <div className="input-checkbox">
-                                    <input type="checkbox" onChange={handleCheckboxChange} id="terms" />
-                                    <label htmlFor="terms">
-                                        <span></span>
-                                        Hiện mật khẩu
-                                    </label>
+                                <div className="form-group">
+                                    <input
+                                        type={showPassword ? 'text' : 'password'}
+                                        name="password"
+                                        onChange={handleInputChange}
+                                        placeholder="Mật khẩu"
+                                        className={`form-control input ${
+                                            validationErrors.password ? 'is-invalid' : ''
+                                        }`}
+                                    />
+                                    <div className="invalid-feedback password-error">{validationErrors.password}</div>
                                 </div>
-                            </div>
+                                <div className="form-group">
+                                    <input
+                                        type={showPassword ? 'text' : 'password'}
+                                        name="re_enter_password"
+                                        onChange={handleInputChange}
+                                        placeholder="Nhập lại mật khẩu"
+                                        className={`form-control input ${
+                                            validationErrors.re_enter_password ? 'is-invalid' : ''
+                                        }`}
+                                    />
+                                    <div className="invalid-feedback re_enter_password-error">
+                                        {validationErrors.re_enter_password}
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <input
+                                        type="text"
+                                        name="phone"
+                                        placeholder="Điện thoại"
+                                        onChange={handleInputChange}
+                                        className={`form-control input ${validationErrors.phone ? 'is-invalid' : ''}`}
+                                    />
+                                    <div className="invalid-feedback phone-error">{validationErrors.phone}</div>
+                                </div>
+                                <div className="form-group">
+                                    <input
+                                        type="text"
+                                        name="email"
+                                        placeholder="Email"
+                                        onChange={handleInputChange}
+                                        className={`form-control input ${validationErrors.email ? 'is-invalid' : ''}`}
+                                    />
+                                    <div className="invalid-feedback email-error">{validationErrors.email}</div>
+                                </div>
 
-                            <div className="text-center my-4">
-                                <button type="submit" className="primary-btn w-100">
-                                    Đăng ký
-                                </button>
+                                {reEnterPasswordError && (
+                                    <div className="alert alert-danger" role="alert">
+                                        {reEnterPasswordError}
+                                    </div>
+                                )}
+
+                                <div className="d-flex justify-content-center">
+                                    <div className="input-checkbox">
+                                        <input type="checkbox" onChange={handleCheckboxChange} id="terms" />
+                                        <label htmlFor="terms">
+                                            <span></span>
+                                            Hiện mật khẩu
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div className="text-center my-4">
+                                    <button type="submit" className="primary-btn w-100">
+                                        Đăng ký
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
