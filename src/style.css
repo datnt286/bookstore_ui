@@ -92,11 +92,6 @@
     margin-top: 30px;
 }
 
-/* Store */
-.store {
-    min-height: 1855px;
-}
-
 /* Avatar image */
 .avatar-img {
     width: 100px;
@@ -204,24 +199,6 @@
     color: #D10024;
     font-weight: 500;
     margin-right: 6px;
-}
-
-/* Shop */
-.shop {
-    width: 350px;
-    height: 280px;
-}
-
-.shop-img {
-    width: 100%;
-    height: 100%;
-}
-
-/* Aside */
-.btn-filter {
-    padding: 8px 20px;
-    margin-top: 20px;
-    margin-left: 14px;
 }
 
 /* Cart */
@@ -372,6 +349,29 @@
 .register-link {
     color: #d10024;
     margin-left: 4px;
+}
+
+
+/* Shop */
+.shop {
+    width: 350px;
+    height: 280px;
+}
+
+.shop-img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Store */
+.store {
+    min-height: 1855px;
+}
+
+.btn-filter {
+    padding: 8px 20px;
+    margin-top: 20px;
+    margin-left: 14px;
 }
 
 /* Nav pills */
@@ -548,7 +548,7 @@
 .contact-item {
     font-size: 26px;
     font-weight: 500;
-    color: #1E1F29;
+    color: #2B2D42;
     margin: 30px 0;
 }
 

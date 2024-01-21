@@ -37,19 +37,19 @@ function Footer() {
                                     <h3 className="footer-title">Thể loại</h3>
                                     <ul className="footer-links">
                                         <li>
-                                            <a href="#">Hot deals</a>
+                                            <Link to="/danh-muc/sach-tu-luc">Sách tự lực</Link>
                                         </li>
                                         <li>
-                                            <a href="#">Laptops</a>
+                                            <Link to="/danh-muc/truyen-tranh">Truyện tranh</Link>
                                         </li>
                                         <li>
-                                            <a href="#">Smartphones</a>
+                                            <Link to="/danh-muc/sach-giao-khoa">Sách giáo khoa</Link>
                                         </li>
                                         <li>
-                                            <a href="#">Cameras</a>
+                                            <Link to="/sach-moi">Sách mới</Link>
                                         </li>
                                         <li>
-                                            <a href="#">Accessories</a>
+                                            <Link to="/combo">Combo</Link>
                                         </li>
                                     </ul>
                                 </div>
