@@ -42,10 +42,7 @@ function ShoppingButtons() {
                                 </div>
 
                                 <div className="cart-summary">
-                                    <h5>
-                                        Tạm tính:{' '}
-                                        {cart.total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
-                                    </h5>
+                                    <h5>Tạm tính: {cart.total.toLocaleString() + ' ₫'}</h5>
                                 </div>
 
                                 <div className="cart-btns">

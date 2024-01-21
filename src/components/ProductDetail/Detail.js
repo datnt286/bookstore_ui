@@ -139,7 +139,7 @@ function Detail({ data }) {
                     )}
 
                     <h3 className="product-price mt-4">
-                        {data.price && data.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}{' '}
+                        {data.price && data.price.toLocaleString() + ' ₫'}{' '}
                         <del className="product-old-price">990.00 ₫</del>
                     </h3>
 

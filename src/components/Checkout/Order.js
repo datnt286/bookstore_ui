@@ -99,10 +99,7 @@ function Order({ setValidationErrors }) {
                                 <div>{product.name}</div>
                                 <div>x {product.quantity}</div>
                                 <div>
-                                    {(parseInt(product.quantity) * parseInt(product.price)).toLocaleString('vi-VN', {
-                                        style: 'currency',
-                                        currency: 'VND',
-                                    })}
+                                    {(parseInt(product.quantity) * parseInt(product.price)).toLocaleString() + ' ₫'}
                                 </div>
                             </div>
                         );
@@ -155,9 +152,7 @@ function Order({ setValidationErrors }) {
                         <strong>Tổng thành tiền</strong>
                     </div>
                     <div>
-                        <strong className="order-total">
-                            {cart.total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
-                        </strong>
+                        <strong className="order-total">{cart.total.toLocaleString() + ' ₫'}</strong>
                     </div>
                 </div>
 
@@ -166,12 +161,7 @@ function Order({ setValidationErrors }) {
                         <strong>Phí vận chuyển</strong>
                     </div>
                     <div>
-                        <strong className="fs-2">
-                            {shippingFee.toLocaleString('vi-VN', {
-                                style: 'currency',
-                                currency: 'VND',
-                            })}
-                        </strong>
+                        <strong className="fs-2">{shippingFee.toLocaleString() + ' ₫'}</strong>
                     </div>
                 </div>
 
@@ -180,9 +170,7 @@ function Order({ setValidationErrors }) {
                         <strong>Tổng thanh toán</strong>
                     </div>
                     <div>
-                        <strong className="order-total">
-                            {(cart.total + shippingFee).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
-                        </strong>
+                        <strong className="order-total">{(cart.total + shippingFee).toLocaleString() + ' ₫'}</strong>
                     </div>
                 </div>
             </div>
