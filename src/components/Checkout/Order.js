@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 function Order({ setValidationErrors }) {
     const user = useSelector((state) => state.auth.user);
     const cart = useSelector((state) => state.cart);
-    const [paymentMethod, setPaymentMethod] = useState(2);
+    const [paymentMethod, setPaymentMethod] = useState(1);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -20,14 +20,14 @@ function Order({ setValidationErrors }) {
     };
 
     function handleApprove() {
-        handleOrder();
+        handleOrder(2);
     }
 
     const handlePaymentChange = (event) => {
         setPaymentMethod(parseInt(event.target.value));
     };
 
-    const handleOrder = async () => {
+    const handleOrder = async (payment_method = 1) => {
         try {
             const data = {
                 user: {
@@ -35,13 +35,13 @@ function Order({ setValidationErrors }) {
                     customer_id: user.id || null,
                 },
                 products: cart.items,
-                payment_method: paymentMethod,
-                payment_status: paymentMethod === 1 ? 0 : 1,
+                payment_method: payment_method,
+                payment_status: payment_method === 1 ? 0 : 1,
             };
 
             const res = await axiosInstance.post('/order/create', data);
 
-            dispatch(clearCart());
+            //dispatch(clearCart());
             navigate('/hoa-don');
 
             Swal.fire({
@@ -123,17 +123,17 @@ function Order({ setValidationErrors }) {
                     <input
                         type="radio"
                         name="payment"
-                        id="payment-2"
-                        value={2}
-                        checked={paymentMethod === 2}
+                        id="payment-1"
+                        value="1"
+                        checked={paymentMethod === 1}
                         onChange={handlePaymentChange}
                     />
-                    <label htmlFor="payment-2">
+                    <label htmlFor="payment-1">
                         <span></span>
                         Thanh toán khi nhận hàng
                     </label>
                     <div className="caption">
-                        <button onClick={handleOrder} className="primary-btn order-submit w-100">
+                        <button onClick={() => handleOrder(1)} className="primary-btn order-submit w-100">
                             Đặt hàng
                         </button>
                     </div>
@@ -142,12 +142,12 @@ function Order({ setValidationErrors }) {
                     <input
                         type="radio"
                         name="payment"
-                        id="payment-1"
-                        value={1}
-                        checked={paymentMethod === 1}
+                        id="payment-2"
+                        value="2"
+                        checked={paymentMethod === 2}
                         onChange={handlePaymentChange}
                     />
-                    <label htmlFor="payment-1">
+                    <label htmlFor="payment-2">
                         <span></span>
                         Thanh toán Paypal
                     </label>

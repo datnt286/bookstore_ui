@@ -10,6 +10,7 @@ function StorePage() {
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [priceRangeFilter, setPriceRangeFilter] = useState(null);
     const [authorFilter, setAuthorFilter] = useState([]);
+    const [sortFilter, setSortFilter] = useState(null);
 
     const fetchProducts = async (page = 1) => {
         try {
@@ -29,7 +30,12 @@ function StorePage() {
                 url += `&author_id=${authorIds}`;
             }
 
+            if (sortFilter) {
+                url += `&sort=${sortFilter}`;
+            }
+
             const res = await axiosInstance.get(url);
+
             setProducts(res.data.books);
             setPageCount(res.data.total_pages);
         } catch (error) {
@@ -37,15 +43,16 @@ function StorePage() {
         }
     };
 
-    const handleApplyFilters = ({ category_id, price_range, author_id }) => {
+    const handleApplyFilters = ({ category_id, price_range, author_id, sort }) => {
         setCategoryFilter(category_id);
         setPriceRangeFilter(price_range);
         setAuthorFilter(author_id);
+        setSortFilter(sort);
     };
 
     useEffect(() => {
         fetchProducts();
-    }, [categoryFilter, priceRangeFilter, authorFilter]);
+    }, [categoryFilter, priceRangeFilter, authorFilter, sortFilter]);
 
     const handlePageChange = ({ selected }) => {
         const page = selected + 1;

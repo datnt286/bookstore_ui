@@ -108,6 +108,9 @@ function OrderRow({ data, setOrders, onOrderStatusChanged }) {
             <td className="align-middle">
                 {data.total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
             </td>
+            <td className="align-middle">
+                {data.payment_method === 1 ? 'Thanh toán khi nhận hàng' : 'Thanh toán Paypal'}
+            </td>
             <td className="align-middle">{getStatusText(data.status)}</td>
             <td className="align-middle">
                 <button
