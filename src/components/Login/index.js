@@ -44,6 +44,8 @@ function Login() {
                 headers: { Authorization: 'Bearer ' + res.access_token },
             });
 
+            delete user.avatar;
+
             dispatch(login({ token: res.access_token, user: user }));
 
             navigate(-1);

@@ -133,7 +133,9 @@ function Order({ setValidationErrors }) {
                         Thanh toán khi nhận hàng
                     </label>
                     <div className="caption">
-                        <p>Thanh toán ngay khi nhận hàng.</p>
+                        <button onClick={handleOrder} className="primary-btn order-submit w-100">
+                            Đặt hàng
+                        </button>
                     </div>
                 </div>
                 <div className="input-radio">
@@ -175,9 +177,6 @@ function Order({ setValidationErrors }) {
                     </div>
                 </div>
             </div>
-            <button onClick={handleOrder} className="primary-btn order-submit w-100">
-                Đặt hàng
-            </button>
         </div>
     );
 }

@@ -20,7 +20,7 @@ function ProductDetailPage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const productRes = await axiosInstance.get(`/${slug}`);
+                const productRes = await axiosInstance.get(`san-pham/${slug}`);
                 setProduct(productRes.data);
                 setCombos(productRes.data.combos);
 

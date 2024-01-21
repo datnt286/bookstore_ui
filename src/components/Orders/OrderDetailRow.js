@@ -19,7 +19,7 @@ function OrderDetailRow({ data }) {
                         to={`/san-pham/${data.product_slug}`}
                         onClick={(event) => {
                             event.preventDefault();
-                            window.location.href = `/${data.product_slug}`;
+                            window.location.href = `/san-pham/${data.product_slug}`;
                         }}
                     >
                         <img className="order-detail-image" src={data.product_image} alt="Hình ảnh" />

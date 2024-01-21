@@ -41,6 +41,11 @@ function Account() {
                 ...prevFormData,
                 avatar: file,
             }));
+
+            setErrors({
+                ...errors,
+                avatar: '',
+            });
         }
     };
 
@@ -58,6 +63,8 @@ function Account() {
             const newUser = await axiosInstance.get('/me', {
                 headers: { Authorization: 'Bearer ' + auth.token },
             });
+
+            delete newUser.avatar;
 
             dispatch(updateUser({ newUser: newUser }));
 
@@ -99,13 +106,13 @@ function Account() {
                                 type="file"
                                 name="avatar"
                                 id="avatar"
-                                className="d-none"
+                                className={`d-none ${errors.avatar ? 'is-invalid' : ''}`}
                                 onChange={handleAvatarChange}
                             ></input>
+                            <div className="invalid-feedback avatar-error">{errors.avatar}</div>
                             <label htmlFor="avatar" className="btn btn-secondary my-3">
                                 Chọn ảnh
                             </label>
-                            <div className="invalid-feedback avatar-error">{errors.avatar}</div>
                         </div>
                     </div>
                     <div className="col-md-5">

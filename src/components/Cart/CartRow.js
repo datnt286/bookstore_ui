@@ -20,7 +20,7 @@ function CartRow({ product }) {
     useEffect(() => {
         const fetchProductQuantity = async () => {
             try {
-                const res = await axiosInstance.get(`/${product.slug}`);
+                const res = await axiosInstance.get(`/san-pham/${product.slug}`);
                 setProductQuantity(res.data.quantity);
                 setLoadingQuantity(false);
             } catch (error) {
