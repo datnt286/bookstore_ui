@@ -5,7 +5,7 @@ function OrderDetail() {
     const orderDetail = useSelector((state) => state.orderDetail);
 
     const totalAmount = orderDetail.items.reduce((total, detail) => {
-        return total + parseInt(detail.quantity) * parseInt(detail.price);
+        return total + parseInt(detail.price) * parseInt(detail.quantity);
     }, 0);
 
     return (

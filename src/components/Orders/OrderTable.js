@@ -11,7 +11,7 @@ function OrderTable({ tab, data, setOrders, onOrderStatusChanged }) {
                                 Ngày đặt
                             </th>
                             <th className="fs-2" scope="col">
-                                Tổng thành tiền
+                                Tổng thanh toán
                             </th>
                             <th className="fs-2" scope="col">
                                 Hình thức thanh toán

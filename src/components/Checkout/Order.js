@@ -10,6 +10,7 @@ function Order({ setValidationErrors }) {
     const user = useSelector((state) => state.auth.user);
     const cart = useSelector((state) => state.cart);
     const [paymentMethod, setPaymentMethod] = useState(1);
+    const [shippingFee, setShippingFee] = useState(15000);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -19,13 +20,18 @@ function Order({ setValidationErrors }) {
         vault: true,
     };
 
-    function handleApprove() {
-        handleOrder(2);
-    }
+    const handleShippingFeeChange = (event) => {
+        console.log(event.target.value);
+        setShippingFee(parseInt(event.target.value));
+    };
 
     const handlePaymentChange = (event) => {
         setPaymentMethod(parseInt(event.target.value));
     };
+
+    function handleApprove() {
+        handleOrder(2);
+    }
 
     const handleOrder = async (payment_method = 1) => {
         try {
@@ -35,13 +41,14 @@ function Order({ setValidationErrors }) {
                     customer_id: user.id || null,
                 },
                 products: cart.items,
+                shipping_fee: shippingFee,
                 payment_method: payment_method,
                 payment_status: payment_method === 1 ? 0 : 1,
             };
 
             const res = await axiosInstance.post('/order/create', data);
 
-            //dispatch(clearCart());
+            dispatch(clearCart());
             navigate('/hoa-don');
 
             Swal.fire({
@@ -101,12 +108,48 @@ function Order({ setValidationErrors }) {
                         );
                     })}
                 </div>
-                <div className="order-col">
-                    <div>
-                        <strong>Phí vận chuyển</strong>
+
+                <div>
+                    <h5 className="my-4">Chọn khu vực giao hàng</h5>
+
+                    <div className="d-flex justify-content-between">
+                        <div className="input-radio">
+                            <input
+                                type="radio"
+                                name="shipping-fee"
+                                id="shipping-fee-1"
+                                value={15000}
+                                checked={shippingFee === 15000}
+                                onChange={handleShippingFeeChange}
+                            />
+                            <label htmlFor="shipping-fee-1">
+                                <span></span>
+                                Trong khu vực TP. HCM
+                            </label>
+                        </div>
+                        <span>15.000 ₫</span>
                     </div>
-                    <div>Miễn phí</div>
+
+                    <div className="d-flex justify-content-between">
+                        <div className="input-radio">
+                            <input
+                                type="radio"
+                                name="shipping-fee"
+                                id="shipping-fee-2"
+                                value={30000}
+                                checked={shippingFee === 30000}
+                                onChange={handleShippingFeeChange}
+                            />
+
+                            <label htmlFor="shipping-fee-2">
+                                <span></span>
+                                Ngoài khu vực TP. HCM
+                            </label>
+                        </div>
+                        <span>30.000 ₫</span>
+                    </div>
                 </div>
+
                 <div className="order-col">
                     <div>
                         <strong>Tổng thành tiền</strong>
@@ -114,6 +157,31 @@ function Order({ setValidationErrors }) {
                     <div>
                         <strong className="order-total">
                             {cart.total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                        </strong>
+                    </div>
+                </div>
+
+                <div className="order-col">
+                    <div>
+                        <strong>Phí vận chuyển</strong>
+                    </div>
+                    <div>
+                        <strong className="fs-2">
+                            {shippingFee.toLocaleString('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND',
+                            })}
+                        </strong>
+                    </div>
+                </div>
+
+                <div className="order-col">
+                    <div>
+                        <strong>Tổng thanh toán</strong>
+                    </div>
+                    <div>
+                        <strong className="order-total">
+                            {(cart.total + shippingFee).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                         </strong>
                     </div>
                 </div>

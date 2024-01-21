@@ -217,6 +217,13 @@
     height: 100%;
 }
 
+/* Aside */
+.btn-filter {
+    padding: 8px 20px;
+    margin-top: 20px;
+    margin-left: 14px;
+}
+
 /* Cart */
 .product-cart-image {
     max-width: 80px;
@@ -531,6 +538,26 @@
     width: 487px;
 }
 
+/* Contact */
+#contact {
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-item {
+    font-size: 26px;
+    font-weight: 500;
+    color: #1E1F29;
+    margin: 30px 0;
+}
+
+.contact-icon {
+    font-size: 36px;
+    color: #D10024;
+    margin-right: 10px;
+}
+
 /*-- Pagination --*/
 .pagination {
     display: flex;
@@ -564,13 +591,6 @@
     background-color: #D10024 !important;
     color: #fff !important;
     cursor: default;
-}
-
-/* Aside */
-.btn-filter {
-    padding: 8px 20px;
-    margin-top: 20px;
-    margin-left: 14px;
 }
 
 /* Carousel */
