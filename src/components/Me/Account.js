@@ -100,7 +100,7 @@ function Account() {
                             <img
                                 src={selectedAvatar || auth.user.avatar_path}
                                 alt="Ảnh đại diện"
-                                className="profile-user-img img-fluid img-circle avatar-img"
+                                className="avatar-img"
                             />
                             <input
                                 type="file"
