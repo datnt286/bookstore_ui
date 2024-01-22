@@ -70,7 +70,7 @@ function Detail({ data }) {
             timer: 2000,
         });
     };
-
+    console.log(data)
     return (
         <>
             <div className="col-md-5 col-md-push-2">

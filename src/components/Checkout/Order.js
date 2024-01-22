@@ -21,7 +21,6 @@ function Order({ setValidationErrors }) {
     };
 
     const handleShippingFeeChange = (event) => {
-        console.log(event.target.value);
         setShippingFee(parseInt(event.target.value));
     };
 
