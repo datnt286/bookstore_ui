@@ -35,11 +35,11 @@ function Order({ setValidationErrors }) {
     const handleOrder = async (payment_method = 1) => {
         try {
             const data = {
-                user: {
-                    ...user,
-                    customer_id: user.id || null,
-                },
                 products: cart.items,
+                customer_id: user.id,
+                name: user.name,
+                phone: user.phone,
+                address: user.address,
                 shipping_fee: shippingFee,
                 payment_method: payment_method,
                 payment_status: payment_method === 1 ? 0 : 1,
@@ -47,8 +47,8 @@ function Order({ setValidationErrors }) {
 
             const res = await axiosInstance.post('/order/create', data);
 
-            dispatch(clearCart());
-            navigate('/hoa-don');
+            // dispatch(clearCart());
+            // navigate('/hoa-don');
 
             Swal.fire({
                 icon: 'success',
@@ -57,11 +57,7 @@ function Order({ setValidationErrors }) {
             });
         } catch (error) {
             if (error.response.status === 422) {
-                setValidationErrors({
-                    name: error.response.data.errors.name || [],
-                    phone: error.response.data.errors.phone || [],
-                    address: error.response.data.errors.address || [],
-                });
+                setValidationErrors(error.response.data.errors);
             } else {
                 console.error('Lỗi: ', error);
 

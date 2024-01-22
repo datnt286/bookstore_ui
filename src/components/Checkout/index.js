@@ -3,11 +3,7 @@ import BillingDetail from './BillingDetail';
 import Order from './Order';
 
 function Checkout() {
-    const [validationErrors, setValidationErrors] = useState({
-        name: [],
-        phone: [],
-        address: [],
-    });
+    const [validationErrors, setValidationErrors] = useState({});
 
     return (
         <div className="section">

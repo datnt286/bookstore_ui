@@ -31,8 +31,7 @@ function BillingDetail({ validationErrors }) {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Họ tên"
-                        className="form-control input"
-                        readOnly
+                        className={`form-control input ${validationErrors.name ? 'is-invalid' : ''}`}
                     />
                     <div className="invalid-feedback name-error">{validationErrors.name}</div>
                 </div>
@@ -43,8 +42,7 @@ function BillingDetail({ validationErrors }) {
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="Điện thoại"
-                        className="form-control input"
-                        readOnly
+                        className={`form-control input ${validationErrors.phone ? 'is-invalid' : ''}`}
                     />
                     <div className="invalid-feedback phone-error">{validationErrors.phone}</div>
                 </div>
@@ -55,8 +53,7 @@ function BillingDetail({ validationErrors }) {
                         value={formData.address}
                         onChange={handleInputChange}
                         placeholder="Địa chỉ"
-                        className="form-control input"
-                        readOnly
+                        className={`form-control input ${validationErrors.address ? 'is-invalid' : ''}`}
                     ></textarea>
                     <div className="invalid-feedback address-error">{validationErrors.address}</div>
                 </div>
