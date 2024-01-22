@@ -17,7 +17,7 @@ function ForgotPassword() {
 
             Swal.fire({
                 icon: 'success',
-                title: res.data.message,
+                title: res.message,
             });
         } catch (error) {
             console.error('Lỗi: ', error);
