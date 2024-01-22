@@ -37,7 +37,9 @@ function SearchPage() {
                     <Pagination pageCount={pageCount} onPageChange={handlePageChange} />
                 </>
             ) : (
-                <h3 className="title p-5 mx-5">Không tìm thấy kết quả tìm kiếm phù hợp!</h3>
+                <div style={{ height: '300px' }}>
+                    <h3 className="title p-5 mx-5">Không tìm thấy kết quả tìm kiếm phù hợp!</h3>
+                </div>
             )}
         </DefaultLayout>
     );
