@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
 
@@ -154,6 +154,13 @@ function Register() {
                                     <button type="submit" className="primary-btn w-100">
                                         Đăng ký
                                     </button>
+                                </div>
+
+                                <div className="d-flex justify-content-center mt-4">
+                                    <span>Đã có tài khoản?</span>
+                                    <Link to="/dang-nhap" className="login-link">
+                                        Đăng nhập
+                                    </Link>
                                 </div>
                             </div>
                         </div>
