@@ -7,7 +7,7 @@ function Checkout() {
         name: [],
         phone: [],
         address: [],
-      });
+    });
 
     return (
         <div className="section">
