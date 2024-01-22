@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../redux/authSlice';
 import axiosInstance from '../../services/axiosInstance';
 import Swal from 'sweetalert2';
@@ -117,9 +117,9 @@ function Login() {
                                 )}
 
                                 <div className="d-flex justify-content-between">
-                                    <NavLink to="/quen-mat-khau">
+                                    <Link to="/quen-mat-khau">
                                         <span>Quên mật khẩu?</span>
-                                    </NavLink>
+                                    </Link>
 
                                     <div className="input-checkbox">
                                         <input type="checkbox" onChange={handleCheckboxChange} id="terms" />

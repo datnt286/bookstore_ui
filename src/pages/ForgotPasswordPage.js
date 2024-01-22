@@ -1,12 +1,16 @@
-import DefaultLayout from '../layouts/DefaultLayout';
+import { useEffect, useState } from 'react';
 import ForgotPassword from '../components/ForgotPassword';
 
 function ForgotPasswordPage() {
-    return (
-        <DefaultLayout>
-            <ForgotPassword />
-        </DefaultLayout>
-    );
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+    }, []);
+
+    return <>{loading ? <div className="loader"></div> : <ForgotPassword />}</>;
 }
 
 export default ForgotPasswordPage;

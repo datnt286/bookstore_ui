@@ -301,18 +301,21 @@
 
 /* Login */
 #login,
-#register {
+#register,
+#forgot-password {
     width: 100vw;
     height: 100vh;
 }
 
 .form-login,
-.form-register {
+.form-register,
+.form-forgot-password {
     border-radius: 4px;
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.5);
 }
 
-.form-login {
+.form-login,
+.form-forgot-password {
     padding: 40px;
 }
 
@@ -337,20 +340,16 @@
     background-color: #ee4d2d;
 }
 
-#forgot-password {
-    height: 280px;
+.login-link,
+.register-link {
+    color: #d10024;
+    margin-left: 4px;
 }
 
 .btn-forgot-password {
     width: 200px;
     height: 40px;
 }
-
-.register-link {
-    color: #d10024;
-    margin-left: 4px;
-}
-
 
 /* Shop */
 .shop {
