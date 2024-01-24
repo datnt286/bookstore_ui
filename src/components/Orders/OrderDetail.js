@@ -3,6 +3,7 @@ import OrderDetailRow from './OrderDetailRow';
 
 function OrderDetail() {
     const orderDetail = useSelector((state) => state.orderDetail);
+    const colSpanValue = orderDetail.status === 4 ? 4 : 3;
 
     const totalAmount = orderDetail.items.reduce((total, detail) => {
         return total + parseInt(detail.price) * parseInt(detail.quantity);
@@ -44,7 +45,7 @@ function OrderDetail() {
                                     return <OrderDetailRow key={index} data={detail} />;
                                 })}
                                 <tr>
-                                    <td colSpan="3" className="order-detail text-right">
+                                    <td colSpan={colSpanValue} className="order-detail text-right">
                                         Tổng thành tiền:
                                     </td>
                                     <td className="order-detail fw-bold text-danger">

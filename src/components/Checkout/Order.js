@@ -47,8 +47,8 @@ function Order({ setValidationErrors }) {
 
             const res = await axiosInstance.post('/order/create', data);
 
-            // dispatch(clearCart());
-            // navigate('/hoa-don');
+            dispatch(clearCart());
+            navigate('/hoa-don');
 
             Swal.fire({
                 icon: 'success',
