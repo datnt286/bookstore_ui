@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
 import HomePage from '../pages/HomePage';
 import BestsellersPage from '../pages/BestsellersPage';
 import NewBooksPage from '../pages/NewBooksPage';
@@ -18,8 +19,8 @@ import ContactPage from '../pages/ContactPage';
 import MePage from '../pages/MePage';
 import CheckoutPage from '../pages/CheckoutPage';
 import OrdersPage from '../pages/OrdersPage';
+import ForbiddenPage from '../pages/ForbiddenPage';
 import NotFoundPage from '../pages/NotFoundPage';
-import PrivateRoute from './PrivateRoute';
 
 function AppRoutes() {
     return (
@@ -40,6 +41,7 @@ function AppRoutes() {
             <Route path="/dang-nhap" element={<LoginPage />} />
             <Route path="/quen-mat-khau" element={<ForgotPasswordPage />} />
             <Route path="/lien-he" element={<ContactPage />} />
+            <Route path="/khong-co-quyen-truy-cap" element={<ForbiddenPage />} />
             <Route
                 path="/tai-khoan"
                 element={

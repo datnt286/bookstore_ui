@@ -5,6 +5,7 @@ import CommentForm from './CommentForm';
 
 function CommentRow({ data, comment, setCommentSubmitted }) {
     const user = useSelector((state) => state.auth.user);
+    const token = useSelector((state) => state.auth.token);
     const [isReplying, setIsReplying] = useState(false);
     const parent_id = comment.parent_id ? comment.parent_id : comment.id;
 
@@ -14,8 +15,11 @@ function CommentRow({ data, comment, setCommentSubmitted }) {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axiosInstance.get(`/comment/destroy/${id}`);
-            console.log(res.data.message);
+            const res = await axiosInstance.get(`/comment/destroy/${id}`, {
+                headers: { Authorization: 'Bearer ' + token },
+            });
+
+            console.log(res.message);
 
             setCommentSubmitted(true);
         } catch (error) {

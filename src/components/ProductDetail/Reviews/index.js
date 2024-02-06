@@ -9,6 +9,7 @@ import Pagination from '../../Pagination';
 function Reviews({ data }) {
     const isLoggedIn = useSelector((state) => state.auth.token !== null);
     const user = useSelector((state) => state.auth.user);
+    const token = useSelector((state) => state.auth.token);
 
     const [isDelivered, setIsDelivered] = useState(false);
     const [reviewSubmitted, setReviewSubmitted] = useState(false);
@@ -51,13 +52,15 @@ function Reviews({ data }) {
     useEffect(() => {
         async function fetchCheckDelivered() {
             try {
-                if (user) {
-                    const params = {
-                        customer_id: user.id,
-                        [data.is_combo ? 'combo_id' : 'book_id']: data.id,
-                    };
+                if (isLoggedIn) {
+                    const url = `/review/check-delivered?customer_id=${user.id}&${
+                        data.is_combo ? 'combo_id' : 'book_id'
+                    }=${data.id}`;
 
-                    const res = await axiosInstance.get('/review/check-delivered', { params });
+                    const res = await axiosInstance.get(url, {
+                        headers: { Authorization: 'Bearer ' + token },
+                    });
+
                     setIsDelivered(res.is_delivered);
                 }
             } catch (error) {

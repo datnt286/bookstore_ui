@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 function CommentForm({ data, parent_id, onCommentSubmitted }) {
     const user = useSelector((state) => state.auth.user);
+    const token = useSelector((state) => state.auth.token);
     const [content, setContent] = useState('');
     const [error, setError] = useState('');
 
@@ -19,7 +20,10 @@ function CommentForm({ data, parent_id, onCommentSubmitted }) {
                 ...(data.is_combo ? { combo_id: data.id, book_id: null } : { book_id: data.id, combo_id: null }),
             };
 
-            const res = await axiosInstance.post('/comment/create', comment);
+            const res = await axiosInstance.post('/comment/create', comment, {
+                headers: { Authorization: 'Bearer ' + token },
+            });
+
             console.log(res.message);
 
             setContent('');

@@ -615,17 +615,28 @@
 }
 
 /* Not Found */
-.not-found {
+.not-found,
+.forbidden {
     width: 100vw;
     height: 100vh;
 }
 
 .not-found-img {
+    width: 400px;
+}
+
+.not-found-link,
+.forbidden-link {
+    color: #D10024;
+}
+
+/* Forbidden */
+.forbidden-img {
     width: 300px;
 }
 
-.not-found-link {
-    color: #D10024;
+.forbidden-btn {
+    padding: 0 140px;
 }
 
 /* Loader */

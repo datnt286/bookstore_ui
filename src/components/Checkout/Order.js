@@ -8,9 +8,12 @@ import Swal from 'sweetalert2';
 
 function Order({ setValidationErrors }) {
     const user = useSelector((state) => state.auth.user);
+    const token = useSelector((state) => state.auth.token);
     const cart = useSelector((state) => state.cart);
+
     const [paymentMethod, setPaymentMethod] = useState(1);
     const [shippingFee, setShippingFee] = useState(15000);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -45,7 +48,9 @@ function Order({ setValidationErrors }) {
                 payment_status: payment_method === 1 ? 0 : 1,
             };
 
-            const res = await axiosInstance.post('/order/create', data);
+            const res = await axiosInstance.post('/order/create', data, {
+                headers: { Authorization: 'Bearer ' + token },
+            });
 
             dispatch(clearCart());
             navigate('/hoa-don');

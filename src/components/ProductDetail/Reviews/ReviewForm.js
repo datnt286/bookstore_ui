@@ -4,6 +4,8 @@ import axiosInstance from '../../../services/axiosInstance';
 
 function ReviewForm({ data, onReviewSubmitted }) {
     const user = useSelector((state) => state.auth.user);
+    const token = useSelector((state) => state.auth.token);
+
     const [rating, setRating] = useState(null);
     const [content, setContent] = useState('');
     const [resetRating, setResetRating] = useState(Date.now());
@@ -20,7 +22,10 @@ function ReviewForm({ data, onReviewSubmitted }) {
                 content: content,
             };
 
-            const res = await axiosInstance.post('/review/create', review);
+            const res = await axiosInstance.post('/review/create', review, {
+                headers: { Authorization: 'Bearer ' + token },
+            });
+
             console.log(res.message);
 
             setRating(null);

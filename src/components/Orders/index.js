@@ -6,6 +6,7 @@ import OrderDetail from './OrderDetail';
 
 function Orders() {
     const user = useSelector((state) => state.auth.user);
+    const token = useSelector((state) => state.auth.token);
     const [orderStatusChanged, setOrderStatusChanged] = useState(false);
     const [orders, setOrders] = useState({
         orders: [],
@@ -19,7 +20,9 @@ function Orders() {
     useEffect(() => {
         async function fetchOrders() {
             try {
-                const res = await axiosInstance.get(`/order?customer_id=${user.id}`);
+                const res = await axiosInstance.get(`/order?customer_id=${user.id}`, {
+                    headers: { Authorization: 'Bearer ' + token },
+                });
 
                 setOrders({
                     orders: res.data.orders,

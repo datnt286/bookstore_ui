@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 function OrderRow({ data, setOrders, onOrderStatusChanged }) {
     const user = useSelector((state) => state.auth.user);
+    const token = useSelector((state) => state.auth.token);
     const dispatch = useDispatch();
 
     const getStatusText = (status) => {
@@ -26,7 +27,10 @@ function OrderRow({ data, setOrders, onOrderStatusChanged }) {
 
     const handleDetailClick = async (id, status) => {
         try {
-            const res = await axiosInstance.get(`/order/details/${id}`);
+            const res = await axiosInstance.get(`/order/details/${id}`, {
+                headers: { Authorization: 'Bearer ' + token },
+            });
+
             dispatch(setOrderDetails({ items: res.data, status }));
         } catch (error) {
             console.error('Lỗi: ', error);
@@ -36,8 +40,12 @@ function OrderRow({ data, setOrders, onOrderStatusChanged }) {
     const handleConfirm = (id) => {
         async function fetchOrders() {
             try {
-                const confirmRes = await axiosInstance.get(`/order/confirm/${id}`);
-                const ordersRes = await axiosInstance.get(`/order?customer_id=${user.id}`);
+                const confirmRes = await axiosInstance.get(`/order/confirm/${id}`, {
+                    headers: { Authorization: 'Bearer ' + token },
+                });
+                const ordersRes = await axiosInstance.get(`/order?customer_id=${user.id}`, {
+                    headers: { Authorization: 'Bearer ' + token },
+                });
 
                 setOrders({
                     orders: ordersRes.data.orders,
@@ -76,8 +84,12 @@ function OrderRow({ data, setOrders, onOrderStatusChanged }) {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const cancelRes = await axiosInstance.get(`/order/cancel/${id}`);
-                    const ordersRes = await axiosInstance.get(`/order?customer_id=${user.id}`);
+                    const cancelRes = await axiosInstance.get(`/order/cancel/${id}`, {
+                        headers: { Authorization: 'Bearer ' + token },
+                    });
+                    const ordersRes = await axiosInstance.get(`/order?customer_id=${user.id}`, {
+                        headers: { Authorization: 'Bearer ' + token },
+                    });
 
                     setOrders({
                         orders: ordersRes.data.orders,
