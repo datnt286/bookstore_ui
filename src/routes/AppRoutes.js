@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
+import AuthenticatedRoute from './AuthenticatedRoute';
 import HomePage from '../pages/HomePage';
 import BestsellersPage from '../pages/BestsellersPage';
 import NewBooksPage from '../pages/NewBooksPage';
@@ -12,12 +13,12 @@ import StorePage from '../pages/StorePage';
 import CartPage from '../pages/CartPage';
 import WishlistPage from '../pages/WishlistPage';
 import ViewedProductsPage from '../pages/ViewedProductsPage';
+import CheckoutPage from '../pages/CheckoutPage';
 import RegisterPage from '../pages/RegisterPage';
-import LoginPage from '../pages/LoginPage';
 import ForgotPasswordPage from '../pages/ForgotPasswordPage';
 import ContactPage from '../pages/ContactPage';
+import LoginPage from '../pages/LoginPage';
 import MePage from '../pages/MePage';
-import CheckoutPage from '../pages/CheckoutPage';
 import OrdersPage from '../pages/OrdersPage';
 import ForbiddenPage from '../pages/ForbiddenPage';
 import NotFoundPage from '../pages/NotFoundPage';
@@ -37,24 +38,24 @@ function AppRoutes() {
             <Route path="/gio-hang" element={<CartPage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
             <Route path="/san-pham-da-xem" element={<ViewedProductsPage />} />
+            <Route path="/thanh-toan" element={<CheckoutPage />} />
             <Route path="/dang-ky" element={<RegisterPage />} />
-            <Route path="/dang-nhap" element={<LoginPage />} />
             <Route path="/quen-mat-khau" element={<ForgotPasswordPage />} />
             <Route path="/lien-he" element={<ContactPage />} />
             <Route path="/khong-co-quyen-truy-cap" element={<ForbiddenPage />} />
+            <Route
+                path="/dang-nhap"
+                element={
+                    <AuthenticatedRoute>
+                        <LoginPage />
+                    </AuthenticatedRoute>
+                }
+            />
             <Route
                 path="/tai-khoan"
                 element={
                     <PrivateRoute>
                         <MePage />
-                    </PrivateRoute>
-                }
-            />
-            <Route
-                path="/thanh-toan"
-                element={
-                    <PrivateRoute>
-                        <CheckoutPage />
                     </PrivateRoute>
                 }
             />

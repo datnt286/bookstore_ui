@@ -4,14 +4,21 @@ import DefaultLayout from '../layouts/DefaultLayout';
 import Checkout from '../components/Checkout';
 
 function CheckoutPage() {
+    const isLoggedIn = useSelector((state) => state.auth.token !== null);
     const cart = useSelector((state) => state.cart.items || []);
 
-    return cart.length > 0 ? (
+    if (cart.length < 1) {
+        return <Navigate to="/gio-hang" />;
+    }
+
+    if (!isLoggedIn) {
+        return <Navigate to="/dang-nhap" />;
+    }
+
+    return (
         <DefaultLayout>
             <Checkout />
         </DefaultLayout>
-    ) : (
-        <Navigate to="/" />
     );
 }
 
