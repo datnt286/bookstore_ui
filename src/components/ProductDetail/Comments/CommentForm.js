@@ -34,8 +34,8 @@ function CommentForm({ data, parent_id, onCommentSubmitted }) {
                 setError(error.response.data.message);
             } else if (error.response.status === 403) {
                 Swal.fire({
-                    icon: 'error',
                     title: error.response.data.message,
+                    icon: 'error',
                     timer: 3000,
                 });
             } else {

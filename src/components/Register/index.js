@@ -39,8 +39,8 @@ function Register() {
             navigate('/dang-nhap');
 
             Swal.fire({
-                icon: 'success',
                 title: res.message,
+                icon: 'success',
                 timer: 2000,
             });
         } catch (error) {
@@ -53,8 +53,8 @@ function Register() {
                 console.error('Lỗi: ', error);
 
                 Swal.fire({
-                    icon: 'error',
                     title: 'Đăng ký không thành công!',
+                    icon: 'error',
                     timer: 2000,
                 });
             }

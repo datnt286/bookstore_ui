@@ -51,8 +51,8 @@ function Login() {
             navigate('/');
 
             Swal.fire({
-                icon: 'success',
                 title: res.message,
+                icon: 'success',
                 timer: 2000,
             });
         } catch (error) {
@@ -65,8 +65,8 @@ function Login() {
                 console.error('Lỗi: ', error);
 
                 Swal.fire({
-                    icon: 'error',
                     title: 'Đăng nhập không thành công!',
+                    icon: 'error',
                     timer: 2000,
                 });
             }

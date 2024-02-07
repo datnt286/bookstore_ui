@@ -77,6 +77,18 @@
     background-color: #ffcd39;
 }
 
+/* Logout link */
+.logout-link {
+    color: #FFF;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.logout-link:hover {
+    color: #D10024;
+    transition: 0.2s color;
+}
+
 /* Products */
 .products {
     min-height: 2000px;

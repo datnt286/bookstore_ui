@@ -17,8 +17,8 @@ function ForgotPassword() {
             const res = await axiosInstance.post('/reset-password', { email });
 
             Swal.fire({
-                icon: 'success',
                 title: res.message,
+                icon: 'success',
             });
         } catch (error) {
             console.error('Lỗi: ', error);
@@ -28,8 +28,8 @@ function ForgotPassword() {
             }
 
             Swal.fire({
-                icon: 'error',
                 title: message || 'Đã xảy ra lỗi. Vui lòng thử lại sau!',
+                icon: 'error',
             });
         }
     };

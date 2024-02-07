@@ -54,8 +54,8 @@ function ChangePassword() {
             setAuthenticationError('');
 
             Swal.fire({
-                icon: 'success',
                 title: res.message,
+                icon: 'success',
                 timer: 2000,
             });
         } catch (error) {
@@ -68,8 +68,8 @@ function ChangePassword() {
                 console.error('Lỗi: ', error);
 
                 Swal.fire({
-                    icon: 'error',
                     title: 'Đổi mật khẩu không thành công!',
+                    icon: 'error',
                     timer: 2000,
                 });
             }

@@ -59,8 +59,8 @@ function OrderRow({ data, setOrders, onOrderStatusChanged }) {
                 onOrderStatusChanged();
 
                 Swal.fire({
-                    icon: 'success',
                     title: confirmRes.message,
+                    icon: 'success',
                     timer: 2000,
                 });
             } catch (error) {
@@ -103,8 +103,8 @@ function OrderRow({ data, setOrders, onOrderStatusChanged }) {
                     onOrderStatusChanged();
 
                     Swal.fire({
-                        icon: 'success',
                         title: cancelRes.message,
+                        icon: 'success',
                         timer: 2000,
                     });
                 } catch (error) {

@@ -17,8 +17,8 @@ function ProductCard({ data }) {
         dispatch(addToCart(product));
 
         Swal.fire({
-            icon: 'success',
             title: 'Thêm vào giỏ hàng thành công!',
+            icon: 'success',
             timer: 2000,
         });
     };
@@ -27,8 +27,8 @@ function ProductCard({ data }) {
         dispatch(removeFromWishlist(slug));
 
         Swal.fire({
-            icon: 'success',
             title: 'Xoá khỏi Wishlist thành công!',
+            icon: 'success',
             timer: 2000,
         });
     };

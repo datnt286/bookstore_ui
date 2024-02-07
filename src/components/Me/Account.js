@@ -69,8 +69,8 @@ function Account() {
             dispatch(updateUser({ newUser: newUser }));
 
             Swal.fire({
-                icon: 'success',
                 title: res.message,
+                icon: 'success',
                 timer: 2000,
             });
         } catch (error) {
@@ -80,8 +80,8 @@ function Account() {
                 console.error('Lỗi: ', error);
 
                 Swal.fire({
-                    icon: 'error',
                     title: 'Cập nhật thông tin không thành công!',
+                    icon: 'error',
                     timer: 2000,
                 });
             }

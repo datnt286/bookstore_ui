@@ -56,8 +56,8 @@ function Order({ setValidationErrors }) {
             navigate('/hoa-don');
 
             Swal.fire({
-                icon: 'success',
                 title: res.message,
+                icon: 'success',
                 timer: 2000,
             });
         } catch (error) {
@@ -67,8 +67,8 @@ function Order({ setValidationErrors }) {
                 console.error('Lỗi: ', error);
 
                 Swal.fire({
-                    icon: 'error',
                     title: 'Có lỗi xảy ra khi thanh toán. Vui lòng thử lại sau!',
+                    icon: 'error',
                     timer: 2000,
                 });
             }

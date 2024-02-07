@@ -1,20 +1,34 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/authSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 function TopHeader() {
     const isLoggedIn = useSelector((state) => state.auth.token !== null);
     const user = useSelector((state) => state.auth.user);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogout = () => {
-        dispatch(logout());
-
         Swal.fire({
-            icon: 'success',
-            title: 'Đăng xuất thành công!',
-            timer: 2000,
+            title: 'Bạn có chắc muốn đăng xuất?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Xác nhận',
+            confirmButtonColor: '#3085d6',
+            cancelButtonText: 'Huỷ',
+            cancelButtonColor: '#d33',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(logout());
+                navigate('/');
+
+                Swal.fire({
+                    title: 'Đăng xuất thành công!',
+                    icon: 'success',
+                    timer: 2000,
+                });
+            }
         });
     };
 
@@ -52,9 +66,9 @@ function TopHeader() {
                             </Link>
                         </li>
                         <li onClick={handleLogout}>
-                            <Link to="/">
+                            <span className="logout-link">
                                 <i className="fa fa-sign-out"></i> Đăng xuất
-                            </Link>
+                            </span>
                         </li>
                     </ul>
                 ) : (

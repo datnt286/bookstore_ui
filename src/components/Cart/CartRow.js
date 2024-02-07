@@ -42,8 +42,8 @@ function CartRow({ product }) {
 
         if (newQuantity > productQuantity) {
             Swal.fire({
-                icon: 'error',
                 title: 'Số lượng sản phẩm không đủ!',
+                icon: 'error',
                 timer: 2000,
             });
             return;
@@ -67,8 +67,8 @@ function CartRow({ product }) {
 
         if (newQuantity > productQuantity) {
             Swal.fire({
-                icon: 'error',
                 title: 'Số lượng sản phẩm không đủ!',
+                icon: 'error',
                 timer: 2000,
             });
             return;
@@ -81,8 +81,8 @@ function CartRow({ product }) {
         dispatch(removeFromCart(slug));
 
         Swal.fire({
-            icon: 'success',
             title: 'Xoá khỏi giỏ hàng thành công!',
+            icon: 'success',
             timer: 2000,
         });
     };

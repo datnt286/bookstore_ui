@@ -20,8 +20,8 @@ function Detail({ data }) {
 
         if (newQuantity > data.quantity) {
             Swal.fire({
-                icon: 'error',
                 title: 'Số lượng sản phẩm không đủ!',
+                icon: 'error',
                 timer: 3000,
             });
             return;
@@ -41,8 +41,8 @@ function Detail({ data }) {
 
         if (newQuantity > data.quantity) {
             Swal.fire({
-                icon: 'error',
                 title: 'Số lượng sản phẩm không đủ!',
+                icon: 'error',
                 timer: 2000,
             });
             return;
@@ -55,8 +55,8 @@ function Detail({ data }) {
         dispatch(addToCart(product));
 
         Swal.fire({
-            icon: 'success',
             title: 'Thêm vào giỏ hàng thành công!',
+            icon: 'success',
             timer: 2000,
         });
     };
@@ -65,8 +65,8 @@ function Detail({ data }) {
         dispatch(addToWishlist(product));
 
         Swal.fire({
-            icon: 'success',
             title: 'Thêm vào Wishlist thành công!',
+            icon: 'success',
             timer: 2000,
         });
     };
