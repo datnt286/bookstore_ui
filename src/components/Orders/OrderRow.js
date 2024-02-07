@@ -74,10 +74,10 @@ function OrderRow({ data, setOrders, onOrderStatusChanged }) {
     const handleCancel = (id) => {
         Swal.fire({
             title: 'Bạn có chắc muốn huỷ?',
-            text: 'Bạn sẽ không thể khôi phục hoá đơn đã huỷ!',
+            text: 'Bạn sẽ không thể khôi phục hoá đơn đã huỷ.',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Vâng, tôi muốn huỷ',
+            confirmButtonText: 'Xác nhận',
             confirmButtonColor: '#3085d6',
             cancelButtonText: 'Huỷ',
             cancelButtonColor: '#d33',

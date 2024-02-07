@@ -52,8 +52,11 @@ function Order({ setValidationErrors }) {
                 headers: { Authorization: 'Bearer ' + token },
             });
 
-            dispatch(clearCart());
             navigate('/hoa-don');
+
+            setTimeout(() => {
+                dispatch(clearCart());
+            }, 0);
 
             Swal.fire({
                 title: res.message,
